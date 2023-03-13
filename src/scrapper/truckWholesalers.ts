@@ -64,7 +64,7 @@ export default async function scrapTruckWholesalers() {
 
                       try {
                         // Get truck details
-                        const truckDetails = await page.evaluate(() => {
+                        const truck = await page.evaluate(() => {
                           const name = document.querySelector(
                             "body > main > div > div.sd-col-g > div > div.sl-heading-link > div.sl-heading-model-wrapper > h3"
                           )?.textContent;
@@ -118,6 +118,7 @@ export default async function scrapTruckWholesalers() {
                             price,
                             year,
                             gvm,
+                            make,
                             images,
                             bodyType,
                             kilometers,
@@ -125,7 +126,7 @@ export default async function scrapTruckWholesalers() {
                           };
                         });
 
-                        console.log(truckDetails);
+                        console.log(truck);
                       } catch (err) {
                         throw err;
                       }

@@ -27,7 +27,7 @@ app.use(
 );
 
 // scrapTruckWholesalers();
-scrapSammutAgriculturalMachinery();
+// scrapSammutAgriculturalMachinery();
 
 // Routes
 

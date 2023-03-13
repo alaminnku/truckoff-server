@@ -12,6 +12,7 @@ export default async function scrapSammutAgriculturalMachinery() {
       // Truck URLs
       let truckUrls: string[] = [];
 
+      // Get all truck urls from 9 pages
       for (let i = 1; i < 10; i++) {
         try {
           // Go to the page
@@ -21,6 +22,7 @@ export default async function scrapSammutAgriculturalMachinery() {
           );
 
           try {
+            // Get all urls in the page
             const truckUrlsPerPage = await page.evaluate(() => {
               // Get all url nodes
               const urlNodes = document.querySelectorAll(
@@ -53,7 +55,8 @@ export default async function scrapSammutAgriculturalMachinery() {
           await page.goto(truckUrls[i], { timeout: 0 });
 
           try {
-            const truckDetails = await page.evaluate(() => {
+            // Create truck details
+            const truck = await page.evaluate(() => {
               // Name
               const name = document.querySelector(
                 "body > div.container > div > div.col-lg-8 > div > div.row.heading > div.col-lg-10.col-xs-12 > h1"
@@ -93,15 +96,15 @@ export default async function scrapSammutAgriculturalMachinery() {
               return {
                 name,
                 price,
-                location: "NSW",
                 year,
                 make,
                 model,
                 images,
+                location: "NSW",
               };
             });
 
-            console.log(truckDetails);
+            console.log(truck);
           } catch (err) {
             throw err;
           }
