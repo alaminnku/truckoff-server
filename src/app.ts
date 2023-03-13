@@ -1,6 +1,13 @@
-import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
+import "express-async-errors";
+import express from "express";
 import error from "./middleware/error";
+import scrapTruckWholesalers from "./scrapper/truckWholesalers";
+import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachinery";
+
+// Config
+dotenv.config();
 
 // Create port
 const PORT = process.env.PORT || 5300;
@@ -18,6 +25,9 @@ app.use(
     origin: process.env.CLIENT_URL,
   })
 );
+
+// scrapTruckWholesalers();
+scrapSammutAgriculturalMachinery();
 
 // Routes
 
