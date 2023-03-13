@@ -12,6 +12,8 @@
   "author": "Alamin Shaikh",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.13",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "puppeteer": "^19.7.4"
   },
