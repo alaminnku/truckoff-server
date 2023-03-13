@@ -117,12 +117,12 @@ export default async function scrapTruckWholesalers() {
                             name,
                             price,
                             year,
-                            gvm,
                             make,
                             images,
                             bodyType,
-                            kilometers,
                             location: "VIC",
+                            gvm: `${gvm} KG`,
+                            kilometers: `${kilometers} KM`,
                           };
                         });
 
