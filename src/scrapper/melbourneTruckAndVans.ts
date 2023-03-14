@@ -87,10 +87,6 @@ export default async function scrapMelbourneTruckAndVans() {
                 "#__next > div.defaultPage > div.bg-white > div.py-md-4.container-xl > div.CarHeading_noMargins__pmNH9.row.no-gutters.overflow-hidden > div.col-lg-7.col-xl-8.order-1.order-lg-1.d-flex > div > div > div.w-100 > div > div > div > img"
               );
 
-              // #__next > div.defaultPage > div.bg-white > div.py-md-4.container-xl > div.CarHeading_noMargins__pmNH9.row.no-gutters.overflow-hidden > div.col-12.order-2.order-lg-3.mt-3.d-none.d-lg-block > div > div > div > div:nth-child(2) > span > img
-
-              // #__next > div.defaultPage > div.bg-white > div.py-md-4.container-xl > div.CarHeading_noMargins__pmNH9.row.no-gutters.overflow-hidden > div.col-12.order-2.order-lg-3.mt-3.d-none.d-lg-block > div > div > div > div:nth-child(3) > span > img
-
               // Get all images
               const images = Array.from(imageNodes).map((imageNode) =>
                 imageNode.getAttribute("src")

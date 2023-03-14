@@ -3,12 +3,13 @@ import dotenv from "dotenv";
 import "express-async-errors";
 import express from "express";
 import error from "./middleware/error";
-import scrapTruckWholesalers from "./scrapper/truckWholesalers";
-import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachinery";
 import scrapIsuzu from "./scrapper/isuzu";
 import scrapSuttonTrucks from "./scrapper/suttonTrucks";
 import scrapMidCoastTrucks from "./scrapper/midCoastTrucks";
+import scrapTruckWholesalers from "./scrapper/truckWholesalers";
 import scrapMelbourneTruckAndVans from "./scrapper/melbourneTruckAndVans";
+import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachinery";
+import scrapWhiteHorseTruckCentre from "./scrapper/whiteHorseTruckCentre";
 
 // Config
 dotenv.config();
@@ -36,6 +37,7 @@ app.use(
 // scrapSuttonTrucks();
 // scrapMidCoastTrucks();
 // scrapTruckWholesalers();
+// scrapWhiteHorseTruckCentre();
 // scrapMelbourneTruckAndVans();
 // scrapSammutAgriculturalMachinery();
 
