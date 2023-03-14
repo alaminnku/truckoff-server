@@ -6,6 +6,7 @@ import error from "./middleware/error";
 import scrapTruckWholesalers from "./scrapper/truckWholesalers";
 import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachinery";
 import scrapIsuzu from "./scrapper/isuzu";
+import scrapSuttonTrucks from "./scrapper/suttonTrucks";
 
 // Config
 dotenv.config();
@@ -27,7 +28,10 @@ app.use(
   })
 );
 
+// Scrappers
+
 // scrapIsuzu();
+// scrapSuttonTrucks();
 // scrapTruckWholesalers();
 // scrapSammutAgriculturalMachinery();
 
