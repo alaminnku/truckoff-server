@@ -9,6 +9,7 @@ import scrapMidCoastTrucks from "./scrapper/midCoastTrucks";
 import scrapTruckWholesalers from "./scrapper/truckWholesalers";
 import scrapMelbourneTruckAndVans from "./scrapper/melbourneTruckAndVans";
 import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachinery";
+import scrapVelocityTruckCentres from "./scrapper/velocityTruckCentres";
 import scrapWhiteHorseTruckCentre from "./scrapper/whiteHorseTruckCentre";
 
 // Config
@@ -37,6 +38,7 @@ app.use(
 // scrapSuttonTrucks();
 // scrapMidCoastTrucks();
 // scrapTruckWholesalers();
+// scrapVelocityTruckCentres();
 // scrapWhiteHorseTruckCentre();
 // scrapMelbourneTruckAndVans();
 // scrapSammutAgriculturalMachinery();

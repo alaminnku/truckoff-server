@@ -119,7 +119,6 @@ export default async function scrapWhiteHorseTruckCentre() {
                             gvm,
                             make,
                             images,
-                            location: "VIC",
                             kilometers: `${kilometers} KM`,
                           };
                         });
