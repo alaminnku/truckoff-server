@@ -8,6 +8,7 @@ import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachi
 import scrapIsuzu from "./scrapper/isuzu";
 import scrapSuttonTrucks from "./scrapper/suttonTrucks";
 import scrapMidCoastTrucks from "./scrapper/midCoastTrucks";
+import scrapMelbourneTruckAndVans from "./scrapper/melbourneTruckAndVans";
 
 // Config
 dotenv.config();
@@ -31,10 +32,11 @@ app.use(
 
 // Scrappers
 
-// scrapMidCoastTrucks();
 // scrapIsuzu();
-scrapSuttonTrucks();
+// scrapSuttonTrucks();
+// scrapMidCoastTrucks();
 // scrapTruckWholesalers();
+// scrapMelbourneTruckAndVans();
 // scrapSammutAgriculturalMachinery();
 
 // Routes

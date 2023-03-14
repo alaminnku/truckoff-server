@@ -96,10 +96,6 @@ export default async function scrapSuttonTrucks() {
                 "body > div.content > section:nth-child(1) > div > div.swiper-wrapper.gallery--vehicle > div > picture > img"
               );
 
-              // body > div.content > section:nth-child(1) > div > div.swiper-wrapper.gallery--vehicle > div:nth-child(10) > picture > img
-
-              // body > div.content > section:nth-child(1) > div > div.swiper-wrapper.gallery--vehicle > div:nth-child(15) > picture > img
-
               // Images
               const images = Array.from(imageNodes)
                 .map((imageNode) => imageNode.getAttribute("data-src"))
