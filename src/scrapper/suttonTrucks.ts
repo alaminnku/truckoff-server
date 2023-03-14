@@ -91,8 +91,22 @@ export default async function scrapSuttonTrucks() {
                 "#featuresScrollTo > div > div > div > div > div:nth-child(3) > div > div:nth-child(2) > div:nth-child(2)"
               )?.replace("kg", "KG");
 
+              // Image nodes
+              const imageNodes = document.querySelectorAll(
+                "body > div.content > section:nth-child(1) > div > div.swiper-wrapper.gallery--vehicle > div > picture > img"
+              );
+
+              // body > div.content > section:nth-child(1) > div > div.swiper-wrapper.gallery--vehicle > div:nth-child(10) > picture > img
+
+              // body > div.content > section:nth-child(1) > div > div.swiper-wrapper.gallery--vehicle > div:nth-child(15) > picture > img
+
+              // Images
+              const images = Array.from(imageNodes)
+                .map((imageNode) => imageNode.getAttribute("data-src"))
+                .filter((image) => image !== null);
+
               // Return the truck object
-              return { name, price, location: "NSW", year, make, gvm };
+              return { name, price, location: "NSW", year, make, gvm, images };
             });
 
             console.log(truck);

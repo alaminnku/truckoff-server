@@ -7,6 +7,7 @@ import scrapTruckWholesalers from "./scrapper/truckWholesalers";
 import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachinery";
 import scrapIsuzu from "./scrapper/isuzu";
 import scrapSuttonTrucks from "./scrapper/suttonTrucks";
+import scrapMidCoastTrucks from "./scrapper/midCoastTrucks";
 
 // Config
 dotenv.config();
@@ -30,8 +31,9 @@ app.use(
 
 // Scrappers
 
+// scrapMidCoastTrucks();
 // scrapIsuzu();
-// scrapSuttonTrucks();
+scrapSuttonTrucks();
 // scrapTruckWholesalers();
 // scrapSammutAgriculturalMachinery();
 
