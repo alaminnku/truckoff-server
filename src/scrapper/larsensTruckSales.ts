@@ -57,7 +57,7 @@ export default async function scrapLarsensTruckSales() {
             // Create truck details
             const truck = await page.evaluate(() => {
               // Find feature
-              const findFeature = (identifier: string) =>
+              const getFeatureText = (identifier: string) =>
                 Array.from(
                   document.querySelectorAll(
                     "body > main > section > div > div.cl-content > div > div.d-col-8 > ul > li"
@@ -69,10 +69,10 @@ export default async function scrapLarsensTruckSales() {
                   ?.lastChild?.textContent?.trim();
 
               // Name
-              const name = findFeature("Vehicle:");
+              const name = getFeatureText("Vehicle:");
 
               // Price
-              const price = findFeature("Price:");
+              const price = getFeatureText("Price:");
 
               // Year
               const year = name?.split(" ")[0];
@@ -81,16 +81,16 @@ export default async function scrapLarsensTruckSales() {
               const make = name?.split(" ")[1];
 
               // Body type
-              const bodyType = findFeature("Body:");
+              const bodyType = getFeatureText("Body:");
 
               // Kilometers
-              const kilometers = findFeature("Kilometres:")?.replace(
+              const kilometers = getFeatureText("Kilometres:")?.replace(
                 "kms",
                 "KM"
               );
 
               // GVM
-              const gvm = findFeature("GVM:");
+              const gvm = getFeatureText("GVM:");
 
               // Get image nodes
               const imageNodes = document.querySelectorAll(

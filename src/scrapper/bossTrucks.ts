@@ -4,7 +4,6 @@ export default async function scrapBossTrucks() {
   try {
     // Create browser
     const browser = await puppeteer.launch({
-      headless: false,
       defaultViewport: { width: 1024, height: 1600 },
     });
 
@@ -68,6 +67,18 @@ export default async function scrapBossTrucks() {
               const getSelectorText = (selector: string) =>
                 document.querySelector(selector)?.textContent?.trim();
 
+              // Find feature
+              const getFeatureText = (identifier: string) =>
+                Array.from(
+                  document.querySelectorAll(
+                    "#vehicle-details > table > tbody > tr"
+                  )
+                )
+                  .find(
+                    (feature) => feature.firstChild?.textContent === identifier
+                  )
+                  ?.lastChild?.textContent?.trim();
+
               // Name
               const name = getSelectorText(
                 "#item_pricing_and_cta_container > div.title_container.hidden-xs.hidden-sm > div.title_alignment > div > h2"
@@ -85,14 +96,10 @@ export default async function scrapBossTrucks() {
               const make = name?.split(" ")[1];
 
               // Body type
-              const bodyType = getSelectorText(
-                "#vehicle-details > table > tbody > tr:nth-child(3) > td:nth-child(2)"
-              );
+              const bodyType = getFeatureText("Body");
 
               // GVM
-              const gvm = getSelectorText(
-                "#vehicle-details > table > tbody > tr:nth-child(10) > td:nth-child(2)"
-              )?.replace("kg", "KG");
+              const gvm = getFeatureText("GVM")?.replace("kg", "KG");
 
               // Get image nodes
               const imageNodes = document.querySelectorAll(
