@@ -5,8 +5,6 @@ export default async function scrapWesternTruckSales() {
   try {
     // Create browser
     const browser = await puppeteer.launch({
-      product: "firefox",
-      headless: false,
       defaultViewport: { width: 1024, height: 1600 },
     });
 
@@ -16,7 +14,7 @@ export default async function scrapWesternTruckSales() {
 
       try {
         // Go to the page
-        await page.goto("https://www.westerntrucksales.com.au/stock-list/", {
+        await page.goto("https://www.wts.industrysales.com.au/stock/search/", {
           timeout: 0,
         });
 
@@ -36,15 +34,12 @@ export default async function scrapWesternTruckSales() {
                   // Click on the button
                   await button.click();
 
-                  console.log("clicked");
-
                   // Call the function recursively
                   loadAllTrucks();
                 } catch (err) {
                   throw err;
                 }
               } else {
-                console.log("No button found");
                 try {
                   // Get all the urls
                   const truckUrls = await page.evaluate(() => {
@@ -53,107 +48,80 @@ export default async function scrapWesternTruckSales() {
                       "#js-sl-items-wrapper > div > div.sl-heading-link > a.sl-heading-details-link"
                     );
 
-                    // "#js-sl-items-wrapper > div > div.sl-heading-link > a.sl-heading-details-link"
-
-                    // #js-sl-items-wrapper > div > div.sl-heading-link > a.sl-heading-details-link
-
-                    // #js-sl-items-wrapper > div:nth-child(3) > div.sl-heading-link > a.sl-heading-details-link
-
-                    // #js-sl-items-wrapper > div:nth-child(1) > div.sl-content-wrapper.sl-vehicle-1 > div.sl-content-col-2 > div.sl-content-col-btn > a
-
-                    // #js-sl-items-wrapper > div:nth-child(3) > div.sl-content-wrapper.sl-vehicle-1 > div.sl-content-col-2 > div.sl-content-col-btn > a
-
                     // Return the array of urls
                     return Array.from(urlNodes).map(
                       (urlNode) =>
-                        `https://www.westerntrucksales.com.au${urlNode.getAttribute(
+                        `https://www.wts.industrysales.com.au${urlNode.getAttribute(
                           "href"
                         )}`
                     );
                   });
 
-                  console.log("url", truckUrls);
+                  // Loop through the urls and extract the data
+                  for (let i = 0; i < truckUrls.length; i++) {
+                    try {
+                      // Go to the truck page
+                      await page.goto(truckUrls[i], { timeout: 0 });
 
-                  // // Loop through the urls and extract the data
-                  // for (let i = 0; i < truckUrls.length; i++) {
-                  //   try {
-                  //     // Go to the truck page
-                  //     await page.goto(truckUrls[i], { timeout: 0 });
+                      try {
+                        // Get truck details
+                        const truck = await page.evaluate(() => {
+                          // Get selector text
+                          const getSelectorText = (selector: string) =>
+                            document
+                              .querySelector(selector)
+                              ?.textContent?.trim();
 
-                  //     try {
-                  //       // Get truck details
-                  //       const truck = await page.evaluate(() => {
-                  //         // Get selector text
-                  //         const getSelectorText = (selector: string) =>
-                  //           document
-                  //             .querySelector(selector)
-                  //             ?.textContent?.trim();
+                          // Name
+                          const name = getSelectorText(
+                            "body > div.heading-wrapper > div > h1"
+                          );
 
-                  //         // Name
-                  //         const name = getSelectorText(
-                  //           "body > div.heading-wrapper > div > h1"
-                  //         );
+                          // Year
+                          const year = getSelectorText(
+                            "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(2) > p.sd-specs-text.sd-specs-value"
+                          );
 
-                  //         // Year
-                  //         const year = getSelectorText(
-                  //           "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(2) > p.sd-specs-text.sd-specs-value"
-                  //         );
+                          // Make
+                          const make = name?.split(" ")[1];
 
-                  //         // Make
-                  //         const make = name?.split(" ")[1];
+                          // Body
+                          const bodyType = getSelectorText(
+                            "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(5) > p.sd-specs-text.sd-specs-value"
+                          );
 
-                  //         // Kilometers
-                  //         const kilometers = getSelectorText(
-                  //           "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(4) > p.sd-specs-text.sd-specs-value"
-                  //         );
+                          // Get image nodes
+                          const imageNodes = document.querySelectorAll(
+                            "#gallerySlider > div.owl-wrapper-outer.autoHeight > div > div > a"
+                          );
 
-                  //         // GVM
-                  //         const gvm = getSelectorText(
-                  //           "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(10) > p.sd-specs-text.sd-specs-value"
-                  //         );
+                          // Get image urls
+                          const images = Array.from(imageNodes).map(
+                            (imageNode) => imageNode.getAttribute("href")
+                          );
 
-                  //         // Body
-                  //         const bodyType = getSelectorText(
-                  //           "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(12) > p.sd-specs-text.sd-specs-value"
-                  //         );
+                          // Return the truck object
+                          return {
+                            name,
+                            year,
+                            make,
+                            images,
+                            bodyType,
+                            location: "WA",
+                          };
+                        });
 
-                  //         // Get image nodes
-                  //         const imageNodes = document.querySelectorAll(
-                  //           "#thumbnailSlider > div.owl-wrapper-outer > div > div > div > img"
-                  //         );
-
-                  //         // Get image urls
-                  //         const images = Array.from(imageNodes).map(
-                  //           (imageNode) =>
-                  //             imageNode
-                  //               .getAttribute("src")
-                  //               ?.replace("/vehicles/small", "/vehicles/large")
-                  //         );
-
-                  //         // Return the truck object
-                  //         return {
-                  //           name,
-                  //           year,
-                  //           make,
-                  //           images,
-                  //           bodyType,
-                  //           location: "VIC",
-                  //           gvm: `${gvm} KG`,
-                  //           kilometers: `${kilometers} KM`,
-                  //         };
-                  //       });
-
-                  //       console.log(truck);
-                  //     } catch (err) {
-                  //       throw err;
-                  //     }
-                  //   } catch (err) {
-                  //     throw err;
-                  //   }
-                  // }
+                        console.log(truck);
+                      } catch (err) {
+                        throw err;
+                      }
+                    } catch (err) {
+                      throw err;
+                    }
+                  }
 
                   // Close the browser
-                  // await browser.close();
+                  await browser.close();
                 } catch (err) {
                   throw err;
                 }
