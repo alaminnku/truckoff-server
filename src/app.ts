@@ -40,8 +40,8 @@ app.use(
 // scrapRobEquipment();
 // scrapSuttonTrucks();
 // scrapMidCoastTrucks();
-scrapDaimlerTrucksPerth();
-// scrapTruckWholesalers();
+scrapTruckWholesalers();
+// scrapDaimlerTrucksPerth();
 // scrapVelocityTruckCentres();
 // scrapWhiteHorseTruckCentre();
 // scrapMelbourneTruckAndVans();

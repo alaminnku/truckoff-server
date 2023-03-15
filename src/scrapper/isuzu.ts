@@ -52,34 +52,34 @@ export default async function scrapIsuzu() {
           try {
             // Create truck details
             const truck = await page.evaluate(() => {
+              // Get selector text
+              const getSelectorText = (selector: string) =>
+                document.querySelector(selector)?.textContent?.trim();
+
               // Name
-              const name = document.querySelector(
+              const name = getSelectorText(
                 "body > section > div > div.cl-content > div:nth-child(2) > div.d-col-9 > h1"
-              )?.textContent;
+              );
 
               // Price
-              const price = document.querySelector(
+              const price = getSelectorText(
                 "body > section > div > div.cl-content > div:nth-child(2) > div.d-col-3 > div > div > div > span.t-large"
-              )?.textContent;
+              );
 
               // Year
-              const year = document.querySelector(
+              const year = getSelectorText(
                 "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > ul > li:nth-child(2) > span"
-              )?.textContent;
+              );
 
               // Make
-              const make = document
-                .querySelector(
-                  "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > ul > li:nth-child(7) > span"
-                )
-                ?.textContent?.split(",")[0];
+              const make = getSelectorText(
+                "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > ul > li:nth-child(7) > span"
+              )?.split(",")[0];
 
               // Model
-              const model = document
-                .querySelector(
-                  "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > ul > li:nth-child(7) > span"
-                )
-                ?.textContent?.split(",")[1];
+              const model = getSelectorText(
+                "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > ul > li:nth-child(7) > span"
+              )?.split(",")[1];
 
               // Get image nodes
               const imageNodes = document.querySelectorAll(

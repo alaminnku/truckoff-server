@@ -59,30 +59,34 @@ export default async function scrapSammutAgriculturalMachinery() {
           try {
             // Create truck details
             const truck = await page.evaluate(() => {
-              // Name
-              const name = document.querySelector(
-                "body > div.container > div > div.col-lg-8 > div > div.row.heading > div.col-lg-10.col-xs-12 > h1"
-              )?.textContent;
+              // Get selector text
+              const getSelectorText = (selector: string) =>
+                document.querySelector(selector)?.textContent?.trim();
 
-              // Price
-              const price = document.querySelector(
-                "body > div.container > div > div.col-lg-8 > div > div.row.heading > div.col-lg-10.col-xs-12 > div > div"
+              // Name
+              const name = getSelectorText(
+                "body > div.container > div > div.col-lg-8 > div > div.row.heading > div.col-lg-10.col-xs-12 > h1"
               );
 
+              // Price
+              const price = getSelectorText(
+                "body > div.container > div > div.col-lg-8 > div > div.row.heading > div.col-lg-10.col-xs-12 > div > div"
+              )?.replace("*", "");
+
               // Year
-              const year = document.querySelector(
+              const year = getSelectorText(
                 "#features > div > dl > dd:nth-child(8)"
-              )?.textContent;
+              );
 
               // Make
-              const make = document.querySelector(
+              const make = getSelectorText(
                 "#features > div > dl > dd:nth-child(4)"
-              )?.textContent;
+              );
 
               // Model
-              const model = document.querySelector(
+              const model = getSelectorText(
                 "#features > div > dl > dd:nth-child(6)"
-              )?.textContent;
+              );
 
               // Get image nodes
               const imageNodes = document.querySelectorAll(

@@ -67,39 +67,46 @@ export default async function scrapTruckWholesalers() {
                       try {
                         // Get truck details
                         const truck = await page.evaluate(() => {
-                          const name = document.querySelector(
+                          // Get selector text
+                          const getSelectorText = (selector: string) =>
+                            document
+                              .querySelector(selector)
+                              ?.textContent?.trim();
+
+                          // Name
+                          const name = getSelectorText(
                             "body > main > div > div.sd-col-g > div > div.sl-heading-link > div.sl-heading-model-wrapper > h3"
-                          )?.textContent;
+                          );
 
                           // Price
-                          const price = document.querySelector(
+                          const price = getSelectorText(
                             "body > main > div > div.sd-col-g > div > div.sl-heading-link > a > h4"
-                          )?.textContent;
+                          );
 
                           // Year
-                          const year = document.querySelector(
+                          const year = getSelectorText(
                             "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(2) > p.sd-specs-text.sd-specs-value"
-                          )?.textContent;
+                          );
 
                           // Make
-                          const make = document.querySelector(
+                          const make = getSelectorText(
                             "body > main > div > div.sd-col-g > div > div.sd-features-wrapper > ul > li:nth-child(1)"
-                          )?.textContent;
+                          );
 
                           // Kilometers
-                          const kilometers = document.querySelector(
+                          const kilometers = getSelectorText(
                             "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(4) > p.sd-specs-text.sd-specs-value"
-                          )?.textContent;
+                          );
 
                           // GVM
-                          const gvm = document.querySelector(
+                          const gvm = getSelectorText(
                             "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(10) > p.sd-specs-text.sd-specs-value"
-                          )?.textContent;
+                          );
 
                           // Body
-                          const bodyType = document.querySelector(
+                          const bodyType = getSelectorText(
                             "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(12) > p.sd-specs-text.sd-specs-value"
-                          )?.textContent;
+                          );
 
                           // Get image nodes
                           const imageNodes = document.querySelectorAll(
