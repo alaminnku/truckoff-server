@@ -135,6 +135,7 @@ export default async function scrapWhiteHorseTruckCentre() {
                             gvm,
                             make,
                             images,
+                            bodyType,
                             kilometers: `${kilometers} KM`,
                           };
                         });

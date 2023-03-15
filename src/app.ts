@@ -50,7 +50,7 @@ app.use(
 // scrapTruckWholesalers();
 // scrapWestarTruckCentre();
 // scrapLarsensTruckSales();
-scrapWesternTruckSales();
+// scrapWesternTruckSales();
 // scrapDaimlerTrucksPerth();
 // scrapVelocityTruckCentres();
 // scrapWhiteHorseTruckCentre();
