@@ -91,7 +91,7 @@ export default async function scrapTruckWholesalers() {
                           // Make
                           const make = getSelectorText(
                             "body > main > div > div.sd-col-g > div > div.sd-features-wrapper > ul > li:nth-child(1)"
-                          );
+                          )?.replace("EngineMake", "");
 
                           // Kilometers
                           const kilometers = getSelectorText(

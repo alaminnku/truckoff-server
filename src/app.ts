@@ -8,6 +8,7 @@ import scrapRobEquipment from "./scrapper/robEquipment";
 import scrapSuttonTrucks from "./scrapper/suttonTrucks";
 import scrapMidCoastTrucks from "./scrapper/midCoastTrucks";
 import scrapTruckWholesalers from "./scrapper/truckWholesalers";
+import scrapWesternTruckSales from "./scrapper/westernTruckSales";
 import scrapMelbourneTruckAndVans from "./scrapper/melbourneTruckAndVans";
 import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachinery";
 import scrapDaimlerTrucksPerth from "./scrapper/daimlerTrucksPerth";
@@ -40,7 +41,8 @@ app.use(
 // scrapRobEquipment();
 // scrapSuttonTrucks();
 // scrapMidCoastTrucks();
-scrapTruckWholesalers();
+// scrapTruckWholesalers();
+scrapWesternTruckSales();
 // scrapDaimlerTrucksPerth();
 // scrapVelocityTruckCentres();
 // scrapWhiteHorseTruckCentre();
