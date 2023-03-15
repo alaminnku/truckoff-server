@@ -4,7 +4,9 @@ import { scrollPageToBottom } from "puppeteer-autoscroll-down";
 export default async function scrapTruckWholesalers() {
   try {
     // Create browser
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      defaultViewport: { width: 1024, height: 1600 },
+    });
 
     try {
       // Create page

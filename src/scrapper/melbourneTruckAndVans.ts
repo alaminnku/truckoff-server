@@ -3,7 +3,9 @@ import puppeteer from "puppeteer";
 export default async function scrapMelbourneTruckAndVans() {
   try {
     // Create browser
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      defaultViewport: { width: 1024, height: 1600 },
+    });
 
     try {
       // Create page
