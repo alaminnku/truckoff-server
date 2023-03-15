@@ -125,6 +125,8 @@ export default async function scrapBossTrucks() {
           throw err;
         }
       }
+      // Close the browser
+      await browser.close();
     } catch (err) {
       throw err;
     }
