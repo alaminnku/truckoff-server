@@ -104,7 +104,7 @@ export default async function scrapSuttonTrucks() {
                 .filter((image) => image !== null);
 
               // Return the truck object
-              return { name, price, location: "NSW", year, make, gvm, images };
+              return { name, price, year, make, gvm, images, location: "NSW" };
             });
 
             console.log(truck);

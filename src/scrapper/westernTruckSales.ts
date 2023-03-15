@@ -72,23 +72,33 @@ export default async function scrapWesternTruckSales() {
                               .querySelector(selector)
                               ?.textContent?.trim();
 
+                          // Get feature text
+                          const getFeatureText = (identifier: string) =>
+                            Array.from(
+                              document.querySelectorAll(
+                                "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div.sd-specs-item"
+                              )
+                            )
+                              .find(
+                                (feature) =>
+                                  feature.firstElementChild?.textContent ===
+                                  identifier
+                              )
+                              ?.lastElementChild?.textContent?.trim();
+
                           // Name
                           const name = getSelectorText(
                             "body > div.heading-wrapper > div > h1"
                           );
 
                           // Year
-                          const year = getSelectorText(
-                            "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(2) > p.sd-specs-text.sd-specs-value"
-                          );
+                          const year = getFeatureText("Year");
 
                           // Make
                           const make = name?.split(" ")[1];
 
                           // Body
-                          const bodyType = getSelectorText(
-                            "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(5) > p.sd-specs-text.sd-specs-value"
-                          );
+                          const bodyType = getFeatureText("Body");
 
                           // Get image nodes
                           const imageNodes = document.querySelectorAll(

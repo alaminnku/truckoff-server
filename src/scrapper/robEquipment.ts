@@ -59,6 +59,18 @@ export default async function scrapRobEquipment() {
               const getSelectorText = (selector: string) =>
                 document.querySelector(selector)?.textContent?.trim();
 
+              // Get feature text
+              const getFeatureText = (identifier: string) =>
+                Array.from(
+                  document.querySelectorAll(
+                    "#content > div.container.single-car-page > div > div.col-md-4.fantasy-themes-sidebar-width.fantasy-themes-sidebar-car > div > div.widget.autoroyal-car-specifications > table > tbody > tr"
+                  )
+                )
+                  .find(
+                    (feature) => feature.firstChild?.textContent === identifier
+                  )
+                  ?.lastChild?.textContent?.trim();
+
               // Name
               const name = getSelectorText("div > header > h1");
 
@@ -71,19 +83,16 @@ export default async function scrapRobEquipment() {
               const year = getSelectorText("div > header > h1 > span");
 
               // Make
-              const make = getSelectorText(
-                "#content > div.container.single-car-page > div > div.col-md-4.fantasy-themes-sidebar-width.fantasy-themes-sidebar-car > div > div.widget.autoroyal-car-specifications > table > tbody > tr:nth-child(11) > td.value.h6"
-              );
+              const make = getFeatureText("Engine Make");
 
               // Kilometers
-              const kilometers = getSelectorText(
-                "#content > div.container.single-car-page > div > div.col-md-4.fantasy-themes-sidebar-width.fantasy-themes-sidebar-car > div > div.widget.autoroyal-car-specifications > table > tbody > tr:nth-child(1) > td.value.h6"
-              )?.replace("km", "KM");
+              const kilometers = getFeatureText("km Showing")?.replace(
+                "km",
+                "KM"
+              );
 
               // GVM
-              const gvm = getSelectorText(
-                "#content > div.container.single-car-page > div > div.col-md-4.fantasy-themes-sidebar-width.fantasy-themes-sidebar-car > div > div.widget.autoroyal-car-specifications > table > tbody > tr:nth-child(13) > td.value.h6"
-              );
+              const gvm = getFeatureText("GVM");
 
               // Get image nodes
               const imageNodes = document.querySelectorAll(
@@ -101,10 +110,10 @@ export default async function scrapRobEquipment() {
                 price,
                 year,
                 make,
-                gvm,
                 images,
                 kilometers,
                 location: "SA",
+                gvm: `${gvm} KG`,
               };
             });
 

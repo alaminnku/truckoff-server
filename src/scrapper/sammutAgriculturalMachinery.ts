@@ -63,6 +63,34 @@ export default async function scrapSammutAgriculturalMachinery() {
               const getSelectorText = (selector: string) =>
                 document.querySelector(selector)?.textContent?.trim();
 
+              // Get feature text
+              const getFeatureText = (identifier: string) => {
+                // Get key elements
+                const keyElements = Array.from(
+                  document.querySelectorAll("#features > div > dl > dt")
+                );
+
+                // Get target key element
+                const targetElement = keyElements.find(
+                  (element) => element.textContent === identifier
+                );
+
+                // Get value elements
+                const valueElements = Array.from(
+                  document.querySelectorAll("#features > div > dl > dd")
+                );
+
+                // Return text content of the value element
+                if (targetElement) {
+                  return valueElements
+                    .find(
+                      (element, index) =>
+                        index === keyElements.indexOf(targetElement)
+                    )
+                    ?.textContent?.trim();
+                }
+              };
+
               // Name
               const name = getSelectorText(
                 "body > div.container > div > div.col-lg-8 > div > div.row.heading > div.col-lg-10.col-xs-12 > h1"
@@ -74,19 +102,13 @@ export default async function scrapSammutAgriculturalMachinery() {
               )?.replace("*", "");
 
               // Year
-              const year = getSelectorText(
-                "#features > div > dl > dd:nth-child(8)"
-              );
+              const year = getFeatureText("Year:");
 
               // Make
-              const make = getSelectorText(
-                "#features > div > dl > dd:nth-child(4)"
-              );
+              const make = getFeatureText("Make:");
 
               // Model
-              const model = getSelectorText(
-                "#features > div > dl > dd:nth-child(6)"
-              );
+              const model = getFeatureText("Model:");
 
               // Get image nodes
               const imageNodes = document.querySelectorAll(

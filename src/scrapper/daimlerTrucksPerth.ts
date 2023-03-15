@@ -72,32 +72,41 @@ export default async function scrapDaimlerTrucksPerth() {
                         try {
                           // Get truck details
                           const truck = await page.evaluate(() => {
-                            // Get selector text
-                            const getSelectorText = (selector: string) =>
-                              document
-                                .querySelector(selector)
-                                ?.textContent?.trim();
+                            // Get feature text
+                            const getFeatureText = (identifier: string) =>
+                              Array.from(
+                                document.querySelectorAll(
+                                  "body > section > div > div.inventory.inventory-detail > div.row > div:nth-child(2) > div > ul > li"
+                                )
+                              )
+                                .find(
+                                  (feature) =>
+                                    feature.firstElementChild?.textContent ===
+                                    identifier
+                                )
+                                ?.lastElementChild?.textContent?.trim();
 
                             // Name
-                            const name = getSelectorText("#detail-inv-title");
+                            const name = document
+                              .querySelector("#detail-inv-title")
+                              ?.textContent?.trim();
 
                             // Price
-                            const price = getSelectorText(
-                              "body > section > div > div.inventory.inventory-detail > div.row > div:nth-child(2) > div > ul > li:nth-child(9) > strong"
-                            );
+                            const price = getFeatureText("Price");
 
                             // Year
-                            const year = getSelectorText(
-                              "body > section > div > div.inventory.inventory-detail > div.row > div:nth-child(2) > div > ul > li:nth-child(1) > strong"
-                            );
+                            const year = getFeatureText("Model Year");
 
                             // Make
                             const make = name?.split(" ")[1];
 
                             // Kilometers
-                            const kilometers = getSelectorText(
-                              "body > section > div > div.inventory.inventory-detail > div.row > div:nth-child(2) > div > ul > li:nth-child(3) > strong"
+                            const kilometers = getFeatureText(
+                              "Kilometres"
                             )?.replace("Kms", "KM");
+
+                            // Body type
+                            const bodyType = getFeatureText("Body");
 
                             // Get image nodes
                             const imageNodes = document.querySelectorAll(
@@ -116,6 +125,7 @@ export default async function scrapDaimlerTrucksPerth() {
                               make,
                               price,
                               images,
+                              bodyType,
                               kilometers,
                               location: "WA",
                             };

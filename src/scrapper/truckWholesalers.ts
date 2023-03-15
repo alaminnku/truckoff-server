@@ -73,40 +73,47 @@ export default async function scrapTruckWholesalers() {
                               .querySelector(selector)
                               ?.textContent?.trim();
 
+                          // Get feature text
+                          const getFeatureText = (identifier: string) =>
+                            Array.from(
+                              document.querySelectorAll(
+                                "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div.sd-specs-item"
+                              )
+                            )
+                              .find(
+                                (feature) =>
+                                  feature.firstElementChild?.textContent ===
+                                  identifier
+                              )
+                              ?.lastElementChild?.textContent?.trim();
+
                           // Name
                           const name = getSelectorText(
                             "body > main > div > div.sd-col-g > div > div.sl-heading-link > div.sl-heading-model-wrapper > h3"
                           );
 
                           // Price
-                          const price = getSelectorText(
-                            "body > main > div > div.sd-col-g > div > div.sl-heading-link > a > h4"
-                          );
+                          const price = name?.includes("$")
+                            ? name.split("$")[1].split(" ")[0]
+                            : "poa";
 
                           // Year
-                          const year = getSelectorText(
-                            "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(2) > p.sd-specs-text.sd-specs-value"
-                          );
+                          const year = getFeatureText("Year");
 
                           // Make
-                          const make = getSelectorText(
-                            "body > main > div > div.sd-col-g > div > div.sd-features-wrapper > ul > li:nth-child(1)"
-                          )?.replace("EngineMake", "");
+                          const make = name?.split(" ")[1];
 
                           // Kilometers
-                          const kilometers = getSelectorText(
-                            "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(4) > p.sd-specs-text.sd-specs-value"
-                          );
+                          const kilometers = getFeatureText("Kilometres");
 
                           // GVM
-                          const gvm = getSelectorText(
-                            "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(10) > p.sd-specs-text.sd-specs-value"
+                          const gvm = getFeatureText("GVM")?.replace(
+                            "kg",
+                            "KG"
                           );
 
                           // Body
-                          const bodyType = getSelectorText(
-                            "body > main > div > div.sd-col-g > div > div.sd-group1-wrapper.sd-specification > div.sd-specs-wrapper > div.sd-specs-items-wrapper > div:nth-child(12) > p.sd-specs-text.sd-specs-value"
-                          );
+                          const bodyType = getFeatureText("Body");
 
                           // Get image nodes
                           const imageNodes = document.querySelectorAll(
@@ -126,11 +133,11 @@ export default async function scrapTruckWholesalers() {
                             name,
                             price,
                             year,
+                            gvm,
                             make,
                             images,
                             bodyType,
                             location: "VIC",
-                            gvm: `${gvm} KG`,
                             kilometers: `${kilometers} KM`,
                           };
                         });

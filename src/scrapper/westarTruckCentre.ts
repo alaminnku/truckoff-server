@@ -60,6 +60,20 @@ export default async function scrapWestarTruckCentre() {
               const getSelectorText = (selector: string) =>
                 document.querySelector(selector)?.textContent?.trim();
 
+              // Get feature text
+              const getFeatureText = (identifier: string) =>
+                Array.from(
+                  document.querySelectorAll(
+                    "#vehicle-details > table > tbody > tr"
+                  )
+                )
+                  .find(
+                    (feature) =>
+                      feature.firstElementChild?.textContent?.trim() ===
+                      identifier
+                  )
+                  ?.lastElementChild?.textContent?.trim();
+
               // Name
               const name = getSelectorText(
                 "#item_pricing_and_cta_container > div.title_container > div.title_alignment > div > h1"
@@ -77,14 +91,10 @@ export default async function scrapWestarTruckCentre() {
               const make = name?.split(" ")[1];
 
               // Body type
-              const bodyType = getSelectorText(
-                "#vehicle-details > table > tbody > tr:nth-child(3) > td:nth-child(2)"
-              );
+              const bodyType = getFeatureText("Body");
 
               // GVM
-              const gvm = getSelectorText(
-                "#vehicle-details > table > tbody > tr:nth-child(8) > td:nth-child(2)"
-              )?.replace("kg", "KG");
+              const gvm = getFeatureText("GVM")?.replace("kg", "KG");
 
               // Get image nodes
               const imageNodes = document.querySelectorAll(

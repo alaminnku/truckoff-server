@@ -56,6 +56,19 @@ export default async function scrapIsuzu() {
               const getSelectorText = (selector: string) =>
                 document.querySelector(selector)?.textContent?.trim();
 
+              // Get feature text
+              const getFeatureText = (identifier: string) =>
+                Array.from(
+                  document.querySelectorAll(
+                    "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > ul > li"
+                  )
+                )
+                  .find(
+                    (feature) =>
+                      feature.firstElementChild?.textContent === identifier
+                  )
+                  ?.lastElementChild?.textContent?.trim();
+
               // Name
               const name = getSelectorText(
                 "body > section > div > div.cl-content > div:nth-child(2) > div.d-col-9 > h1"
@@ -67,34 +80,29 @@ export default async function scrapIsuzu() {
               );
 
               // Year
-              const year = getSelectorText(
-                "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > ul > li:nth-child(2) > span"
-              );
+              const year = getFeatureText("Year Built:");
+
+              // Body type
+              const bodyType = getFeatureText("Body Type");
 
               // Make
-              const make = getSelectorText(
-                "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > ul > li:nth-child(7) > span"
-              )?.split(",")[0];
+              const make = getFeatureText("Make, Model:")?.split(",")[0].trim();
 
               // Model
-              const model = getSelectorText(
-                "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > ul > li:nth-child(7) > span"
-              )?.split(",")[1];
+              const model = getFeatureText("Make, Model:")
+                ?.split(",")[1]
+                .trim();
+
+              // GVM
+              const gvm = getFeatureText("GVM:");
+
+              // Kilometers
+              const kilometers = getFeatureText("Kilometres:");
 
               // Get image nodes
               const imageNodes = document.querySelectorAll(
                 "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > div.car-gallery > div > div.gallery-layout > div > ul > li > a > img"
               );
-
-              // GVM
-              const gvm = document.querySelector(
-                "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > ul > li:nth-child(9) > span"
-              )?.textContent;
-
-              // Kilometers
-              const kilometers = document.querySelector(
-                "body > section > div > div.cl-content > div:nth-child(3) > div.d-col-9 > ul > li:nth-child(6) > span"
-              )?.textContent;
 
               // Get all images
               const images = Array.from(imageNodes).map((imageNode) =>
@@ -110,6 +118,7 @@ export default async function scrapIsuzu() {
                 gvm,
                 model,
                 images,
+                bodyType,
                 kilometers,
                 location: "SA",
               };

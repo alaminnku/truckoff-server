@@ -67,7 +67,7 @@ export default async function scrapBossTrucks() {
               const getSelectorText = (selector: string) =>
                 document.querySelector(selector)?.textContent?.trim();
 
-              // Find feature
+              // Get feature text
               const getFeatureText = (identifier: string) =>
                 Array.from(
                   document.querySelectorAll(

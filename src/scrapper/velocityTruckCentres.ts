@@ -59,27 +59,29 @@ export default async function scrapVelocityTruckCentres() {
           try {
             // Create truck details
             const truck = await page.evaluate(() => {
-              // Get selector text
-              const getSelectorText = (selector: string) =>
-                document.querySelector(selector)?.textContent?.trim();
+              // Get feature text
+              const getFeatureText = (identifier: string) =>
+                Array.from(document.querySelectorAll("#descText > li"))
+                  .find(
+                    (feature) =>
+                      feature.firstElementChild?.textContent?.trim() ===
+                      identifier
+                  )
+                  ?.lastElementChild?.textContent?.trim();
 
               // Name
-              const name = getSelectorText("#detail-inv-title");
+              const name = document
+                .querySelector("#detail-inv-title")
+                ?.textContent?.trim();
 
               // Year
-              const year = getSelectorText(
-                "#descText > li:nth-child(4) > strong"
-              );
+              const year = getFeatureText("Year");
 
               // Make
-              const make = getSelectorText(
-                "#descText > li:nth-child(2) > strong"
-              );
+              const make = getFeatureText("Make");
 
               // Model
-              const model = getSelectorText(
-                "#descText > li:nth-child(3) > strong"
-              );
+              const model = getFeatureText("Model");
 
               // Get image nodes
               const imageNodes = document.querySelectorAll(
