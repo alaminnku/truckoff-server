@@ -4,6 +4,7 @@ import "express-async-errors";
 import express from "express";
 import error from "./middleware/error";
 import scrapIsuzu from "./scrapper/isuzu";
+import scrapBossTrucks from "./scrapper/bossTrucks";
 import scrapRobEquipment from "./scrapper/robEquipment";
 import scrapSuttonTrucks from "./scrapper/suttonTrucks";
 import scrapMidCoastTrucks from "./scrapper/midCoastTrucks";
@@ -39,6 +40,7 @@ app.use(
 // Scrappers
 
 // scrapIsuzu();
+// scrapBossTrucks();
 // scrapRobEquipment();
 // scrapSuttonTrucks();
 // scrapMidCoastTrucks();
