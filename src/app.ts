@@ -8,6 +8,7 @@ import scrapBossTrucks from "./scrapper/bossTrucks";
 import scrapAdtransHino from "./scrapper/adtransHino";
 import scrapRobEquipment from "./scrapper/robEquipment";
 import scrapSuttonTrucks from "./scrapper/suttonTrucks";
+import scrapPrestigeIveco from "./scrapper/prestigeIveco";
 import scrapAdtransTrucks from "./scrapper/adtransTrucks";
 import scrapMidCoastTrucks from "./scrapper/midCoastTrucks";
 import scrapTruckWholesalers from "./scrapper/truckWholesalers";
@@ -46,6 +47,7 @@ app.use(
 
 // scrapIsuzu();
 // scrapAdtransHino();
+scrapPrestigeIveco();
 // scrapBossTrucks();
 // scrapAdtransTrucks();
 // scrapRobEquipment();
