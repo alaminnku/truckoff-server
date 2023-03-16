@@ -137,7 +137,9 @@ export default async function scrapPrestigeIveco() {
                             images,
                             bodyType,
                             location: "VIC",
-                            kilometers: `${kilometers} KM`,
+                            kilometers: kilometers
+                              ? `${kilometers} KM`
+                              : undefined,
                           };
                         });
 

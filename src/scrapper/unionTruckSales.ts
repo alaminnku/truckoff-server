@@ -138,7 +138,9 @@ export default async function scrapUnionTruckSales() {
                             images,
                             bodyType,
                             location: "VIC",
-                            kilometers: `${kilometers} KM`,
+                            kilometers: kilometers
+                              ? `${kilometers} KM`
+                              : undefined,
                           };
                         });
 

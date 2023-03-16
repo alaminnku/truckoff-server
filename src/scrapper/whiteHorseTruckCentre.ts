@@ -136,7 +136,9 @@ export default async function scrapWhiteHorseTruckCentre() {
                             make,
                             images,
                             bodyType,
-                            kilometers: `${kilometers} KM`,
+                            kilometers: kilometers
+                              ? `${kilometers} KM`
+                              : undefined,
                           };
                         });
 

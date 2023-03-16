@@ -60,7 +60,7 @@ app.use(
 // scrapSuttonTrucks();
 // scrapAdtransTrucks();
 // scrapPrestigeIveco();
-// scrapMidCoastTrucks();
+scrapMidCoastTrucks();
 // scrapUnionTruckSales();
 // scrapTruckWholesalers();
 // scrapFusoPortMelbourne();
