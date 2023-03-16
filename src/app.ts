@@ -17,6 +17,7 @@ import scrapLarsensTruckSales from "./scrapper/larsensTruckSales";
 import scrapWestarTruckCentre from "./scrapper/westarTruckCentre";
 import scrapDaimlerTrucksPerth from "./scrapper/daimlerTrucksPerth";
 import scrapVelocityTruckCentres from "./scrapper/velocityTruckCentres";
+import scrapDaimlerTrucksMilperra from "./scrapper/daimlerTrucksMilperra";
 import scrapWhiteHorseTruckCentre from "./scrapper/whiteHorseTruckCentre";
 
 // Config
@@ -52,6 +53,7 @@ app.use(
 // scrapLarsensTruckSales();
 // scrapWesternTruckSales();
 // scrapDaimlerTrucksPerth();
+// scrapDaimlerTrucksMilperra();
 // scrapVelocityTruckCentres();
 // scrapWhiteHorseTruckCentre();
 // scrapMelbourneTruckAndVans();
