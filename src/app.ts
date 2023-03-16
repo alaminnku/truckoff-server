@@ -4,6 +4,7 @@ import "express-async-errors";
 import express from "express";
 import error from "./middleware/error";
 import scrapIsuzu from "./scrapper/isuzu";
+import scrapTruckCity from "./scrapper/truckCity";
 import scrapBossTrucks from "./scrapper/bossTrucks";
 import scrapAdtransHino from "./scrapper/adtransHino";
 import scrapRobEquipment from "./scrapper/robEquipment";
@@ -46,21 +47,22 @@ app.use(
 // Scrappers
 
 // scrapIsuzu();
-// scrapAdtransHino();
-scrapPrestigeIveco();
+// scrapTruckCity();
 // scrapBossTrucks();
-// scrapAdtransTrucks();
+// scrapAdtransHino();
 // scrapRobEquipment();
 // scrapSuttonTrucks();
+// scrapAdtransTrucks();
+// scrapPrestigeIveco();
 // scrapMidCoastTrucks();
 // scrapTruckWholesalers();
 // scrapWestarTruckCentre();
 // scrapLarsensTruckSales();
 // scrapWesternTruckSales();
 // scrapDaimlerTrucksPerth();
+// scrapVelocityTruckCentres();
 // scrapHumeHighwayTruckSales();
 // scrapDaimlerTrucksMilperra();
-// scrapVelocityTruckCentres();
 // scrapWhiteHorseTruckCentre();
 // scrapMelbourneTruckAndVans();
 // scrapSammutAgriculturalMachinery();
