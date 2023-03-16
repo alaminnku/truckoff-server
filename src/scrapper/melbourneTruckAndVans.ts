@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapMelbourneTruckAndVans() {
   try {
@@ -43,10 +44,10 @@ export default async function scrapMelbourneTruckAndVans() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            throw err;
+            sendErrorEmail("Melbourne Truck and Vans");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Melbourne Truck and Vans");
         }
       }
 
@@ -108,16 +109,16 @@ export default async function scrapMelbourneTruckAndVans() {
 
             console.log(truck);
           } catch (err) {
-            throw err;
+            sendErrorEmail("Melbourne Truck and Vans");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Melbourne Truck and Vans");
         }
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Melbourne Truck and Vans");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Melbourne Truck and Vans");
   }
 }

@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapFusoPortMelbourne() {
   try {
@@ -43,7 +44,7 @@ export default async function scrapFusoPortMelbourne() {
                     // Call the function recursively
                     loadAllTrucks();
                   } catch (err) {
-                    throw err;
+                    sendErrorEmail("Fuso Port Melbourne");
                   }
                 } else {
                   try {
@@ -133,38 +134,38 @@ export default async function scrapFusoPortMelbourne() {
 
                           console.log(truck);
                         } catch (err) {
-                          throw err;
+                          sendErrorEmail("Fuso Port Melbourne");
                         }
                       } catch (err) {
-                        throw err;
+                        sendErrorEmail("Fuso Port Melbourne");
                       }
                     }
 
                     // Close the browser
                     await browser.close();
                   } catch (err) {
-                    throw err;
+                    sendErrorEmail("Fuso Port Melbourne");
                   }
                 }
               } catch (err) {
-                throw err;
+                sendErrorEmail("Fuso Port Melbourne");
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("Fuso Port Melbourne");
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Fuso Port Melbourne");
           }
         }
 
         loadAllTrucks();
       } catch (err) {
-        throw err;
+        sendErrorEmail("Fuso Port Melbourne");
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Fuso Port Melbourne");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Fuso Port Melbourne");
   }
 }

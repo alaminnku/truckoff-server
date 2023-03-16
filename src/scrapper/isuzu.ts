@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapIsuzu() {
   try {
@@ -39,7 +40,7 @@ export default async function scrapIsuzu() {
           // Add urls to truckUrls
           truckUrls = [...truckUrls, ...truckUrlsPerPage];
         } catch (err) {
-          throw err;
+          sendErrorEmail("Isuzu");
         }
       }
 
@@ -126,16 +127,16 @@ export default async function scrapIsuzu() {
 
             console.log(truck);
           } catch (err) {
-            throw err;
+            sendErrorEmail("Isuzu");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Isuzu");
         }
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Isuzu");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Isuzu");
   }
 }

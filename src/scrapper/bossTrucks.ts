@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapBossTrucks() {
   try {
@@ -40,10 +41,10 @@ export default async function scrapBossTrucks() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            throw err;
+            sendErrorEmail("Boss Trucks");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Boss Trucks");
         }
       }
 
@@ -131,25 +132,25 @@ export default async function scrapBossTrucks() {
 
                   console.log(truck);
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("Boss Trucks");
                 }
               } catch (err) {
-                throw err;
+                sendErrorEmail("Boss Trucks");
               }
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Boss Trucks");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Boss Trucks");
         }
       }
       // Close the browser
       await browser.close();
     } catch (err) {
-      throw err;
+      sendErrorEmail("Boss Trucks");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Boss Trucks");
   }
 }

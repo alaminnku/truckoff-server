@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapCtrTrucks() {
   try {
@@ -124,25 +125,25 @@ export default async function scrapCtrTrucks() {
 
                 console.log(truck);
               } catch (err) {
-                throw err;
+                sendErrorEmail("CRT Trucks");
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("CRT Trucks");
             }
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("CRT Trucks");
         }
       } catch (err) {
-        throw err;
+        sendErrorEmail("CRT Trucks");
       }
 
       // Close the browser
       await browser.close();
     } catch (err) {
-      throw err;
+      sendErrorEmail("CRT Trucks");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("CRT Trucks");
   }
 }

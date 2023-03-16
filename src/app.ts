@@ -1,10 +1,11 @@
 import cors from "cors";
 import dotenv from "dotenv";
-import "express-async-errors";
 import express from "express";
+import mail from "@sendgrid/mail";
 import error from "./middleware/error";
 import scrapIsuzu from "./scrapper/isuzu";
 import scrapTruckCity from "./scrapper/truckCity";
+import scrapCtrTrucks from "./scrapper/ctrTrucks";
 import scrapBossTrucks from "./scrapper/bossTrucks";
 import scrapAdtransHino from "./scrapper/adtransHino";
 import scrapRobEquipment from "./scrapper/robEquipment";
@@ -12,10 +13,11 @@ import scrapSuttonTrucks from "./scrapper/suttonTrucks";
 import scrapPrestigeIveco from "./scrapper/prestigeIveco";
 import scrapAdtransTrucks from "./scrapper/adtransTrucks";
 import scrapMidCoastTrucks from "./scrapper/midCoastTrucks";
+import scrapUnionTruckSales from "./scrapper/unionTruckSales";
 import scrapTruckWholesalers from "./scrapper/truckWholesalers";
 import scrapWesternTruckSales from "./scrapper/westernTruckSales";
 import scrapMelbourneTruckAndVans from "./scrapper/melbourneTruckAndVans";
-import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachinery";
+import scrapFusoPortMelbourne from "./scrapper/fusoPortMelbourne";
 import scrapLarsensTruckSales from "./scrapper/larsensTruckSales";
 import scrapWestarTruckCentre from "./scrapper/westarTruckCentre";
 import scrapDaimlerTrucksPerth from "./scrapper/daimlerTrucksPerth";
@@ -24,13 +26,12 @@ import scrapDaimlerTrucksMilperra from "./scrapper/daimlerTrucksMilperra";
 import scrapWhiteHorseTruckCentre from "./scrapper/whiteHorseTruckCentre";
 import scrapHumeHighwayTruckSales from "./scrapper/humeHighwayTruckSales";
 import scrapGilbertAndRoachSydney from "./scrapper/gilbertAndRoachSydney";
-import scrapUnionTruckSales from "./scrapper/unionTruckSales";
 import scrapDaimlerTrucksBrisbane from "./scrapper/daimlerTrucksBrisbane";
-import scrapFusoPortMelbourne from "./scrapper/fusoPortMelbourne";
-import scrapCtrTrucks from "./scrapper/ctrTrucks";
+import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachinery";
 
-// Config
+// Configs
 dotenv.config();
+mail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
 // Create port
 const PORT = process.env.PORT || 5300;
@@ -50,7 +51,6 @@ app.use(
 );
 
 // Scrappers
-
 // scrapIsuzu();
 // scrapCtrTrucks();
 // scrapTruckCity();
@@ -60,7 +60,7 @@ app.use(
 // scrapSuttonTrucks();
 // scrapAdtransTrucks();
 // scrapPrestigeIveco();
-scrapMidCoastTrucks();
+// scrapMidCoastTrucks();
 // scrapUnionTruckSales();
 // scrapTruckWholesalers();
 // scrapFusoPortMelbourne();
@@ -76,11 +76,6 @@ scrapMidCoastTrucks();
 // scrapWhiteHorseTruckCentre();
 // scrapMelbourneTruckAndVans();
 // scrapSammutAgriculturalMachinery();
-
-// Routes
-
-// Error middleware - - Put after main routes
-app.use(error);
 
 // Run server
 app.listen(PORT, () => console.log("Server started"));

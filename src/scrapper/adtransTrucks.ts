@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapAdtransTrucks() {
   try {
@@ -38,7 +39,7 @@ export default async function scrapAdtransTrucks() {
                   // Call the function recursively
                   loadAllTrucks();
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("Adtrans Trucks");
                 }
               } else {
                 try {
@@ -146,35 +147,35 @@ export default async function scrapAdtransTrucks() {
 
                         console.log(truck);
                       } catch (err) {
-                        throw err;
+                        sendErrorEmail("Adtrans Trucks");
                       }
                     } catch (err) {
-                      throw err;
+                      sendErrorEmail("Adtrans Trucks");
                     }
                   }
 
                   // Close the browser
                   await browser.close();
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("Adtrans Trucks");
                 }
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("Adtrans Trucks");
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Adtrans Trucks");
           }
         }
 
         loadAllTrucks();
       } catch (err) {
-        throw err;
+        sendErrorEmail("Adtrans Trucks");
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Adtrans Trucks");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Adtrans Trucks");
   }
 }

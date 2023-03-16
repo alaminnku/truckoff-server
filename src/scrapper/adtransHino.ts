@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapAdtransHino() {
   try {
@@ -47,10 +48,10 @@ export default async function scrapAdtransHino() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            throw err;
+            sendErrorEmail("Adtrans Hino");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Adtrans Hino");
         }
       }
 
@@ -115,19 +116,19 @@ export default async function scrapAdtransHino() {
 
             console.log(truck);
           } catch (err) {
-            throw err;
+            sendErrorEmail("Adtrans Hino");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Adtrans Hino");
         }
       }
 
       // Close the browser
       await browser.close();
     } catch (err) {
-      throw err;
+      sendErrorEmail("Adtrans Hino");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Adtrans Hino");
   }
 }

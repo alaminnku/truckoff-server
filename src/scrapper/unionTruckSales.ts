@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapUnionTruckSales() {
   try {
@@ -38,7 +39,7 @@ export default async function scrapUnionTruckSales() {
                   // Call the function recursively
                   loadAllTrucks();
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("Truck Wholesalers");
                 }
               } else {
                 try {
@@ -146,35 +147,35 @@ export default async function scrapUnionTruckSales() {
 
                         console.log(truck);
                       } catch (err) {
-                        throw err;
+                        sendErrorEmail("Truck Wholesalers");
                       }
                     } catch (err) {
-                      throw err;
+                      sendErrorEmail("Truck Wholesalers");
                     }
                   }
 
                   // Close the browser
                   await browser.close();
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("Truck Wholesalers");
                 }
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("Truck Wholesalers");
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Truck Wholesalers");
           }
         }
 
         loadAllTrucks();
       } catch (err) {
-        throw err;
+        sendErrorEmail("Truck Wholesalers");
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Truck Wholesalers");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Truck Wholesalers");
   }
 }

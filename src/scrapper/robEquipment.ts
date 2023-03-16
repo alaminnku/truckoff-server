@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapRobEquipment() {
   try {
@@ -39,10 +40,10 @@ export default async function scrapRobEquipment() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            throw err;
+            sendErrorEmail("Rob Equipment");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Rob Equipment");
         }
       }
 
@@ -119,16 +120,16 @@ export default async function scrapRobEquipment() {
 
             console.log(truck);
           } catch (err) {
-            throw err;
+            sendErrorEmail("Rob Equipment");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Rob Equipment");
         }
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Rob Equipment");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Rob Equipment");
   }
 }

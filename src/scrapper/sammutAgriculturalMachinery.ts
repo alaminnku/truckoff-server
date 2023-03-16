@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapSammutAgriculturalMachinery() {
   try {
@@ -43,10 +44,10 @@ export default async function scrapSammutAgriculturalMachinery() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            throw err;
+            sendErrorEmail("Sammut Agricultural Machinery");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Sammut Agricultural Machinery");
         }
       }
 
@@ -134,16 +135,16 @@ export default async function scrapSammutAgriculturalMachinery() {
 
             console.log(truck);
           } catch (err) {
-            throw err;
+            sendErrorEmail("Sammut Agricultural Machinery");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Sammut Agricultural Machinery");
         }
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Sammut Agricultural Machinery");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Sammut Agricultural Machinery");
   }
 }

@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapGilbertAndRoachSydney() {
   try {
@@ -101,25 +102,25 @@ export default async function scrapGilbertAndRoachSydney() {
 
                   console.log(truck);
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("Gilbert and Roach Sydney");
                 }
               } catch (err) {
-                throw err;
+                sendErrorEmail("Gilbert and Roach Sydney");
               }
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Gilbert and Roach Sydney");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Gilbert and Roach Sydney");
         }
       } catch (err) {
-        throw err;
+        sendErrorEmail("Gilbert and Roach Sydney");
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Gilbert and Roach Sydney");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Gilbert and Roach Sydney");
   }
 }

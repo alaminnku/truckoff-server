@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapSuttonTrucks() {
   try {
@@ -49,13 +50,13 @@ export default async function scrapSuttonTrucks() {
               //   Add urls to truckUrls
               truckUrls = [...truckUrls, ...truckUrlsPerPage];
             } catch (err) {
-              throw err;
+              sendErrorEmail("Sutton Trucks");
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Sutton Trucks");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Sutton Trucks");
         }
       }
 
@@ -109,16 +110,16 @@ export default async function scrapSuttonTrucks() {
 
             console.log(truck);
           } catch (err) {
-            throw err;
+            sendErrorEmail("Sutton Trucks");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Sutton Trucks");
         }
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Sutton Trucks");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Sutton Trucks");
   }
 }

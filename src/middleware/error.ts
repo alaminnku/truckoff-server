@@ -1,7 +1,7 @@
 import { ErrorRequestHandler } from "express";
 
 const handler: ErrorRequestHandler = (err, req, res, next) => {
-  console.log(err);
+  console.log(err.message);
 
   // If error is a populate error
   if (err.name === "StrictPopulateError") {

@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapMidCoastTrucks() {
   try {
@@ -134,35 +135,35 @@ export default async function scrapMidCoastTrucks() {
 
                         console.log(truck);
                       } catch (err) {
-                        throw err;
+                        sendErrorEmail("Mid Coast Trucks");
                       }
                     } catch (err) {
-                      throw err;
+                      sendErrorEmail("Mid Coast Trucks");
                     }
                   }
 
                   // Close the browser
                   await browser.close();
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("Mid Coast Trucks");
                 }
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("Mid Coast Trucks");
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Mid Coast Trucks");
           }
         }
 
         loadAllTrucks();
       } catch (err) {
-        throw err;
+        sendErrorEmail("Mid Coast Trucks");
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Mid Coast Trucks");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Mid Coast Trucks");
   }
 }

@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapTruckCity() {
   try {
@@ -126,25 +127,25 @@ export default async function scrapTruckCity() {
 
                 console.log(truck);
               } catch (err) {
-                throw err;
+                sendErrorEmail("Truck City");
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("Truck City");
             }
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Truck City");
         }
       } catch (err) {
-        throw err;
+        sendErrorEmail("Truck City");
       }
 
       // Close the browser
       await browser.close();
     } catch (err) {
-      throw err;
+      sendErrorEmail("Truck City");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Truck City");
   }
 }

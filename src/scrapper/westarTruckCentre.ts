@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapWestarTruckCentre() {
   try {
@@ -40,10 +41,10 @@ export default async function scrapWestarTruckCentre() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            throw err;
+            sendErrorEmail("Westar Truck Centre");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Westar Truck Centre");
         }
       }
 
@@ -121,16 +122,16 @@ export default async function scrapWestarTruckCentre() {
 
             console.log(truck);
           } catch (err) {
-            throw err;
+            sendErrorEmail("Westar Truck Centre");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Westar Truck Centre");
         }
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Westar Truck Centre");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Westar Truck Centre");
   }
 }

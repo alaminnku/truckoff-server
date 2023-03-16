@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapHumeHighwayTruckSales() {
   try {
@@ -40,10 +41,10 @@ export default async function scrapHumeHighwayTruckSales() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            throw err;
+            sendErrorEmail("Hume Highway Truck Sales");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Hume Highway Truck Sales");
         }
       }
 
@@ -139,18 +140,18 @@ export default async function scrapHumeHighwayTruckSales() {
 
             console.log(truck);
           } catch (err) {
-            throw err;
+            sendErrorEmail("Hume Highway Truck Sales");
           }
         } catch (err) {
-          throw err;
+          sendErrorEmail("Hume Highway Truck Sales");
         }
       }
       // Close the browser
       await browser.close();
     } catch (err) {
-      throw err;
+      sendErrorEmail("Hume Highway Truck Sales");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Hume Highway Truck Sales");
   }
 }

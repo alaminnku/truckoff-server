@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapDaimlerTrucksPerth() {
   try {
@@ -43,7 +44,7 @@ export default async function scrapDaimlerTrucksPerth() {
                     // Call the function recursively
                     loadAllTrucks();
                   } catch (err) {
-                    throw err;
+                    sendErrorEmail("Daimler Trucks Perth");
                   }
                 } else {
                   try {
@@ -133,38 +134,38 @@ export default async function scrapDaimlerTrucksPerth() {
 
                           console.log(truck);
                         } catch (err) {
-                          throw err;
+                          sendErrorEmail("Daimler Trucks Perth");
                         }
                       } catch (err) {
-                        throw err;
+                        sendErrorEmail("Daimler Trucks Perth");
                       }
                     }
 
                     // Close the browser
                     await browser.close();
                   } catch (err) {
-                    throw err;
+                    sendErrorEmail("Daimler Trucks Perth");
                   }
                 }
               } catch (err) {
-                throw err;
+                sendErrorEmail("Daimler Trucks Perth");
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("Daimler Trucks Perth");
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Daimler Trucks Perth");
           }
         }
 
         loadAllTrucks();
       } catch (err) {
-        throw err;
+        sendErrorEmail("Daimler Trucks Perth");
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Daimler Trucks Perth");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Daimler Trucks Perth");
   }
 }

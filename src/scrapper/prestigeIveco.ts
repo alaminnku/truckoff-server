@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapPrestigeIveco() {
   try {
@@ -37,7 +38,7 @@ export default async function scrapPrestigeIveco() {
                   // Call the function recursively
                   loadAllTrucks();
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("Prestige Iveco");
                 }
               } else {
                 try {
@@ -145,35 +146,35 @@ export default async function scrapPrestigeIveco() {
 
                         console.log(truck);
                       } catch (err) {
-                        throw err;
+                        sendErrorEmail("Prestige Iveco");
                       }
                     } catch (err) {
-                      throw err;
+                      sendErrorEmail("Prestige Iveco");
                     }
                   }
 
                   // Close the browser
                   await browser.close();
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("Prestige Iveco");
                 }
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("Prestige Iveco");
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Prestige Iveco");
           }
         }
 
         loadAllTrucks();
       } catch (err) {
-        throw err;
+        sendErrorEmail("Prestige Iveco");
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Prestige Iveco");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Prestige Iveco");
   }
 }

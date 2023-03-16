@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapWesternTruckSales() {
   try {
@@ -37,7 +38,7 @@ export default async function scrapWesternTruckSales() {
                   // Call the function recursively
                   loadAllTrucks();
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("Western Truck Sales");
                 }
               } else {
                 try {
@@ -123,35 +124,35 @@ export default async function scrapWesternTruckSales() {
 
                         console.log(truck);
                       } catch (err) {
-                        throw err;
+                        sendErrorEmail("Western Truck Sales");
                       }
                     } catch (err) {
-                      throw err;
+                      sendErrorEmail("Western Truck Sales");
                     }
                   }
 
                   // Close the browser
                   await browser.close();
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("Western Truck Sales");
                 }
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("Western Truck Sales");
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Western Truck Sales");
           }
         }
 
         loadAllTrucks();
       } catch (err) {
-        throw err;
+        sendErrorEmail("Western Truck Sales");
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Western Truck Sales");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Western Truck Sales");
   }
 }

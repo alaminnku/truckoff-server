@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapDaimlerTrucksMilperra() {
   try {
@@ -46,7 +47,7 @@ export default async function scrapDaimlerTrucksMilperra() {
                     // Call the function recursively
                     loadAllTrucks();
                   } catch (err) {
-                    throw err;
+                    sendErrorEmail("Daimler Trucks Milperra");
                   }
                 } else {
                   try {
@@ -136,38 +137,38 @@ export default async function scrapDaimlerTrucksMilperra() {
 
                           console.log(truck);
                         } catch (err) {
-                          throw err;
+                          sendErrorEmail("Daimler Trucks Milperra");
                         }
                       } catch (err) {
-                        throw err;
+                        sendErrorEmail("Daimler Trucks Milperra");
                       }
                     }
 
                     // Close the browser
                     await browser.close();
                   } catch (err) {
-                    throw err;
+                    sendErrorEmail("Daimler Trucks Milperra");
                   }
                 }
               } catch (err) {
-                throw err;
+                sendErrorEmail("Daimler Trucks Milperra");
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("Daimler Trucks Milperra");
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Daimler Trucks Milperra");
           }
         }
 
         loadAllTrucks();
       } catch (err) {
-        throw err;
+        sendErrorEmail("Daimler Trucks Milperra");
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Daimler Trucks Milperra");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Daimler Trucks Milperra");
   }
 }

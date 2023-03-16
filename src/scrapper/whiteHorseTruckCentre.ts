@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapWhiteHorseTruckCentre() {
   try {
@@ -37,7 +38,7 @@ export default async function scrapWhiteHorseTruckCentre() {
                   // Call the function recursively
                   loadAllTrucks();
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("White Horse truck Centre");
                 }
               } else {
                 try {
@@ -144,35 +145,35 @@ export default async function scrapWhiteHorseTruckCentre() {
 
                         console.log(truck);
                       } catch (err) {
-                        throw err;
+                        sendErrorEmail("White Horse truck Centre");
                       }
                     } catch (err) {
-                      throw err;
+                      sendErrorEmail("White Horse truck Centre");
                     }
                   }
 
                   // Close the browser
                   await browser.close();
                 } catch (err) {
-                  throw err;
+                  sendErrorEmail("White Horse truck Centre");
                 }
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("White Horse truck Centre");
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("White Horse truck Centre");
           }
         }
 
         loadAllTrucks();
       } catch (err) {
-        throw err;
+        sendErrorEmail("White Horse truck Centre");
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("White Horse truck Centre");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("White Horse truck Centre");
   }
 }

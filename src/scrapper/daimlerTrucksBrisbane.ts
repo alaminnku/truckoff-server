@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import { sendErrorEmail } from "../utils";
 
 export default async function scrapDaimlerTrucksBrisbane() {
   try {
@@ -46,7 +47,7 @@ export default async function scrapDaimlerTrucksBrisbane() {
                     // Call the function recursively
                     loadAllTrucks();
                   } catch (err) {
-                    throw err;
+                    sendErrorEmail("Daimler Trucks Brisbane");
                   }
                 } else {
                   try {
@@ -136,38 +137,38 @@ export default async function scrapDaimlerTrucksBrisbane() {
 
                           console.log(truck);
                         } catch (err) {
-                          throw err;
+                          sendErrorEmail("Daimler Trucks Brisbane");
                         }
                       } catch (err) {
-                        throw err;
+                        sendErrorEmail("Daimler Trucks Brisbane");
                       }
                     }
 
                     // Close the browser
                     await browser.close();
                   } catch (err) {
-                    throw err;
+                    sendErrorEmail("Daimler Trucks Brisbane");
                   }
                 }
               } catch (err) {
-                throw err;
+                sendErrorEmail("Daimler Trucks Brisbane");
               }
             } catch (err) {
-              throw err;
+              sendErrorEmail("Daimler Trucks Brisbane");
             }
           } catch (err) {
-            throw err;
+            sendErrorEmail("Daimler Trucks Brisbane");
           }
         }
 
         loadAllTrucks();
       } catch (err) {
-        throw err;
+        sendErrorEmail("Daimler Trucks Brisbane");
       }
     } catch (err) {
-      throw err;
+      sendErrorEmail("Daimler Trucks Brisbane");
     }
   } catch (err) {
-    throw err;
+    sendErrorEmail("Daimler Trucks Brisbane");
   }
 }
