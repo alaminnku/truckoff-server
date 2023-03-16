@@ -45,7 +45,7 @@ app.use(
 
 // scrapIsuzu();
 // scrapAdtransHino();
-// scrapBossTrucks();
+scrapBossTrucks();
 // scrapRobEquipment();
 // scrapSuttonTrucks();
 // scrapMidCoastTrucks();
@@ -54,7 +54,7 @@ app.use(
 // scrapLarsensTruckSales();
 // scrapWesternTruckSales();
 // scrapDaimlerTrucksPerth();
-scrapHumeHighwayTruckSales();
+// scrapHumeHighwayTruckSales();
 // scrapDaimlerTrucksMilperra();
 // scrapVelocityTruckCentres();
 // scrapWhiteHorseTruckCentre();

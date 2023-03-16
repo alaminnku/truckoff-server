@@ -53,78 +53,90 @@ export default async function scrapBossTrucks() {
           // Go to truck page
           await page.goto(truckUrls[i], { timeout: 0 });
 
-          // Click on image button
-          const button = await page.$(
-            "#image-gallery > div > div.gallery-ribbon-holder > div > div"
-          );
-
-          await button?.click();
-
           try {
-            // Create truck details
-            const truck = await page.evaluate(() => {
-              // Get selector text
-              const getSelectorText = (selector: string) =>
-                document.querySelector(selector)?.textContent?.trim();
+            // Click on image button
+            const button = await page.$(
+              "#image-gallery > div > div.gallery-ribbon-holder > div > div"
+            );
 
-              // Get feature text
-              const getFeatureText = (identifier: string) =>
-                Array.from(
-                  document.querySelectorAll(
-                    "#vehicle-details > table > tbody > tr"
-                  )
-                )
-                  .find(
-                    (feature) => feature.firstChild?.textContent === identifier
-                  )
-                  ?.lastChild?.textContent?.trim();
+            if (button) {
+              try {
+                // click the button
+                await button.click();
 
-              // Name
-              const name = getSelectorText(
-                "#item_pricing_and_cta_container > div.title_container.hidden-xs.hidden-sm > div.title_alignment > div > h2"
-              );
+                try {
+                  // Create truck details
+                  const truck = await page.evaluate(() => {
+                    // Get selector text
+                    const getSelectorText = (selector: string) =>
+                      document.querySelector(selector)?.textContent?.trim();
 
-              // Price
-              const price = getSelectorText(
-                "#title_pricing_container > div > div.pricing_alignment > div > div.col-xs-6.price > span"
-              );
+                    // Get feature text
+                    const getFeatureText = (identifier: string) =>
+                      Array.from(
+                        document.querySelectorAll(
+                          "#vehicle-details > table > tbody > tr"
+                        )
+                      )
+                        .find(
+                          (feature) =>
+                            feature.firstChild?.textContent === identifier
+                        )
+                        ?.lastChild?.textContent?.trim();
 
-              // Year
-              const year = name?.split(" ")[0];
+                    // Name
+                    const name = getSelectorText(
+                      "#item_pricing_and_cta_container > div.title_container.hidden-xs.hidden-sm > div.title_alignment > div > h2"
+                    );
 
-              // Make
-              const make = name?.split(" ")[1];
+                    // Price
+                    const price = getSelectorText(
+                      "#title_pricing_container > div > div.pricing_alignment > div > div.col-xs-6.price > span"
+                    );
 
-              // Body type
-              const bodyType = getFeatureText("Body");
+                    // Year
+                    const year = name?.split(" ")[0];
 
-              // GVM
-              const gvm = getFeatureText("GVM")?.replace("kg", "KG");
+                    // Make
+                    const make = name?.split(" ")[1];
 
-              // Get image nodes
-              const imageNodes = document.querySelectorAll(
-                "#all_thumbs > div > div > a > img"
-              );
+                    // Body type
+                    const bodyType = getFeatureText("Body");
 
-              // Get all images
-              const images = Array.from(imageNodes).map((imageNode) =>
-                imageNode.getAttribute("src")?.replace(".2", "")
-              );
+                    // GVM
+                    const gvm = getFeatureText("GVM")?.replace("kg", "KG");
 
-              // Return the truck object
-              return {
-                name,
-                price,
-                year,
-                gvm,
-                make,
-                images,
-                bodyType,
-                location: "QLD",
-              };
-            });
+                    // Get image nodes
+                    const imageNodes = document.querySelectorAll(
+                      "#all_thumbs > div > div > a > img"
+                    );
 
-            console.log(truck);
+                    // Get all images
+                    const images = Array.from(imageNodes).map((imageNode) =>
+                      imageNode.getAttribute("src")?.replace(".2", "")
+                    );
+
+                    // Return the truck object
+                    return {
+                      name,
+                      price,
+                      year,
+                      gvm,
+                      make,
+                      images,
+                      bodyType,
+                      location: "QLD",
+                    };
+                  });
+
+                  console.log(truck);
+                } catch (err) {
+                  throw err;
+                }
+              } catch (err) {
+                throw err;
+              }
+            }
           } catch (err) {
             throw err;
           }
