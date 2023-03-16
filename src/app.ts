@@ -23,6 +23,7 @@ import scrapVelocityTruckCentres from "./scrapper/velocityTruckCentres";
 import scrapDaimlerTrucksMilperra from "./scrapper/daimlerTrucksMilperra";
 import scrapWhiteHorseTruckCentre from "./scrapper/whiteHorseTruckCentre";
 import scrapHumeHighwayTruckSales from "./scrapper/humeHighwayTruckSales";
+import scrapGilbertAndRoachSydney from "./scrapper/gilbertAndRoachSydney";
 
 // Config
 dotenv.config();
@@ -61,6 +62,7 @@ app.use(
 // scrapWesternTruckSales();
 // scrapDaimlerTrucksPerth();
 // scrapVelocityTruckCentres();
+scrapGilbertAndRoachSydney();
 // scrapHumeHighwayTruckSales();
 // scrapDaimlerTrucksMilperra();
 // scrapWhiteHorseTruckCentre();
