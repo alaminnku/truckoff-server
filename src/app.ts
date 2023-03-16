@@ -52,7 +52,7 @@ app.use(
 // Scrappers
 
 // scrapIsuzu();
-scrapCtrTrucks();
+// scrapCtrTrucks();
 // scrapTruckCity();
 // scrapBossTrucks();
 // scrapAdtransHino();
