@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer";
-import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
+import { scrollPageToBottom } from "puppeteer-autoscroll-down";
 
 export default async function scrapFusoPortMelbourne() {
   try {
@@ -44,6 +45,8 @@ export default async function scrapFusoPortMelbourne() {
                     // Call the function recursively
                     loadAllTrucks();
                   } catch (err) {
+                    // Close the browser and send email
+                    await browser.close();
                     sendErrorEmail("Fuso Port Melbourne");
                   }
                 } else {
@@ -139,37 +142,73 @@ export default async function scrapFusoPortMelbourne() {
                           // Add truck to trucks
                           trucks = [...trucks, truck];
                         } catch (err) {
+                          // Close the browser and send email
+                          await browser.close();
                           sendErrorEmail("Fuso Port Melbourne");
                         }
                       } catch (err) {
+                        // Close the browser and send email
+                        await browser.close();
                         sendErrorEmail("Fuso Port Melbourne");
                       }
                     }
 
-                    console.log(trucks);
+                    // Replace the trucks in the db
+                    try {
+                      // Delete all previous trucks
+                      await Truck.deleteMany({
+                        website: "fusoportmelbourne",
+                      });
 
-                    // Close the browser
-                    await browser.close();
+                      try {
+                        // Create new trucks
+                        await Truck.create(trucks);
+
+                        // Close the browser
+                        await browser.close();
+                      } catch (err) {
+                        // Close the browser and send email
+                        await browser.close();
+                        sendErrorEmail("Fuso Port Melbourne");
+                      }
+                    } catch (err) {
+                      // Close the browser and send email
+                      await browser.close();
+                      sendErrorEmail("Fuso Port Melbourne");
+                    }
                   } catch (err) {
+                    // Close the browser and send email
+                    await browser.close();
                     sendErrorEmail("Fuso Port Melbourne");
                   }
                 }
               } catch (err) {
+                // Close the browser and send email
+                await browser.close();
                 sendErrorEmail("Fuso Port Melbourne");
               }
             } catch (err) {
+              // Close the browser and send email
+              await browser.close();
               sendErrorEmail("Fuso Port Melbourne");
             }
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Fuso Port Melbourne");
           }
         }
 
+        // Run load all trucks function
         loadAllTrucks();
       } catch (err) {
+        // Close the browser and send email
+        await browser.close();
         sendErrorEmail("Fuso Port Melbourne");
       }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("Fuso Port Melbourne");
     }
   } catch (err) {
