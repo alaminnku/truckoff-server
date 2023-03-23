@@ -59,6 +59,9 @@ export default async function scrapUnionTruckSales() {
                     );
                   });
 
+                  // All trucks
+                  let trucks: any[] = [];
+
                   // Loop through the urls and extract the data
                   for (let i = 0; i < truckUrls.length; i++) {
                     try {
@@ -146,7 +149,8 @@ export default async function scrapUnionTruckSales() {
                           };
                         });
 
-                        console.log(truck);
+                        // Add truck to trucks
+                        trucks = [...trucks, truck];
                       } catch (err) {
                         sendErrorEmail("Truck Wholesalers");
                       }
@@ -154,6 +158,8 @@ export default async function scrapUnionTruckSales() {
                       sendErrorEmail("Truck Wholesalers");
                     }
                   }
+
+                  console.log(trucks);
 
                   // Close the browser
                   await browser.close();

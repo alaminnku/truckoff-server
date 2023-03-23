@@ -55,6 +55,9 @@ export default async function scrapAdtransHino() {
         }
       }
 
+      // All trucks
+      let trucks: any[] = [];
+
       // Collect truck details
       for (let i = 0; i < truckUrls.length; i++) {
         try {
@@ -115,7 +118,8 @@ export default async function scrapAdtransHino() {
               };
             });
 
-            console.log(truck);
+            // Add truck to trucks
+            trucks = [...trucks, truck];
           } catch (err) {
             sendErrorEmail("Adtrans Hino");
           }
@@ -123,6 +127,8 @@ export default async function scrapAdtransHino() {
           sendErrorEmail("Adtrans Hino");
         }
       }
+
+      console.log(trucks);
 
       // Close the browser
       await browser.close();

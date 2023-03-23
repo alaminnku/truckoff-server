@@ -67,6 +67,9 @@ export default async function scrapDaimlerTrucksMilperra() {
                       );
                     });
 
+                    // All trucks
+                    let trucks: any[] = [];
+
                     // Loop through the urls and extract the data
                     for (let i = 0; i < truckUrls.length; i++) {
                       try {
@@ -136,7 +139,8 @@ export default async function scrapDaimlerTrucksMilperra() {
                             };
                           });
 
-                          console.log(truck);
+                          // Add truck to trucks
+                          trucks = [...trucks, truck];
                         } catch (err) {
                           sendErrorEmail("Daimler Trucks Milperra");
                         }
@@ -144,6 +148,8 @@ export default async function scrapDaimlerTrucksMilperra() {
                         sendErrorEmail("Daimler Trucks Milperra");
                       }
                     }
+
+                    console.log(trucks);
 
                     // Close the browser
                     await browser.close();

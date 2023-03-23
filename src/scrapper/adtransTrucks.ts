@@ -1,6 +1,6 @@
 import puppeteer from "puppeteer";
-import { scrollPageToBottom } from "puppeteer-autoscroll-down";
 import { sendErrorEmail } from "../utils";
+import { scrollPageToBottom } from "puppeteer-autoscroll-down";
 
 export default async function scrapAdtransTrucks() {
   try {
@@ -58,6 +58,9 @@ export default async function scrapAdtransTrucks() {
                         )}`
                     );
                   });
+
+                  // All trucks
+                  let trucks: any[] = [];
 
                   // Loop through the urls and extract the data
                   for (let i = 0; i < truckUrls.length; i++) {
@@ -146,7 +149,8 @@ export default async function scrapAdtransTrucks() {
                           };
                         });
 
-                        console.log(truck);
+                        // Add truck to trucks
+                        trucks = [...trucks, truck];
                       } catch (err) {
                         sendErrorEmail("Adtrans Trucks");
                       }
@@ -154,6 +158,8 @@ export default async function scrapAdtransTrucks() {
                       sendErrorEmail("Adtrans Trucks");
                     }
                   }
+
+                  console.log(trucks);
 
                   // Close the browser
                   await browser.close();

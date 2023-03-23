@@ -60,6 +60,9 @@ export default async function scrapSuttonTrucks() {
         }
       }
 
+      // All trucks
+      let trucks: any[] = [];
+
       // Get truck details
       for (let i = 0; i < truckUrls.length; i++) {
         try {
@@ -117,7 +120,8 @@ export default async function scrapSuttonTrucks() {
               };
             });
 
-            console.log(truck);
+            // Add truck to trucks
+            trucks = [...trucks, truck];
           } catch (err) {
             sendErrorEmail("Sutton Trucks");
           }
@@ -125,6 +129,11 @@ export default async function scrapSuttonTrucks() {
           sendErrorEmail("Sutton Trucks");
         }
       }
+
+      console.log(trucks);
+
+      // Close the browser
+      await browser.close();
     } catch (err) {
       sendErrorEmail("Sutton Trucks");
     }

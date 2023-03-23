@@ -51,6 +51,9 @@ export default async function scrapMelbourneTruckAndVans() {
         }
       }
 
+      // All trucks
+      let trucks: any[] = [];
+
       // Collect truck details
       for (let i = 0; i < truckUrls.length; i++) {
         try {
@@ -108,7 +111,8 @@ export default async function scrapMelbourneTruckAndVans() {
               };
             });
 
-            console.log(truck);
+            // Add truck to trucks
+            trucks = [...trucks, truck];
           } catch (err) {
             sendErrorEmail("Melbourne Truck and Vans");
           }
@@ -116,6 +120,11 @@ export default async function scrapMelbourneTruckAndVans() {
           sendErrorEmail("Melbourne Truck and Vans");
         }
       }
+
+      console.log(trucks);
+
+      // Close the browser
+      await browser.close();
     } catch (err) {
       sendErrorEmail("Melbourne Truck and Vans");
     }

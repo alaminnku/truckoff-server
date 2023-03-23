@@ -33,7 +33,8 @@ export default async function scrapTruckCity() {
             );
           });
 
-          console.log(truckUrls.length);
+          // All trucks
+          let trucks: any[] = [];
 
           // Collect truck details
           for (let i = 0; i < truckUrls.length; i++) {
@@ -126,7 +127,8 @@ export default async function scrapTruckCity() {
                   };
                 });
 
-                console.log(truck);
+                // Add truck to trucks
+                trucks = [...trucks, truck];
               } catch (err) {
                 sendErrorEmail("Truck City");
               }
@@ -134,15 +136,17 @@ export default async function scrapTruckCity() {
               sendErrorEmail("Truck City");
             }
           }
+
+          console.log(trucks);
+
+          // Close the browser
+          await browser.close();
         } catch (err) {
           sendErrorEmail("Truck City");
         }
       } catch (err) {
         sendErrorEmail("Truck City");
       }
-
-      // Close the browser
-      await browser.close();
     } catch (err) {
       sendErrorEmail("Truck City");
     }

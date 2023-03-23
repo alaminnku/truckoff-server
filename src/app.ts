@@ -51,8 +51,6 @@ app.use(
 
 // Schedule scrappers
 setInterval(() => {
-  console.log("hello");
-
   // scrapIsuzu();
   // scrapCtrTrucks();
   // scrapTruckCity();

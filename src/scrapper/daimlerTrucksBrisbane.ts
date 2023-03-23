@@ -67,6 +67,9 @@ export default async function scrapDaimlerTrucksBrisbane() {
                       );
                     });
 
+                    // All trucks
+                    let trucks: any[] = [];
+
                     // Loop through the urls and extract the data
                     for (let i = 0; i < truckUrls.length; i++) {
                       try {
@@ -135,8 +138,8 @@ export default async function scrapDaimlerTrucksBrisbane() {
                               website: "daimlertrucksbrisbane",
                             };
                           });
-
-                          console.log(truck);
+                          // Add truck to trucks
+                          trucks = [...trucks, truck];
                         } catch (err) {
                           sendErrorEmail("Daimler Trucks Brisbane");
                         }
@@ -144,6 +147,8 @@ export default async function scrapDaimlerTrucksBrisbane() {
                         sendErrorEmail("Daimler Trucks Brisbane");
                       }
                     }
+
+                    console.log(trucks);
 
                     // Close the browser
                     await browser.close();

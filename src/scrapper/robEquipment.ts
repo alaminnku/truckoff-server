@@ -47,6 +47,9 @@ export default async function scrapRobEquipment() {
         }
       }
 
+      // All trucks
+      let trucks: any[] = [];
+
       // Collect truck details
       for (let i = 0; i < truckUrls.length; i++) {
         try {
@@ -119,7 +122,8 @@ export default async function scrapRobEquipment() {
               };
             });
 
-            console.log(truck);
+            // Add truck to trucks
+            trucks = [...trucks, truck];
           } catch (err) {
             sendErrorEmail("Rob Equipment");
           }
@@ -127,6 +131,11 @@ export default async function scrapRobEquipment() {
           sendErrorEmail("Rob Equipment");
         }
       }
+
+      console.log(trucks);
+
+      // Close the browser
+      await browser.close();
     } catch (err) {
       sendErrorEmail("Rob Equipment");
     }

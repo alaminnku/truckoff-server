@@ -48,6 +48,9 @@ export default async function scrapWestarTruckCentre() {
         }
       }
 
+      // All trucks
+      let trucks: any[] = [];
+
       // Collect truck details
       for (let i = 0; i < truckUrls.length; i++) {
         try {
@@ -121,7 +124,8 @@ export default async function scrapWestarTruckCentre() {
               };
             });
 
-            console.log(truck);
+            // Add truck to trucks
+            trucks = [...trucks, truck];
           } catch (err) {
             sendErrorEmail("Westar Truck Centre");
           }
@@ -129,6 +133,11 @@ export default async function scrapWestarTruckCentre() {
           sendErrorEmail("Westar Truck Centre");
         }
       }
+
+      console.log(trucks);
+
+      // Close the browser
+      await browser.close();
     } catch (err) {
       sendErrorEmail("Westar Truck Centre");
     }

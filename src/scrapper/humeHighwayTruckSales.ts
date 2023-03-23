@@ -48,6 +48,9 @@ export default async function scrapHumeHighwayTruckSales() {
         }
       }
 
+      // All trucks
+      let trucks: any[] = [];
+
       // Collect truck details
       for (let i = 0; i < truckUrls.length; i++) {
         try {
@@ -139,7 +142,8 @@ export default async function scrapHumeHighwayTruckSales() {
               };
             });
 
-            console.log(truck);
+            // Add truck to trucks
+            trucks = [...trucks, truck];
           } catch (err) {
             sendErrorEmail("Hume Highway Truck Sales");
           }
@@ -147,6 +151,9 @@ export default async function scrapHumeHighwayTruckSales() {
           sendErrorEmail("Hume Highway Truck Sales");
         }
       }
+
+      console.log(trucks);
+
       // Close the browser
       await browser.close();
     } catch (err) {

@@ -51,6 +51,9 @@ export default async function scrapSammutAgriculturalMachinery() {
         }
       }
 
+      // All trucks
+      let trucks: any[] = [];
+
       // Collect truck details
       for (let i = 0; i < truckUrls.length; i++) {
         try {
@@ -134,7 +137,8 @@ export default async function scrapSammutAgriculturalMachinery() {
               };
             });
 
-            console.log(truck);
+            // Add truck to trucks
+            trucks = [...trucks, truck];
           } catch (err) {
             sendErrorEmail("Sammut Agricultural Machinery");
           }
@@ -142,6 +146,11 @@ export default async function scrapSammutAgriculturalMachinery() {
           sendErrorEmail("Sammut Agricultural Machinery");
         }
       }
+
+      console.log(trucks);
+
+      // Close the browser
+      await browser.close();
     } catch (err) {
       sendErrorEmail("Sammut Agricultural Machinery");
     }

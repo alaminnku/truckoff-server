@@ -48,6 +48,9 @@ export default async function scrapLarsensTruckSales() {
         }
       }
 
+      // All trucks
+      let trucks: any[] = [];
+
       // Collect truck details
       for (let i = 0; i < truckUrls.length; i++) {
         try {
@@ -118,7 +121,8 @@ export default async function scrapLarsensTruckSales() {
               };
             });
 
-            console.log(truck);
+            // Add truck to trucks
+            trucks = [...trucks, truck];
           } catch (err) {
             sendErrorEmail("Larsen's Truck Sales");
           }
@@ -126,6 +130,11 @@ export default async function scrapLarsensTruckSales() {
           sendErrorEmail("Larsen's Truck Sales");
         }
       }
+
+      console.log(trucks);
+
+      // Close the browser
+      await browser.close();
     } catch (err) {
       sendErrorEmail("Larsen's Truck Sales");
     }

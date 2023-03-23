@@ -58,6 +58,9 @@ export default async function scrapWhiteHorseTruckCentre() {
                     );
                   });
 
+                  // All trucks
+                  let trucks: any[] = [];
+
                   // Loop through the urls and extract the data
                   for (let i = 0; i < truckUrls.length; i++) {
                     try {
@@ -144,7 +147,8 @@ export default async function scrapWhiteHorseTruckCentre() {
                           };
                         });
 
-                        console.log(truck);
+                        // Add truck to trucks
+                        trucks = [...trucks, truck];
                       } catch (err) {
                         sendErrorEmail("White Horse truck Centre");
                       }
@@ -152,6 +156,8 @@ export default async function scrapWhiteHorseTruckCentre() {
                       sendErrorEmail("White Horse truck Centre");
                     }
                   }
+
+                  console.log(trucks);
 
                   // Close the browser
                   await browser.close();

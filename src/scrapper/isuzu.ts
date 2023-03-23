@@ -44,6 +44,9 @@ export default async function scrapIsuzu() {
         }
       }
 
+      // All trucks
+      let trucks: any[] = [];
+
       // Collect truck details
       for (let i = 0; i < truckUrls.length; i++) {
         try {
@@ -126,7 +129,8 @@ export default async function scrapIsuzu() {
               };
             });
 
-            console.log(truck);
+            // Add truck to trucks
+            trucks = [...trucks, truck];
           } catch (err) {
             sendErrorEmail("Isuzu");
           }
@@ -134,6 +138,11 @@ export default async function scrapIsuzu() {
           sendErrorEmail("Isuzu");
         }
       }
+
+      console.log(trucks);
+
+      // Close the browser
+      await browser.close();
     } catch (err) {
       sendErrorEmail("Isuzu");
     }

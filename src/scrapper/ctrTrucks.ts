@@ -33,6 +33,9 @@ export default async function scrapCtrTrucks() {
             );
           });
 
+          // All trucks
+          let trucks: any[] = [];
+
           // Collect truck details
           for (let i = 0; i < truckUrls.length; i++) {
             try {
@@ -124,7 +127,8 @@ export default async function scrapCtrTrucks() {
                   };
                 });
 
-                console.log(truck);
+                // Add truck to trucks
+                trucks = [...trucks, truck];
               } catch (err) {
                 sendErrorEmail("CRT Trucks");
               }
@@ -132,15 +136,15 @@ export default async function scrapCtrTrucks() {
               sendErrorEmail("CRT Trucks");
             }
           }
+          console.log(trucks);
+          // Close the browser
+          await browser.close();
         } catch (err) {
           sendErrorEmail("CRT Trucks");
         }
       } catch (err) {
         sendErrorEmail("CRT Trucks");
       }
-
-      // Close the browser
-      await browser.close();
     } catch (err) {
       sendErrorEmail("CRT Trucks");
     }

@@ -44,6 +44,9 @@ export default async function scrapGilbertAndRoachSydney() {
               );
             });
 
+            // All trucks
+            let trucks: any[] = [];
+
             // Get truck details
             for (let i = 0; i < truckUrls.length; i++) {
               try {
@@ -101,7 +104,8 @@ export default async function scrapGilbertAndRoachSydney() {
                     };
                   });
 
-                  console.log(truck);
+                  // Add truck to trucks
+                  trucks = [...trucks, truck];
                 } catch (err) {
                   sendErrorEmail("Gilbert and Roach Sydney");
                 }
@@ -109,6 +113,11 @@ export default async function scrapGilbertAndRoachSydney() {
                 sendErrorEmail("Gilbert and Roach Sydney");
               }
             }
+
+            console.log(trucks);
+
+            // Close the browser
+            await browser.close();
           } catch (err) {
             sendErrorEmail("Gilbert and Roach Sydney");
           }
