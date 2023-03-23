@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer";
-import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
+import { scrollPageToBottom } from "puppeteer-autoscroll-down";
 
 export default async function scrapWhiteHorseTruckCentre() {
   try {
@@ -38,6 +39,8 @@ export default async function scrapWhiteHorseTruckCentre() {
                   // Call the function recursively
                   loadAllTrucks();
                 } catch (err) {
+                  // Close the browser and send email
+                  await browser.close();
                   sendErrorEmail("White Horse truck Centre");
                 }
               } else {
@@ -150,34 +153,70 @@ export default async function scrapWhiteHorseTruckCentre() {
                         // Add truck to trucks
                         trucks = [...trucks, truck];
                       } catch (err) {
+                        // Close the browser and send email
+                        await browser.close();
                         sendErrorEmail("White Horse truck Centre");
                       }
                     } catch (err) {
+                      // Close the browser and send email
+                      await browser.close();
                       sendErrorEmail("White Horse truck Centre");
                     }
                   }
 
-                  console.log(trucks);
+                  // Replace the trucks in the db
+                  try {
+                    // Delete all previous trucks
+                    await Truck.deleteMany({
+                      website: "whitehorsetrucks",
+                    });
 
-                  // Close the browser
-                  await browser.close();
+                    try {
+                      // Create new trucks
+                      await Truck.create(trucks);
+
+                      console.log("done");
+
+                      // Close the browser
+                      await browser.close();
+                    } catch (err) {
+                      // Close the browser and send email
+                      await browser.close();
+                      sendErrorEmail("White Horse truck Centre");
+                    }
+                  } catch (err) {
+                    // Close the browser and send email
+                    await browser.close();
+                    sendErrorEmail("White Horse truck Centre");
+                  }
                 } catch (err) {
+                  // Close the browser and send email
+                  await browser.close();
                   sendErrorEmail("White Horse truck Centre");
                 }
               }
             } catch (err) {
+              // Close the browser and send email
+              await browser.close();
               sendErrorEmail("White Horse truck Centre");
             }
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("White Horse truck Centre");
           }
         }
 
+        // Run load all trucks function
         loadAllTrucks();
       } catch (err) {
+        // Close the browser and send email
+        await browser.close();
         sendErrorEmail("White Horse truck Centre");
       }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("White Horse truck Centre");
     }
   } catch (err) {
