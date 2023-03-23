@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
 
 export default async function scrapCtrTrucks() {
@@ -130,22 +131,51 @@ export default async function scrapCtrTrucks() {
                 // Add truck to trucks
                 trucks = [...trucks, truck];
               } catch (err) {
+                // Close the browser and send email
+                await browser.close();
                 sendErrorEmail("CRT Trucks");
               }
             } catch (err) {
+              // Close the browser and send email
+              await browser.close();
               sendErrorEmail("CRT Trucks");
             }
           }
-          console.log(trucks);
-          // Close the browser
-          await browser.close();
+
+          // Replace the trucks in the db
+          try {
+            // Delete all previous trucks
+            await Truck.deleteMany({ website: "ctrtrucks" });
+
+            try {
+              // Create new trucks
+              await Truck.create(trucks);
+
+              // Close the browser
+              await browser.close();
+            } catch (err) {
+              // Close the browser and send email
+              await browser.close();
+              sendErrorEmail("CRT Trucks");
+            }
+          } catch (err) {
+            // Close the browser and send email
+            await browser.close();
+            sendErrorEmail("CRT Trucks");
+          }
         } catch (err) {
+          // Close the browser and send email
+          await browser.close();
           sendErrorEmail("CRT Trucks");
         }
       } catch (err) {
+        // Close the browser and send email
+        await browser.close();
         sendErrorEmail("CRT Trucks");
       }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("CRT Trucks");
     }
   } catch (err) {
