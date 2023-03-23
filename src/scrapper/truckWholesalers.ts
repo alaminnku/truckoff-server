@@ -177,8 +177,6 @@ export default async function scrapTruckWholesalers() {
                       // Create new trucks
                       await Truck.create(trucks);
 
-                      console.log("done");
-
                       // Close the browser
                       await browser.close();
                     } catch (err) {

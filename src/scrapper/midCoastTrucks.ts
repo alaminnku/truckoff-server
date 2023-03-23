@@ -7,6 +7,7 @@ export default async function scrapMidCoastTrucks() {
   try {
     // Create browser
     const browser = await puppeteer.launch({
+      headless: false,
       defaultViewport: { width: 1024, height: 1600 },
     });
 
@@ -162,8 +163,6 @@ export default async function scrapMidCoastTrucks() {
                     try {
                       // Create new trucks
                       await Truck.create(trucks);
-
-                      console.log("done");
 
                       // Close the browser
                       await browser.close();

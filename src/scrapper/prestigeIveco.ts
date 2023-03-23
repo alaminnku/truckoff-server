@@ -176,8 +176,6 @@ export default async function scrapPrestigeIveco() {
                       // Create new trucks
                       await Truck.create(trucks);
 
-                      console.log("done");
-
                       // Close the browser
                       await browser.close();
                     } catch (err) {
