@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer";
-import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
+import { scrollPageToBottom } from "puppeteer-autoscroll-down";
 
 export default async function scrapWesternTruckSales() {
   try {
@@ -38,6 +39,8 @@ export default async function scrapWesternTruckSales() {
                   // Call the function recursively
                   loadAllTrucks();
                 } catch (err) {
+                  // Close the browser and send email
+                  await browser.close();
                   sendErrorEmail("Western Truck Sales");
                 }
               } else {
@@ -122,41 +125,77 @@ export default async function scrapWesternTruckSales() {
                             images,
                             bodyType,
                             location: "WA",
-                            website: "wts.industrysales",
+                            website: "wts",
                           };
                         });
 
                         // Add truck to trucks
                         trucks = [...trucks, truck];
                       } catch (err) {
+                        // Close the browser and send email
+                        await browser.close();
                         sendErrorEmail("Western Truck Sales");
                       }
                     } catch (err) {
+                      // Close the browser and send email
+                      await browser.close();
                       sendErrorEmail("Western Truck Sales");
                     }
                   }
 
-                  console.log(trucks);
+                  // Replace the trucks in the db
+                  try {
+                    // Delete all previous trucks
+                    await Truck.deleteMany({
+                      website: "wts",
+                    });
 
-                  // Close the browser
-                  await browser.close();
+                    try {
+                      // Create new trucks
+                      await Truck.create(trucks);
+
+                      console.log("done");
+
+                      // Close the browser
+                      await browser.close();
+                    } catch (err) {
+                      // Close the browser and send email
+                      await browser.close();
+                      sendErrorEmail("Western Truck Sales");
+                    }
+                  } catch (err) {
+                    // Close the browser and send email
+                    await browser.close();
+                    sendErrorEmail("Western Truck Sales");
+                  }
                 } catch (err) {
+                  // Close the browser and send email
+                  await browser.close();
                   sendErrorEmail("Western Truck Sales");
                 }
               }
             } catch (err) {
+              // Close the browser and send email
+              await browser.close();
               sendErrorEmail("Western Truck Sales");
             }
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Western Truck Sales");
           }
         }
 
+        // Run load all trucks function
         loadAllTrucks();
       } catch (err) {
+        // Close the browser and send email
+        await browser.close();
         sendErrorEmail("Western Truck Sales");
       }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("Western Truck Sales");
     }
   } catch (err) {

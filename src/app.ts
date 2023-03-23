@@ -51,8 +51,6 @@ app.use(
   })
 );
 
-scrapLarsensTruckSales();
-
 // Schedule scrappers
 setInterval(() => {
   // scrapIsuzu();
