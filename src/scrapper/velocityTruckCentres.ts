@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
 
 export default async function scrapVelocityTruckCentres() {
@@ -44,9 +45,13 @@ export default async function scrapVelocityTruckCentres() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Velocity Truck Centres");
           }
         } catch (err) {
+          // Close the browser and send email
+          await browser.close();
           sendErrorEmail("Velocity Truck Centres");
         }
       }
@@ -111,18 +116,45 @@ export default async function scrapVelocityTruckCentres() {
             // Add truck to trucks
             trucks = [...trucks, truck];
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Velocity Truck Centres");
           }
         } catch (err) {
+          // Close the browser and send email
+          await browser.close();
           sendErrorEmail("Velocity Truck Centres");
         }
       }
 
-      console.log(trucks);
+      // Replace the trucks in the db
+      try {
+        // Delete all previous trucks
+        await Truck.deleteMany({
+          website: "velocitytruckcentres",
+        });
 
-      // Close the browser
-      await browser.close();
+        try {
+          // Create new trucks
+          await Truck.create(trucks);
+
+          console.log("done");
+
+          // Close the browser
+          await browser.close();
+        } catch (err) {
+          // Close the browser and send email
+          await browser.close();
+          sendErrorEmail("Velocity Truck Centres");
+        }
+      } catch (err) {
+        // Close the browser and send email
+        await browser.close();
+        sendErrorEmail("Velocity Truck Centres");
+      }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("Velocity Truck Centres");
     }
   } catch (err) {
