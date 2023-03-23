@@ -51,6 +51,8 @@ app.use(
   })
 );
 
+scrapIsuzu();
+
 // Schedule scrappers
 setInterval(() => {
   // scrapIsuzu();
