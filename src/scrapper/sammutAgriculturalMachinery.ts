@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
 
 export default async function scrapSammutAgriculturalMachinery() {
@@ -44,9 +45,13 @@ export default async function scrapSammutAgriculturalMachinery() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Sammut Agricultural Machinery");
           }
         } catch (err) {
+          // Close the browser and send email
+          await browser.close();
           sendErrorEmail("Sammut Agricultural Machinery");
         }
       }
@@ -133,25 +138,52 @@ export default async function scrapSammutAgriculturalMachinery() {
                 model,
                 images,
                 location: "NSW",
-                website: "sammutagriculturalmachinery.equipmentsales",
+                website: "sammutagriculturalmachinery",
               };
             });
 
             // Add truck to trucks
             trucks = [...trucks, truck];
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Sammut Agricultural Machinery");
           }
         } catch (err) {
+          // Close the browser and send email
+          await browser.close();
           sendErrorEmail("Sammut Agricultural Machinery");
         }
       }
 
-      console.log(trucks);
+      // Replace the trucks in the db
+      try {
+        // Delete all previous trucks
+        await Truck.deleteMany({
+          website: "sammutagriculturalmachinery",
+        });
 
-      // Close the browser
-      await browser.close();
+        try {
+          // Create new trucks
+          await Truck.create(trucks);
+
+          console.log("done");
+
+          // Close the browser
+          await browser.close();
+        } catch (err) {
+          // Close the browser and send email
+          await browser.close();
+          sendErrorEmail("Sammut Agricultural Machinery");
+        }
+      } catch (err) {
+        // Close the browser and send email
+        await browser.close();
+        sendErrorEmail("Sammut Agricultural Machinery");
+      }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("Sammut Agricultural Machinery");
     }
   } catch (err) {
