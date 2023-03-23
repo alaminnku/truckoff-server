@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer";
-import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
+import { scrollPageToBottom } from "puppeteer-autoscroll-down";
 
 export default async function scrapDaimlerTrucksPerth() {
   try {
@@ -44,6 +45,8 @@ export default async function scrapDaimlerTrucksPerth() {
                     // Call the function recursively
                     loadAllTrucks();
                   } catch (err) {
+                    // Close the browser and send email
+                    await browser.close();
                     sendErrorEmail("Daimler Trucks Perth");
                   }
                 } else {
@@ -139,36 +142,73 @@ export default async function scrapDaimlerTrucksPerth() {
                           // Add truck to trucks
                           trucks = [...trucks, truck];
                         } catch (err) {
+                          // Close the browser and send email
+                          await browser.close();
                           sendErrorEmail("Daimler Trucks Perth");
                         }
                       } catch (err) {
+                        // Close the browser and send email
+                        await browser.close();
                         sendErrorEmail("Daimler Trucks Perth");
                       }
                     }
-                    console.log(trucks);
 
-                    // Close the browser
-                    await browser.close();
+                    // Replace the trucks in the db
+                    try {
+                      // Delete all previous trucks
+                      await Truck.deleteMany({
+                        website: "daimlertrucksperth",
+                      });
+
+                      try {
+                        // Create new trucks
+                        await Truck.create(trucks);
+
+                        // Close the browser
+                        await browser.close();
+                      } catch (err) {
+                        // Close the browser and send email
+                        await browser.close();
+                        sendErrorEmail("Daimler Trucks Perth");
+                      }
+                    } catch (err) {
+                      // Close the browser and send email
+                      await browser.close();
+                      sendErrorEmail("Daimler Trucks Perth");
+                    }
                   } catch (err) {
+                    // Close the browser and send email
+                    await browser.close();
                     sendErrorEmail("Daimler Trucks Perth");
                   }
                 }
               } catch (err) {
+                // Close the browser and send email
+                await browser.close();
                 sendErrorEmail("Daimler Trucks Perth");
               }
             } catch (err) {
+              // Close the browser and send email
+              await browser.close();
               sendErrorEmail("Daimler Trucks Perth");
             }
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Daimler Trucks Perth");
           }
         }
 
+        // Run load all trucks function
         loadAllTrucks();
       } catch (err) {
+        // Close the browser and send email
+        await browser.close();
         sendErrorEmail("Daimler Trucks Perth");
       }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("Daimler Trucks Perth");
     }
   } catch (err) {
