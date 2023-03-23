@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
 
 export default async function scrapLarsensTruckSales() {
@@ -41,9 +42,13 @@ export default async function scrapLarsensTruckSales() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Larsen's Truck Sales");
           }
         } catch (err) {
+          // Close the browser and send email
+          await browser.close();
           sendErrorEmail("Larsen's Truck Sales");
         }
       }
@@ -124,18 +129,45 @@ export default async function scrapLarsensTruckSales() {
             // Add truck to trucks
             trucks = [...trucks, truck];
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Larsen's Truck Sales");
           }
         } catch (err) {
+          // Close the browser and send email
+          await browser.close();
           sendErrorEmail("Larsen's Truck Sales");
         }
       }
 
-      console.log(trucks);
+      // Replace the trucks in the db
+      try {
+        // Delete all previous trucks
+        await Truck.deleteMany({
+          website: "larsenstrucksales",
+        });
 
-      // Close the browser
-      await browser.close();
+        try {
+          // Create new trucks
+          await Truck.create(trucks);
+
+          console.log("done");
+
+          // Close the browser
+          await browser.close();
+        } catch (err) {
+          // Close the browser and send email
+          await browser.close();
+          sendErrorEmail("Larsen's Truck Sales");
+        }
+      } catch (err) {
+        // Close the browser and send email
+        await browser.close();
+        sendErrorEmail("Larsen's Truck Sales");
+      }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("Larsen's Truck Sales");
     }
   } catch (err) {
