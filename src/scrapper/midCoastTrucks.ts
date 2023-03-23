@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer";
-import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
+import { scrollPageToBottom } from "puppeteer-autoscroll-down";
 
 export default async function scrapMidCoastTrucks() {
   try {
@@ -140,34 +141,69 @@ export default async function scrapMidCoastTrucks() {
                         // Add truck to trucks
                         trucks = [...trucks, truck];
                       } catch (err) {
+                        // Close the browser and send email
+                        await browser.close();
                         sendErrorEmail("Mid Coast Trucks");
                       }
                     } catch (err) {
+                      // Close the browser and send email
+                      await browser.close();
                       sendErrorEmail("Mid Coast Trucks");
                     }
                   }
 
-                  console.log(trucks);
+                  // Replace the trucks in the db
+                  try {
+                    // Delete all previous trucks
+                    await Truck.deleteMany({
+                      website: "midcoasttrucks",
+                    });
 
-                  // Close the browser
-                  await browser.close();
+                    try {
+                      // Create new trucks
+                      await Truck.create(trucks);
+
+                      console.log("done");
+
+                      // Close the browser
+                      await browser.close();
+                    } catch (err) {
+                      // Close the browser and send email
+                      await browser.close();
+                      sendErrorEmail("Mid Coast Trucks");
+                    }
+                  } catch (err) {
+                    // Close the browser and send email
+                    await browser.close();
+                    sendErrorEmail("Mid Coast Trucks");
+                  }
                 } catch (err) {
+                  // Close the browser and send email
+                  await browser.close();
                   sendErrorEmail("Mid Coast Trucks");
                 }
               }
             } catch (err) {
+              // Close the browser and send email
+              await browser.close();
               sendErrorEmail("Mid Coast Trucks");
             }
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Mid Coast Trucks");
           }
         }
 
         loadAllTrucks();
       } catch (err) {
+        // Close the browser and send email
+        await browser.close();
         sendErrorEmail("Mid Coast Trucks");
       }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("Mid Coast Trucks");
     }
   } catch (err) {
