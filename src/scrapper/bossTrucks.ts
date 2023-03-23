@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
 
 export default async function scrapBossTrucks() {
@@ -41,9 +42,13 @@ export default async function scrapBossTrucks() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Boss Trucks");
           }
         } catch (err) {
+          // Close the browser and send email
+          await browser.close();
           sendErrorEmail("Boss Trucks");
         }
       }
@@ -137,24 +142,52 @@ export default async function scrapBossTrucks() {
                   // Add truck to trucks
                   trucks = [...trucks, truck];
                 } catch (err) {
+                  // Close the browser and send email
+                  await browser.close();
                   sendErrorEmail("Boss Trucks");
                 }
               } catch (err) {
+                // Close the browser and send email
+                await browser.close();
                 sendErrorEmail("Boss Trucks");
               }
             }
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Boss Trucks");
           }
         } catch (err) {
+          // Close the browser and send email
+          await browser.close();
           sendErrorEmail("Boss Trucks");
         }
       }
 
-      console.log(trucks);
-      // Close the browser
-      await browser.close();
+      // Replace the trucks in the db
+      try {
+        // Delete all previous trucks
+        await Truck.deleteMany({ website: "bosstrucksales" });
+
+        try {
+          // Create new trucks
+          await Truck.create(trucks);
+
+          // Close the browser
+          await browser.close();
+        } catch (err) {
+          // Close the browser and send email
+          await browser.close();
+          sendErrorEmail("Boss Trucks");
+        }
+      } catch (err) {
+        // Close the browser and send email
+        await browser.close();
+        sendErrorEmail("Boss Trucks");
+      }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("Boss Trucks");
     }
   } catch (err) {

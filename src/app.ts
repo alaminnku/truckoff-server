@@ -2,6 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mail from "@sendgrid/mail";
+import { connectDB } from "./config/db";
 import scrapIsuzu from "./scrapper/isuzu";
 import scrapTruckCity from "./scrapper/truckCity";
 import scrapCtrTrucks from "./scrapper/ctrTrucks";
@@ -30,6 +31,7 @@ import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachi
 
 // Configs
 dotenv.config();
+connectDB();
 mail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
 // Create port
