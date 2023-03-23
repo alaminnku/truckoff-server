@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer";
-import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
+import { scrollPageToBottom } from "puppeteer-autoscroll-down";
 
 export default async function scrapDaimlerTrucksBrisbane() {
   try {
@@ -47,6 +48,8 @@ export default async function scrapDaimlerTrucksBrisbane() {
                     // Call the function recursively
                     loadAllTrucks();
                   } catch (err) {
+                    // Close the browser and send email
+                    await browser.close();
                     sendErrorEmail("Daimler Trucks Brisbane");
                   }
                 } else {
@@ -141,37 +144,73 @@ export default async function scrapDaimlerTrucksBrisbane() {
                           // Add truck to trucks
                           trucks = [...trucks, truck];
                         } catch (err) {
+                          // Close the browser and send email
+                          await browser.close();
                           sendErrorEmail("Daimler Trucks Brisbane");
                         }
                       } catch (err) {
+                        // Close the browser and send email
+                        await browser.close();
                         sendErrorEmail("Daimler Trucks Brisbane");
                       }
                     }
 
-                    console.log(trucks);
+                    // Replace the trucks in the db
+                    try {
+                      // Delete all previous trucks
+                      await Truck.deleteMany({
+                        website: "daimlertrucksbrisbane",
+                      });
 
-                    // Close the browser
-                    await browser.close();
+                      try {
+                        // Create new trucks
+                        await Truck.create(trucks);
+
+                        // Close the browser
+                        await browser.close();
+                      } catch (err) {
+                        // Close the browser and send email
+                        await browser.close();
+                        sendErrorEmail("Daimler Trucks Brisbane");
+                      }
+                    } catch (err) {
+                      // Close the browser and send email
+                      await browser.close();
+                      sendErrorEmail("Daimler Trucks Brisbane");
+                    }
                   } catch (err) {
+                    // Close the browser and send email
+                    await browser.close();
                     sendErrorEmail("Daimler Trucks Brisbane");
                   }
                 }
               } catch (err) {
+                // Close the browser and send email
+                await browser.close();
                 sendErrorEmail("Daimler Trucks Brisbane");
               }
             } catch (err) {
+              // Close the browser and send email
+              await browser.close();
               sendErrorEmail("Daimler Trucks Brisbane");
             }
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Daimler Trucks Brisbane");
           }
         }
 
+        // Run load all trucks function
         loadAllTrucks();
       } catch (err) {
+        // Close the browser and send email
+        await browser.close();
         sendErrorEmail("Daimler Trucks Brisbane");
       }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("Daimler Trucks Brisbane");
     }
   } catch (err) {
