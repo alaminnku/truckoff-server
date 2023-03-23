@@ -113,6 +113,7 @@ export default async function scrapLarsensTruckSales() {
                 bodyType,
                 kilometers,
                 location: "VIC",
+                website: "larsenstrucksales",
                 gvm: gvm ? `${gvm} KG` : undefined,
               };
             });

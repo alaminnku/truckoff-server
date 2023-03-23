@@ -129,6 +129,7 @@ export default async function scrapDaimlerTrucksPerth() {
                               bodyType,
                               kilometers,
                               location: "WA",
+                              website: "daimlertrucksperth",
                             };
                           });
 

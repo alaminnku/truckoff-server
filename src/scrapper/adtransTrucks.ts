@@ -142,6 +142,7 @@ export default async function scrapAdtransTrucks() {
                             kilometers: kilometers
                               ? `${kilometers} KM`
                               : undefined,
+                            website: "adtranstrucks",
                           };
                         });
 

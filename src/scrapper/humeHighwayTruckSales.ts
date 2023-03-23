@@ -135,6 +135,7 @@ export default async function scrapHumeHighwayTruckSales() {
                 model,
                 images,
                 location: "VIC",
+                website: "humehighwaytrucksales",
               };
             });
 

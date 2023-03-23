@@ -129,6 +129,7 @@ export default async function scrapMidCoastTrucks() {
                             images,
                             kilometers,
                             location: "NSW",
+                            website: "midcoasttrucks",
                             gvm: gvm ? `${+gvm * 1000} KG` : undefined,
                           };
                         });

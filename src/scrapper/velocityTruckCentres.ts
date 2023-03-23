@@ -101,6 +101,7 @@ export default async function scrapVelocityTruckCentres() {
                 make,
                 model,
                 images,
+                website: "velocitytruckcentres",
               };
             });
 

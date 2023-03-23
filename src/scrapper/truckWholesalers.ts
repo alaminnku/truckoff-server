@@ -142,6 +142,7 @@ export default async function scrapTruckWholesalers() {
                             kilometers: kilometers
                               ? `${kilometers} KM`
                               : undefined,
+                            website: "truckwholesalersaustralia",
                           };
                         });
 

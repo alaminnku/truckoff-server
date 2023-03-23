@@ -140,6 +140,7 @@ export default async function scrapWhiteHorseTruckCentre() {
                             kilometers: kilometers
                               ? `${kilometers} KM`
                               : undefined,
+                            website: "whitehorsetrucks",
                           };
                         });
 

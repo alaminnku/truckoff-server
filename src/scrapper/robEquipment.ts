@@ -114,6 +114,7 @@ export default async function scrapRobEquipment() {
                 images,
                 kilometers,
                 location: "SA",
+                website: "rsef",
                 gvm: gvm ? `${gvm} KG` : undefined,
               };
             });

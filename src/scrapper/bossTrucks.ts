@@ -127,6 +127,7 @@ export default async function scrapBossTrucks() {
                       images,
                       bodyType,
                       location: "QLD",
+                      website: "bosstrucksales",
                     };
                   });
 

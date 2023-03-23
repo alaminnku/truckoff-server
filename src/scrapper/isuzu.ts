@@ -122,6 +122,7 @@ export default async function scrapIsuzu() {
                 bodyType,
                 kilometers,
                 location: "SA",
+                website: "isuzu",
               };
             });
 

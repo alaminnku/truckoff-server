@@ -119,6 +119,7 @@ export default async function scrapWesternTruckSales() {
                             images,
                             bodyType,
                             location: "WA",
+                            website: "wts.industrysales",
                           };
                         });
 

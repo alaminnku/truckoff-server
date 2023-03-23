@@ -142,6 +142,7 @@ export default async function scrapUnionTruckSales() {
                             kilometers: kilometers
                               ? `${kilometers} KM`
                               : undefined,
+                            website: "uniontrucksales.industrysales",
                           };
                         });
 

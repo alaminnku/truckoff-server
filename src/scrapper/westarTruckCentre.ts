@@ -117,6 +117,7 @@ export default async function scrapWestarTruckCentre() {
                 images,
                 bodyType,
                 location: "VIC",
+                website: "westar",
               };
             });
 

@@ -111,6 +111,7 @@ export default async function scrapAdtransHino() {
                 images,
                 bodyType,
                 location: "QLD",
+                website: "adtranshino",
               };
             });
 

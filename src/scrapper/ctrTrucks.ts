@@ -120,6 +120,7 @@ export default async function scrapCtrTrucks() {
                     model,
                     images,
                     location: "VIC",
+                    website: "ctrtrucks",
                   };
                 });
 

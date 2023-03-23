@@ -104,6 +104,7 @@ export default async function scrapMelbourneTruckAndVans() {
                 images,
                 kilometers,
                 location: "VIC",
+                website: "melbournetruckandvans",
               };
             });
 

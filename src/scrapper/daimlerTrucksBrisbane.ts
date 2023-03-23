@@ -61,7 +61,7 @@ export default async function scrapDaimlerTrucksBrisbane() {
                       // Return the array of urls
                       return Array.from(urlNodes).map(
                         (urlNode) =>
-                          `https://www.daimlertrucksperth.com.au${urlNode.getAttribute(
+                          `https://www.daimlertrucksbrisbane.com.au${urlNode.getAttribute(
                             "href"
                           )}`
                       );
@@ -132,6 +132,7 @@ export default async function scrapDaimlerTrucksBrisbane() {
                               bodyType,
                               kilometers,
                               location: "QLD",
+                              website: "daimlertrucksbrisbane",
                             };
                           });
 

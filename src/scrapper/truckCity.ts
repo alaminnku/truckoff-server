@@ -122,6 +122,7 @@ export default async function scrapTruckCity() {
                     model,
                     images,
                     location: "NSW",
+                    website: "truckcity",
                   };
                 });
 

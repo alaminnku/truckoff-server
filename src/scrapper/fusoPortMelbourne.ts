@@ -58,7 +58,7 @@ export default async function scrapFusoPortMelbourne() {
                       // Return the array of urls
                       return Array.from(urlNodes).map(
                         (urlNode) =>
-                          `https://www.daimlertrucksperth.com.au${urlNode.getAttribute(
+                          `https://www.fusoportmelbourne.com.au${urlNode.getAttribute(
                             "href"
                           )}`
                       );
@@ -129,6 +129,7 @@ export default async function scrapFusoPortMelbourne() {
                               bodyType,
                               kilometers,
                               location: "VIC",
+                              website: "fusoportmelbourne",
                             };
                           });
 

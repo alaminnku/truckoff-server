@@ -130,6 +130,7 @@ export default async function scrapSammutAgriculturalMachinery() {
                 model,
                 images,
                 location: "NSW",
+                website: "sammutagriculturalmachinery.equipmentsales",
               };
             });
 

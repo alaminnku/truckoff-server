@@ -2,7 +2,6 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mail from "@sendgrid/mail";
-import error from "./middleware/error";
 import scrapIsuzu from "./scrapper/isuzu";
 import scrapTruckCity from "./scrapper/truckCity";
 import scrapCtrTrucks from "./scrapper/ctrTrucks";
@@ -50,32 +49,36 @@ app.use(
   })
 );
 
-// Scrappers
-// scrapIsuzu();
-// scrapCtrTrucks();
-// scrapTruckCity();
-// scrapBossTrucks();
-// scrapAdtransHino();
-// scrapRobEquipment();
-// scrapSuttonTrucks();
-// scrapAdtransTrucks();
-// scrapPrestigeIveco();
-// scrapMidCoastTrucks();
-// scrapUnionTruckSales();
-// scrapTruckWholesalers();
-// scrapFusoPortMelbourne();
-// scrapWestarTruckCentre();
-// scrapLarsensTruckSales();
-// scrapWesternTruckSales();
-// scrapDaimlerTrucksPerth();
-// scrapVelocityTruckCentres();
-// scrapDaimlerTrucksBrisbane();
-// scrapGilbertAndRoachSydney();
-// scrapHumeHighwayTruckSales();
-// scrapDaimlerTrucksMilperra();
-// scrapWhiteHorseTruckCentre();
-// scrapMelbourneTruckAndVans();
-// scrapSammutAgriculturalMachinery();
+// Schedule scrappers
+setInterval(() => {
+  console.log("hello");
+
+  // scrapIsuzu();
+  // scrapCtrTrucks();
+  // scrapTruckCity();
+  // scrapBossTrucks();
+  // scrapAdtransHino();
+  // scrapRobEquipment();
+  // scrapSuttonTrucks();
+  // scrapAdtransTrucks();
+  // scrapPrestigeIveco();
+  // scrapMidCoastTrucks();
+  // scrapUnionTruckSales();
+  // scrapTruckWholesalers();
+  // scrapFusoPortMelbourne();
+  // scrapWestarTruckCentre();
+  // scrapLarsensTruckSales();
+  // scrapWesternTruckSales();
+  // scrapDaimlerTrucksPerth();
+  // scrapVelocityTruckCentres();
+  // scrapDaimlerTrucksBrisbane();
+  // scrapGilbertAndRoachSydney();
+  // scrapHumeHighwayTruckSales();
+  // scrapDaimlerTrucksMilperra();
+  // scrapWhiteHorseTruckCentre();
+  // scrapMelbourneTruckAndVans();
+  // scrapSammutAgriculturalMachinery();
+}, 1000 * 60 * 60 * 24 * 3);
 
 // Run server
 app.listen(PORT, () => console.log("Server started"));
