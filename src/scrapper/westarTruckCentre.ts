@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
 
 export default async function scrapWestarTruckCentre() {
@@ -41,9 +42,13 @@ export default async function scrapWestarTruckCentre() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Westar Truck Centre");
           }
         } catch (err) {
+          // Close the browser and send email
+          await browser.close();
           sendErrorEmail("Westar Truck Centre");
         }
       }
@@ -127,18 +132,45 @@ export default async function scrapWestarTruckCentre() {
             // Add truck to trucks
             trucks = [...trucks, truck];
           } catch (err) {
+            // Close the browser and send email
+            await browser.close();
             sendErrorEmail("Westar Truck Centre");
           }
         } catch (err) {
+          // Close the browser and send email
+          await browser.close();
           sendErrorEmail("Westar Truck Centre");
         }
       }
 
-      console.log(trucks);
+      // Replace the trucks in the db
+      try {
+        // Delete all previous trucks
+        await Truck.deleteMany({
+          website: "westar",
+        });
 
-      // Close the browser
-      await browser.close();
+        try {
+          // Create new trucks
+          await Truck.create(trucks);
+
+          console.log("done");
+
+          // Close the browser
+          await browser.close();
+        } catch (err) {
+          // Close the browser and send email
+          await browser.close();
+          sendErrorEmail("Westar Truck Centre");
+        }
+      } catch (err) {
+        // Close the browser and send email
+        await browser.close();
+        sendErrorEmail("Westar Truck Centre");
+      }
     } catch (err) {
+      // Close the browser and send email
+      await browser.close();
       sendErrorEmail("Westar Truck Centre");
     }
   } catch (err) {
