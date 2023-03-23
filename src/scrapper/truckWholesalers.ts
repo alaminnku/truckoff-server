@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer";
-import { scrollPageToBottom } from "puppeteer-autoscroll-down";
+import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
+import { scrollPageToBottom } from "puppeteer-autoscroll-down";
 
 export default async function scrapTruckWholesalers() {
   try {
@@ -39,7 +40,9 @@ export default async function scrapTruckWholesalers() {
                   // Call the function recursively
                   loadAllTrucks();
                 } catch (err) {
-                  sendErrorEmail("Truck Wholesalers");
+                  // Close the browser and send email
+                  await browser.close();
+                  sendErrorEmail("Truck Wholesalers Australia");
                 }
               } else {
                 try {
@@ -152,37 +155,73 @@ export default async function scrapTruckWholesalers() {
                         // Add truck to trucks
                         trucks = [...trucks, truck];
                       } catch (err) {
-                        sendErrorEmail("Truck Wholesalers");
+                        // Close the browser and send email
+                        await browser.close();
+                        sendErrorEmail("Truck Wholesalers Australia");
                       }
                     } catch (err) {
-                      sendErrorEmail("Truck Wholesalers");
+                      // Close the browser and send email
+                      await browser.close();
+                      sendErrorEmail("Truck Wholesalers Australia");
                     }
                   }
 
-                  console.log(trucks);
+                  // Replace the trucks in the db
+                  try {
+                    // Delete all previous trucks
+                    await Truck.deleteMany({
+                      website: "truckwholesalersaustralia",
+                    });
 
-                  // Close the browser
-                  await browser.close();
+                    try {
+                      // Create new trucks
+                      await Truck.create(trucks);
+
+                      console.log("done");
+
+                      // Close the browser
+                      await browser.close();
+                    } catch (err) {
+                      // Close the browser and send email
+                      await browser.close();
+                      sendErrorEmail("Truck Wholesalers Australia");
+                    }
+                  } catch (err) {
+                    // Close the browser and send email
+                    await browser.close();
+                    sendErrorEmail("Truck Wholesalers Australia");
+                  }
                 } catch (err) {
-                  sendErrorEmail("Truck Wholesalers");
+                  // Close the browser and send email
+                  await browser.close();
+                  sendErrorEmail("Truck Wholesalers Australia");
                 }
               }
             } catch (err) {
-              sendErrorEmail("Truck Wholesalers");
+              // Close the browser and send email
+              await browser.close();
+              sendErrorEmail("Truck Wholesalers Australia");
             }
           } catch (err) {
-            sendErrorEmail("Truck Wholesalers");
+            // Close the browser and send email
+            await browser.close();
+            sendErrorEmail("Truck Wholesalers Australia");
           }
         }
 
+        // Run load all trucks function
         loadAllTrucks();
       } catch (err) {
-        sendErrorEmail("Truck Wholesalers");
+        // Close the browser and send email
+        await browser.close();
+        sendErrorEmail("Truck Wholesalers Australia");
       }
     } catch (err) {
-      sendErrorEmail("Truck Wholesalers");
+      // Close the browser and send email
+      await browser.close();
+      sendErrorEmail("Truck Wholesalers Australia");
     }
   } catch (err) {
-    sendErrorEmail("Truck Wholesalers");
+    sendErrorEmail("Truck Wholesalers Australia");
   }
 }
