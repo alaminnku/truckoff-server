@@ -99,7 +99,9 @@ export default async function scrapFusoPortMelbourne() {
                               ?.textContent?.trim();
 
                             // Price
-                            const price = getFeatureText("Price");
+                            const price = getFeatureText("Price")
+                              ?.slice(1)
+                              .replace(",", "");
 
                             // Year
                             const year = getFeatureText("Model Year");

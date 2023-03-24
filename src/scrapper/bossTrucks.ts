@@ -101,7 +101,9 @@ export default async function scrapBossTrucks() {
                     // Price
                     const price = getSelectorText(
                       "#title_pricing_container > div > div.pricing_alignment > div > div.col-xs-6.price > span"
-                    );
+                    )
+                      ?.slice(1)
+                      .replace(",", "");
 
                     // Year
                     const year = name?.split(" ")[0];

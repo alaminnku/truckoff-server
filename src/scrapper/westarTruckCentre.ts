@@ -91,7 +91,9 @@ export default async function scrapWestarTruckCentre() {
               // Price
               const price = getSelectorText(
                 "#title_pricing_container > div > div.pricing_alignment > div > div.col-xs-6.price > span.price_value"
-              );
+              )
+                ?.slice(1)
+                .replace(",", "");
 
               // Year
               const year = name?.split(" ")[0];

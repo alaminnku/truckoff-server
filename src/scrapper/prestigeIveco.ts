@@ -101,7 +101,9 @@ export default async function scrapPrestigeIveco() {
                           // Price
                           const price = getSelectorText(
                             "body > main > div > div.sd-col-g > div > div.sl-heading-link > a > h4"
-                          );
+                          )
+                            ?.slice(1)
+                            .replace(",", "");
 
                           // Year
                           const year = getFeatureText("Year");

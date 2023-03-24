@@ -84,7 +84,9 @@ export default async function scrapIsuzu() {
               // Price
               const price = getSelectorText(
                 "body > section > div > div.cl-content > div:nth-child(2) > div.d-col-3 > div > div > div > span.t-large"
-              );
+              )
+                ?.slice(1)
+                .replace(",", "");
 
               // Year
               const year = getFeatureText("Year Built:");

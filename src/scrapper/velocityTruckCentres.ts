@@ -109,6 +109,7 @@ export default async function scrapVelocityTruckCentres() {
                 make,
                 model,
                 images,
+                price: "poa",
                 website: "velocitytruckcentres",
               };
             });

@@ -86,7 +86,9 @@ export default async function scrapRobEquipment() {
               // Price
               const price = getSelectorText(
                 "#content > div.container.single-car-page > div > div.col-md-4.fantasy-themes-sidebar-width.fantasy-themes-sidebar-car > div > div.widget.autoroyal-price-list > h2 > span"
-              );
+              )
+                ?.slice(1)
+                .replace(",", "");
 
               // Year
               const year = getSelectorText("div > header > h1 > span");

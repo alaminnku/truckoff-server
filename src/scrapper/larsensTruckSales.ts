@@ -81,7 +81,7 @@ export default async function scrapLarsensTruckSales() {
               const name = getFeatureText("Vehicle:");
 
               // Price
-              const price = getFeatureText("Price:");
+              const price = getFeatureText("Price:")?.slice(1).replace(",", "");
 
               // Year
               const year = name?.split(" ")[0];

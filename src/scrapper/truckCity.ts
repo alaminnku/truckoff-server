@@ -90,7 +90,9 @@ export default async function scrapTruckCity() {
                   // Price
                   const price = getSelectorText(
                     "#main-content > div.detail__right-col > div.detail__details > div.listing-prices > div > div > div > span"
-                  );
+                  )
+                    ?.slice(1)
+                    .replace(",", "");
 
                   // Year
                   const year = getFeatureText("Year");

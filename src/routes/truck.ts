@@ -7,11 +7,18 @@ const router = express.Router();
 // Get all trucks
 router.get("/", async (req: Request, res: Response) => {
   try {
-    const trucks = await Truck.find();
+    // Make request to db
+    const trucks = await Truck.find()
+      .select("-__v -updatedAt -website")
+      .lean()
+      .orFail()
+      .limit(100);
 
+    // Return the response
     res.status(200).json(trucks);
   } catch (err) {
     console.log(err);
+    res.status(500).json({ message: "Failed to get all trucks" });
   }
 });
 

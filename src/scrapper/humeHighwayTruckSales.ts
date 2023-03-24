@@ -109,7 +109,9 @@ export default async function scrapHumeHighwayTruckSales() {
               // Price
               const price = getSelectorText(
                 "#main-content > div.detail__right-col > div.detail__details > div.listing-prices > div > div.listing-prices__retail > div > span"
-              );
+              )
+                ?.slice(1)
+                .replace(",", "");
 
               // Year
               const year = getFeatureText("Year");

@@ -95,7 +95,10 @@ export default async function scrapMidCoastTrucks() {
                           // Price
                           const price = getSelectorText(
                             "#content > div:nth-child(2) > div > div.cell.medium-4 > div.vehicle__sidebar > div.vehicle__price-wrapper.text-center > span"
-                          )?.replace("*", "");
+                          )
+                            ?.replace("*", "")
+                            ?.slice(1)
+                            .replace(",", "");
 
                           // Year
                           const year = getFeatureText("Year");

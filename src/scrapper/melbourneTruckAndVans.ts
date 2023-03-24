@@ -80,7 +80,9 @@ export default async function scrapMelbourneTruckAndVans() {
               // Price
               const price = getSelectorText(
                 "#__next > div.defaultPage > div.bg-white > div.py-md-4.container-xl > div.CarHeading_noMargins__pmNH9.row.no-gutters.overflow-hidden > div.col-lg-5.col-xl-4.order-3.order-lg-2.pb-0 > div > div.flex-fill > div > div:nth-child(1) > h3"
-              );
+              )
+                ?.slice(1)
+                .replace(",", "");
 
               // Year
               const year = name?.split(" ")[0];

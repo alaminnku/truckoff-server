@@ -50,6 +50,8 @@ app.use(
   })
 );
 
+scrapCtrTrucks();
+
 // Scrap once
 setTimeout(() => {
   // scrapIsuzu();

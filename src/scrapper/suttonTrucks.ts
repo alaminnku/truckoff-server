@@ -91,7 +91,9 @@ export default async function scrapSuttonTrucks() {
               // Price
               const price = getSelectorText(
                 "#vehicleEnquiry > div > div.form__header > div > h2"
-              );
+              )
+                ?.slice(1)
+                .replace(",", "");
 
               // Year
               const year = name?.split(" ")[0];

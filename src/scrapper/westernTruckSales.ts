@@ -124,6 +124,7 @@ export default async function scrapWesternTruckSales() {
                             make,
                             images,
                             bodyType,
+                            price: "poa",
                             location: "WA",
                             website: "wts",
                           };

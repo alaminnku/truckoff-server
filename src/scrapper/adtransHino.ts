@@ -84,7 +84,10 @@ export default async function scrapAdtransHino() {
               // Price
               const price = getSelectorText(
                 "#inventory__priceSpecsContainer > div.invPrice > div > div.actualPrice > p"
-              )?.split("*")[0];
+              )
+                ?.split("*")[0]
+                .slice(1)
+                .replace(",", "");
 
               // Year
               const year = name?.split(" ")[0];

@@ -108,7 +108,10 @@ export default async function scrapSammutAgriculturalMachinery() {
               // Price
               const price = getSelectorText(
                 "body > div.container > div > div.col-lg-8 > div > div.row.heading > div.col-lg-10.col-xs-12 > div > div"
-              )?.replace("*", "");
+              )
+                ?.replace("*", "")
+                .slice(1)
+                .replace(",", "");
 
               // Year
               const year = getFeatureText("Year:");

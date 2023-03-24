@@ -101,7 +101,11 @@ export default async function scrapTruckWholesalers() {
 
                           // Price
                           const price = name?.includes("$")
-                            ? name.split("$")[1].split(" ")[0]
+                            ? name
+                                .split("$")[1]
+                                .split(" ")[0]
+                                .replace("+GST", "")
+                                .replace(",", "")
                             : "poa";
 
                           // Year
