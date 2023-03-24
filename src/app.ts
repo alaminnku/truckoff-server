@@ -2,6 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mail from "@sendgrid/mail";
+import Truck from "./routes/truck";
 import { connectDB } from "./config/db";
 import scrapIsuzu from "./scrapper/isuzu";
 import scrapTruckCity from "./scrapper/truckCity";
@@ -37,8 +38,6 @@ mail.setApiKey(process.env.SENDGRID_API_KEY as string);
 // Create port
 const PORT = process.env.PORT || 5300;
 
-// Connect database
-
 // Create app
 const app = express();
 
@@ -50,6 +49,35 @@ app.use(
     origin: process.env.CLIENT_URL,
   })
 );
+
+// Scrap once
+setTimeout(() => {
+  // scrapIsuzu();
+  // scrapCtrTrucks();
+  // scrapTruckCity();
+  // scrapBossTrucks();
+  // scrapAdtransHino();
+  // scrapRobEquipment();
+  // scrapSuttonTrucks();
+  // scrapAdtransTrucks();
+  // scrapPrestigeIveco();
+  // scrapMidCoastTrucks();
+  // scrapUnionTruckSales();
+  // scrapTruckWholesalers();
+  // scrapFusoPortMelbourne();
+  // scrapWestarTruckCentre();
+  // scrapLarsensTruckSales();
+  // scrapWesternTruckSales();
+  // scrapDaimlerTrucksPerth();
+  // scrapVelocityTruckCentres();
+  // scrapDaimlerTrucksBrisbane();
+  // scrapGilbertAndRoachSydney();
+  // scrapHumeHighwayTruckSales();
+  // scrapDaimlerTrucksMilperra();
+  // scrapWhiteHorseTruckCentre();
+  // scrapMelbourneTruckAndVans();
+  // scrapSammutAgriculturalMachinery();
+}, 0);
 
 // Schedule scrappers
 setInterval(() => {
@@ -79,6 +107,9 @@ setInterval(() => {
   // scrapMelbourneTruckAndVans();
   // scrapSammutAgriculturalMachinery();
 }, 1000 * 60 * 60 * 24 * 3);
+
+// Routes
+app.use("/trucks", Truck);
 
 // Run server
 app.listen(PORT, () => console.log("Server started"));
