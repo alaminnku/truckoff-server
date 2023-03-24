@@ -90,7 +90,10 @@ export default async function scrapCtrTrucks() {
                   // Price
                   const price = getSelectorText(
                     "#main-content > div.detail__right-col > div.detail__details > div.listing-prices > div > div.listing-prices__retail > div > span"
-                  );
+                  )
+                    ?.replace("AUD ", "")
+                    .slice(1)
+                    .replace(",", "");
 
                   // Year
                   const year = getFeatureText("Year");

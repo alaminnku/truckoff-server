@@ -74,12 +74,12 @@ export default async function scrapMelbourneTruckAndVans() {
 
               // Name
               const name = getSelectorText(
-                "#__next > div.defaultPage > div.bg-white > div.py-md-4.container-xl > div.CarHeading_noMargins__pmNH9.row.no-gutters.overflow-hidden > div.col-lg-5.col-xl-4.order-3.order-lg-2.pb-0 > div > div.flex-fill > h1"
+                "#__next > div.defaultPage.carPage > div:nth-child(2) > div.py-md-4.container-xl > div.CarHeading_noMargins__pmNH9.row.no-gutters.overflow-hidden > div.col-lg-5.col-xl-4.order-3.order-lg-2.pb-0 > div > div > div:nth-child(1) > h1"
               );
 
               // Price
               const price = getSelectorText(
-                "#__next > div.defaultPage > div.bg-white > div.py-md-4.container-xl > div.CarHeading_noMargins__pmNH9.row.no-gutters.overflow-hidden > div.col-lg-5.col-xl-4.order-3.order-lg-2.pb-0 > div > div.flex-fill > div > div:nth-child(1) > h3"
+                "#__next > div.defaultPage.carPage > div:nth-child(2) > div.py-md-4.container-xl > div.CarHeading_noMargins__pmNH9.row.no-gutters.overflow-hidden > div.col-lg-5.col-xl-4.order-3.order-lg-2.pb-0 > div > div > div:nth-child(1) > div > div.layout__Col-sc-rptak4-1.gEeCsg > span > h3"
               )
                 ?.slice(1)
                 .replace(",", "");
@@ -92,12 +92,12 @@ export default async function scrapMelbourneTruckAndVans() {
 
               // Kilometers
               const kilometers = getSelectorText(
-                "#__next > div.defaultPage > div.bg-white > div.py-md-4.container-xl > div.row.py-4 > div.col-lg-8 > div.row > div.col-md-4 > div > div:nth-child(6)"
+                "#__next > div.defaultPage.carPage > div:nth-child(2) > div.py-md-4.container-xl > div.row.py-4 > div.col-lg-8 > div.row > div.col-md-4 > div > div:nth-child(6)"
               )?.replace("kms", "KM");
 
               // Get image nodes
               const imageNodes = document.querySelectorAll(
-                "#__next > div.defaultPage > div.bg-white > div.py-md-4.container-xl > div.CarHeading_noMargins__pmNH9.row.no-gutters.overflow-hidden > div.col-lg-7.col-xl-8.order-1.order-lg-1.d-flex > div > div > div.w-100 > div > div > div > img"
+                "#__next > div.defaultPage.carPage > div:nth-child(2) > div.py-md-4.container-xl > div.CarHeading_noMargins__pmNH9.row.no-gutters.overflow-hidden > div.col-lg-7.col-xl-8.order-1.order-lg-1.d-flex > div > div > div.w-100 > div > div > div > img"
               );
 
               // Get all images

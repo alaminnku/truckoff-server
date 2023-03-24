@@ -24,7 +24,7 @@ import scrapWestarTruckCentre from "./scrapper/westarTruckCentre";
 import scrapDaimlerTrucksPerth from "./scrapper/daimlerTrucksPerth";
 import scrapVelocityTruckCentres from "./scrapper/velocityTruckCentres";
 import scrapDaimlerTrucksMilperra from "./scrapper/daimlerTrucksMilperra";
-import scrapWhiteHorseTruckCentre from "./scrapper/whiteHorseTruckCentre";
+import scrapDaimlerTrucksDanenong from "./scrapper/daimlerTrucksDandenong";
 import scrapHumeHighwayTruckSales from "./scrapper/humeHighwayTruckSales";
 import scrapGilbertAndRoachSydney from "./scrapper/gilbertAndRoachSydney";
 import scrapDaimlerTrucksBrisbane from "./scrapper/daimlerTrucksBrisbane";
@@ -50,8 +50,6 @@ app.use(
   })
 );
 
-scrapCtrTrucks();
-
 // Scrap once
 setTimeout(() => {
   // scrapIsuzu();
@@ -76,7 +74,7 @@ setTimeout(() => {
   // scrapGilbertAndRoachSydney();
   // scrapHumeHighwayTruckSales();
   // scrapDaimlerTrucksMilperra();
-  // scrapWhiteHorseTruckCentre();
+  // scrapDaimlerTrucksDanenong();
   // scrapMelbourneTruckAndVans();
   // scrapSammutAgriculturalMachinery();
 }, 0);
@@ -105,7 +103,7 @@ setInterval(() => {
   // scrapGilbertAndRoachSydney();
   // scrapHumeHighwayTruckSales();
   // scrapDaimlerTrucksMilperra();
-  // scrapWhiteHorseTruckCentre();
+  // scrapDaimlerTrucksDanenong();
   // scrapMelbourneTruckAndVans();
   // scrapSammutAgriculturalMachinery();
 }, 1000 * 60 * 60 * 24 * 3);
