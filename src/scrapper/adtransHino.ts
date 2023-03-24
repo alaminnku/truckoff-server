@@ -24,7 +24,7 @@ export default async function scrapAdtransHino() {
       ];
 
       // Get all truck urls from 3 pages
-      for (let i = 0; i < targets.length; i++) {
+      for (let i = 0; i < targets.length - 1; i++) {
         try {
           // Go to the page
           await page.goto(targets[i], { timeout: 0 });
@@ -127,7 +127,7 @@ export default async function scrapAdtransHino() {
             });
 
             // Add truck to trucks
-            trucks = [...trucks, truck];
+            trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
             // Close the browser and send email
             await browser.close();

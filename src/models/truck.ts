@@ -38,10 +38,15 @@ const truckSchema = new Schema(
       type: String,
       trim: true,
     },
+    origin: {
+      type: String,
+      trim: true,
+    },
     website: {
       type: String,
       trim: true,
     },
+
     images: [
       {
         type: String,

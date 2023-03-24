@@ -51,8 +51,6 @@ app.use(
   })
 );
 
-scrapDaimlerTrucksLaverton();
-
 // // Scrap once
 // setTimeout(() => {
 //   scrapIsuzu();
