@@ -132,6 +132,7 @@ export default async function scrapDaimlerTrucksDanenong() {
                               price,
                               images,
                               kilometers,
+                              location: "VIC",
                               website: "daimlertrucksdandenong",
                             };
                           });

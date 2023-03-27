@@ -8,11 +8,16 @@ const router = express.Router();
 router.get("/", async (req: Request, res: Response) => {
   try {
     // Make request to db
-    const trucks = await Truck.find()
+    const response = await Truck.find()
       .select("-__v -updatedAt -website")
       .lean()
-      .orFail()
-      .limit(100);
+      .orFail();
+    // .limit(100);
+
+    // Filter trucks
+    const trucks = response.filter(
+      (truck) => truck.images.length > 0 && truck.price !== "poa"
+    );
 
     // Return the response
     res.status(200).json(trucks);
