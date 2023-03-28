@@ -14,7 +14,7 @@ export default async function scrapVelocityTruckCentres() {
       const page = await browser.newPage();
 
       // Truck URLs
-      let truckUrls: string[] = [];
+      let truckUrlsAndLocations: { url: string; location: string }[] = [];
 
       // Get all truck urls from 5 pages
       for (let i = 1; i < 5; i++) {
@@ -27,23 +27,66 @@ export default async function scrapVelocityTruckCentres() {
 
           try {
             // Get all urls in the page
-            const truckUrlsPerPage = await page.evaluate(() => {
+            const truckUrlsAndLocationsPerPage = await page.evaluate(() => {
               // Get all url nodes
               const urlNodes = document.getElementsByClassName(
                 "list-bottom listing-view"
               );
 
-              // Return the full urls
-              return Array.from(urlNodes).map(
+              // Get the location nodes
+              const locationNodes = document.querySelectorAll(
+                "#partialinventory > div > div > div > div.list-body > a"
+              );
+
+              // Get locations
+              const locations = Array.from(locationNodes).map(
+                (locationNode) =>
+                  locationNode.getAttribute("href")?.split("location/")[1]
+              );
+
+              // Get the full urls
+              const urls = Array.from(urlNodes).map(
                 (urlNode) =>
                   `https://www.velocitytruckcentres.com.au/inventory/used-trucks/${urlNode.getAttribute(
                     "data-slug"
                   )}`
               );
+
+              const getLocation = (index: number) => locations[index];
+
+              // Return url and location
+              return urls.map((url, index) => {
+                const location = locations[index];
+
+                return {
+                  url,
+                  location:
+                    location === "dandenong-south"
+                      ? "VIC"
+                      : location === "regency-park"
+                      ? "SA"
+                      : location === "perth"
+                      ? "WA"
+                      : location === "milperra"
+                      ? "NSW"
+                      : location === "port-melbourne"
+                      ? "VIC"
+                      : location === "burleigh"
+                      ? "QLD"
+                      : location === "truganina"
+                      ? "VIC"
+                      : location === "darra"
+                      ? "QLD"
+                      : "SA",
+                };
+              });
             });
 
             // Add urls to truckUrls
-            truckUrls = [...truckUrls, ...truckUrlsPerPage];
+            truckUrlsAndLocations = [
+              ...truckUrlsAndLocations,
+              ...truckUrlsAndLocationsPerPage,
+            ];
           } catch (err) {
             // Send email
             sendErrorEmail("Velocity Truck Centres");
@@ -58,10 +101,10 @@ export default async function scrapVelocityTruckCentres() {
       let trucks: any[] = [];
 
       // Collect truck details
-      for (let i = 0; i < truckUrls.length; i++) {
+      for (let i = 0; i < truckUrlsAndLocations.length; i++) {
         try {
           // Go to truck page
-          await page.goto(truckUrls[i], { timeout: 0 });
+          await page.goto(truckUrlsAndLocations[i].url, { timeout: 0 });
 
           try {
             // Create truck details
@@ -113,7 +156,14 @@ export default async function scrapVelocityTruckCentres() {
             });
 
             // Add truck to trucks
-            trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
+            trucks = [
+              ...trucks,
+              {
+                ...truck,
+                origin: truckUrlsAndLocations[i].url,
+                location: truckUrlsAndLocations[i].location,
+              },
+            ];
           } catch (err) {
             // Send email
             sendErrorEmail("Velocity Truck Centres");

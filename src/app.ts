@@ -70,6 +70,7 @@ app.use(
 //   scrapLarsensTruckSales();
 //   scrapWesternTruckSales();
 //   scrapDaimlerTrucksPerth();
+// scrapDaimlerTrucksLaverton();
 //   scrapVelocityTruckCentres();
 //   scrapDaimlerTrucksBrisbane();
 //   scrapGilbertAndRoachSydney();
@@ -99,6 +100,7 @@ setInterval(() => {
   // scrapLarsensTruckSales();
   // scrapWesternTruckSales();
   // scrapDaimlerTrucksPerth();
+  // scrapDaimlerTrucksLaverton()
   // scrapVelocityTruckCentres();
   // scrapDaimlerTrucksBrisbane();
   // scrapGilbertAndRoachSydney();
