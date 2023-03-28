@@ -42,13 +42,13 @@ export default async function scrapRobEquipment() {
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Rob Equipment");
             console.log(err);
+            // sendErrorEmail("Rob Equipment");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Rob Equipment");
           console.log(err);
+          // sendErrorEmail("Rob Equipment");
         }
       }
 
@@ -133,13 +133,13 @@ export default async function scrapRobEquipment() {
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Rob Equipment");
             console.log(err);
+            // sendErrorEmail("Rob Equipment");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Rob Equipment");
           console.log(err);
+          // sendErrorEmail("Rob Equipment");
         }
       }
 
@@ -161,24 +161,24 @@ export default async function scrapRobEquipment() {
           await browser.close();
         } catch (err) {
           // Close the browser and send email
+          console.log(err);
           await browser.close();
           // sendErrorEmail("Rob Equipment");
-          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Rob Equipment");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Rob Equipment");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Rob Equipment");
     console.log(err);
+    // sendErrorEmail("Rob Equipment");
   }
 }

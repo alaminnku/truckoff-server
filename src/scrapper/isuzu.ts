@@ -42,8 +42,8 @@ export default async function scrapIsuzu() {
           truckUrls = [...truckUrls, ...truckUrlsPerPage];
         } catch (err) {
           // Send email
-          // sendErrorEmail("Isuzu");
           console.log(err);
+          // sendErrorEmail("Isuzu");
         }
       }
 
@@ -138,13 +138,13 @@ export default async function scrapIsuzu() {
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Isuzu");
             console.log(err);
+            // sendErrorEmail("Isuzu");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Isuzu");
           console.log(err);
+          // sendErrorEmail("Isuzu");
         }
       }
 
@@ -166,24 +166,24 @@ export default async function scrapIsuzu() {
           await browser.close();
         } catch (err) {
           // Close the browser and send email
+          console.log(err);
           await browser.close();
           // sendErrorEmail("Isuzu");
-          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Isuzu");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Isuzu");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Isuzu");
     console.log(err);
+    // sendErrorEmail("Isuzu");
   }
 }

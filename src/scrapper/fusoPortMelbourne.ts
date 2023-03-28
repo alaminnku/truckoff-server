@@ -46,9 +46,9 @@ export default async function scrapFusoPortMelbourne() {
                     loadAllTrucks();
                   } catch (err) {
                     // Close the browser and send email
+                    console.log(err);
                     await browser.close();
                     // sendErrorEmail("Fuso Port Melbourne");
-                    console.log(err);
                   }
                 } else {
                   try {
@@ -149,13 +149,13 @@ export default async function scrapFusoPortMelbourne() {
                           ];
                         } catch (err) {
                           // Send email
-                          // sendErrorEmail("Fuso Port Melbourne");
                           console.log(err);
+                          // sendErrorEmail("Fuso Port Melbourne");
                         }
                       } catch (err) {
                         // Send email
-                        // sendErrorEmail("Fuso Port Melbourne");
                         console.log(err);
+                        // sendErrorEmail("Fuso Port Melbourne");
                       }
                     }
 
@@ -177,40 +177,40 @@ export default async function scrapFusoPortMelbourne() {
                         await browser.close();
                       } catch (err) {
                         // Close the browser and send email
+                        console.log(err);
                         await browser.close();
                         // sendErrorEmail("Fuso Port Melbourne");
-                        console.log(err);
                       }
                     } catch (err) {
                       // Close the browser and send email
+                      console.log(err);
                       await browser.close();
                       // sendErrorEmail("Fuso Port Melbourne");
-                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
+                    console.log(err);
                     await browser.close();
                     // sendErrorEmail("Fuso Port Melbourne");
-                    console.log(err);
                   }
                 }
               } catch (err) {
                 // Close the browser and send email
+                console.log(err);
                 await browser.close();
                 // sendErrorEmail("Fuso Port Melbourne");
-                console.log(err);
               }
             } catch (err) {
               // Close the browser and send email
+              console.log(err);
               await browser.close();
               // sendErrorEmail("Fuso Port Melbourne");
-              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
+            console.log(err);
             await browser.close();
             // sendErrorEmail("Fuso Port Melbourne");
-            console.log(err);
           }
         }
 
@@ -218,18 +218,18 @@ export default async function scrapFusoPortMelbourne() {
         loadAllTrucks();
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Fuso Port Melbourne");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Fuso Port Melbourne");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Fuso Port Melbourne");
     console.log(err);
+    // sendErrorEmail("Fuso Port Melbourne");
   }
 }

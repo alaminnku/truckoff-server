@@ -52,19 +52,19 @@ export default async function scrapSuttonTrucks() {
               truckUrls = [...truckUrls, ...truckUrlsPerPage];
             } catch (err) {
               // Close the browser and send email
+              console.log(err);
               await browser.close();
               // sendErrorEmail("Sutton Trucks");
-              console.log(err);
             }
           } catch (err) {
             // Send email
-            // sendErrorEmail("Sutton Trucks");
             console.log(err);
+            // sendErrorEmail("Sutton Trucks");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Sutton Trucks");
           console.log(err);
+          // sendErrorEmail("Sutton Trucks");
         }
       }
 
@@ -134,13 +134,13 @@ export default async function scrapSuttonTrucks() {
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Sutton Trucks");
             console.log(err);
+            // sendErrorEmail("Sutton Trucks");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Sutton Trucks");
           console.log(err);
+          // sendErrorEmail("Sutton Trucks");
         }
       }
 
@@ -162,24 +162,24 @@ export default async function scrapSuttonTrucks() {
           await browser.close();
         } catch (err) {
           // Close the browser and send email
+          console.log(err);
           await browser.close();
           // sendErrorEmail("Sutton Trucks");
-          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Sutton Trucks");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Sutton Trucks");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Sutton Trucks");
     console.log(err);
+    // sendErrorEmail("Sutton Trucks");
   }
 }

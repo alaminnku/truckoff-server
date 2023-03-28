@@ -89,13 +89,13 @@ export default async function scrapVelocityTruckCentres() {
             ];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Velocity Truck Centres");
             console.log(err);
+            // sendErrorEmail("Velocity Truck Centres");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Velocity Truck Centres");
           console.log(err);
+          // sendErrorEmail("Velocity Truck Centres");
         }
       }
 
@@ -168,13 +168,13 @@ export default async function scrapVelocityTruckCentres() {
             ];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Velocity Truck Centres");
             console.log(err);
+            // sendErrorEmail("Velocity Truck Centres");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Velocity Truck Centres");
           console.log(err);
+          // sendErrorEmail("Velocity Truck Centres");
         }
       }
 
@@ -196,24 +196,24 @@ export default async function scrapVelocityTruckCentres() {
           await browser.close();
         } catch (err) {
           // Close the browser and send email
+          console.log(err);
           await browser.close();
           // sendErrorEmail("Velocity Truck Centres");
-          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Velocity Truck Centres");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Velocity Truck Centres");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Velocity Truck Centres");
     console.log(err);
+    // sendErrorEmail("Velocity Truck Centres");
   }
 }

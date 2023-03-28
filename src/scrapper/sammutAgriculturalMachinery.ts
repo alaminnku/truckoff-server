@@ -46,13 +46,13 @@ export default async function scrapSammutAgriculturalMachinery() {
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Sammut Agricultural Machinery");
             console.log(err);
+            // sendErrorEmail("Sammut Agricultural Machinery");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Sammut Agricultural Machinery");
           console.log(err);
+          // sendErrorEmail("Sammut Agricultural Machinery");
         }
       }
 
@@ -149,13 +149,13 @@ export default async function scrapSammutAgriculturalMachinery() {
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Sammut Agricultural Machinery");
             console.log(err);
+            // sendErrorEmail("Sammut Agricultural Machinery");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Sammut Agricultural Machinery");
           console.log(err);
+          // sendErrorEmail("Sammut Agricultural Machinery");
         }
       }
 
@@ -177,24 +177,24 @@ export default async function scrapSammutAgriculturalMachinery() {
           await browser.close();
         } catch (err) {
           // Close the browser and send email
+          console.log(err);
           await browser.close();
           // sendErrorEmail("Sammut Agricultural Machinery");
-          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Sammut Agricultural Machinery");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Sammut Agricultural Machinery");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Sammut Agricultural Machinery");
     console.log(err);
+    // sendErrorEmail("Sammut Agricultural Machinery");
   }
 }

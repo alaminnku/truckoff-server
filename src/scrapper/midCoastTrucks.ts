@@ -148,13 +148,13 @@ export default async function scrapMidCoastTrucks() {
                         ];
                       } catch (err) {
                         // Send email
-                        // sendErrorEmail("Mid Coast Trucks");
                         console.log(err);
+                        // sendErrorEmail("Mid Coast Trucks");
                       }
                     } catch (err) {
                       // Send email
-                      // sendErrorEmail("Mid Coast Trucks");
                       console.log(err);
+                      // sendErrorEmail("Mid Coast Trucks");
                     }
                   }
 
@@ -176,52 +176,52 @@ export default async function scrapMidCoastTrucks() {
                       await browser.close();
                     } catch (err) {
                       // Close the browser and send email
+                      console.log(err);
                       await browser.close();
                       // sendErrorEmail("Mid Coast Trucks");
-                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
+                    console.log(err);
                     await browser.close();
                     // sendErrorEmail("Mid Coast Trucks");
-                    console.log(err);
                   }
                 } catch (err) {
                   // Close the browser and send email
+                  console.log(err);
                   await browser.close();
                   // sendErrorEmail("Mid Coast Trucks");
-                  console.log(err);
                 }
               }
             } catch (err) {
               // Close the browser and send email
+              console.log(err);
               await browser.close();
               // sendErrorEmail("Mid Coast Trucks");
-              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
+            console.log(err);
             await browser.close();
             // sendErrorEmail("Mid Coast Trucks");
-            console.log(err);
           }
         }
 
         loadAllTrucks();
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Mid Coast Trucks");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Mid Coast Trucks");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Mid Coast Trucks");
     console.log(err);
+    // sendErrorEmail("Mid Coast Trucks");
   }
 }

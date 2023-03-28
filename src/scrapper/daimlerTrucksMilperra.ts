@@ -49,9 +49,9 @@ export default async function scrapDaimlerTrucksMilperra() {
                     loadAllTrucks();
                   } catch (err) {
                     // Close the browser and send email
+                    console.log(err);
                     await browser.close();
                     // sendErrorEmail("Daimler Trucks Milperra");
-                    console.log(err);
                   }
                 } else {
                   try {
@@ -152,13 +152,13 @@ export default async function scrapDaimlerTrucksMilperra() {
                           ];
                         } catch (err) {
                           // Send email
-                          // sendErrorEmail("Daimler Trucks Milperra");
                           console.log(err);
+                          // sendErrorEmail("Daimler Trucks Milperra");
                         }
                       } catch (err) {
                         // Send email
-                        // sendErrorEmail("Daimler Trucks Milperra");
                         console.log(err);
+                        // sendErrorEmail("Daimler Trucks Milperra");
                       }
                     }
 
@@ -183,40 +183,40 @@ export default async function scrapDaimlerTrucksMilperra() {
                         await browser.close();
                       } catch (err) {
                         // Close the browser and send email
+                        console.log(err);
                         await browser.close();
                         // sendErrorEmail("Daimler Trucks Milperra");
-                        console.log(err);
                       }
                     } catch (err) {
                       // Close the browser and send email
+                      console.log(err);
                       await browser.close();
                       // sendErrorEmail("Daimler Trucks Milperra");
-                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
+                    console.log(err);
                     await browser.close();
                     // sendErrorEmail("Daimler Trucks Milperra");
-                    console.log(err);
                   }
                 }
               } catch (err) {
                 // Close the browser and send email
                 await browser.close();
-                // sendErrorEmail("Daimler Trucks Milperra");
                 console.log(err);
+                // sendErrorEmail("Daimler Trucks Milperra");
               }
             } catch (err) {
               // Close the browser and send email
+              console.log(err);
               await browser.close();
               // sendErrorEmail("Daimler Trucks Milperra");
-              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
+            console.log(err);
             await browser.close();
             // sendErrorEmail("Daimler Trucks Milperra");
-            console.log(err);
           }
         }
 
@@ -224,18 +224,18 @@ export default async function scrapDaimlerTrucksMilperra() {
         loadAllTrucks();
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Daimler Trucks Milperra");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Daimler Trucks Milperra");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Daimler Trucks Milperra");
     console.log(err);
+    // sendErrorEmail("Daimler Trucks Milperra");
   }
 }

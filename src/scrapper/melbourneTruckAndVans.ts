@@ -46,13 +46,13 @@ export default async function scrapMelbourneTruckAndVans() {
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Melbourne Truck and Vans");
             console.log(err);
+            // sendErrorEmail("Melbourne Truck and Vans");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Melbourne Truck and Vans");
           console.log(err);
+          // sendErrorEmail("Melbourne Truck and Vans");
         }
       }
 
@@ -122,13 +122,13 @@ export default async function scrapMelbourneTruckAndVans() {
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Melbourne Truck and Vans");
             console.log(err);
+            // sendErrorEmail("Melbourne Truck and Vans");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Melbourne Truck and Vans");
           console.log(err);
+          // sendErrorEmail("Melbourne Truck and Vans");
         }
       }
 
@@ -150,24 +150,24 @@ export default async function scrapMelbourneTruckAndVans() {
           await browser.close();
         } catch (err) {
           // Close the browser and send email
+          console.log(err);
           await browser.close();
           // sendErrorEmail("Melbourne Truck and Vans");
-          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Melbourne Truck and Vans");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Melbourne Truck and Vans");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Melbourne Truck and Vans");
     console.log(err);
+    // sendErrorEmail("Melbourne Truck and Vans");
   }
 }

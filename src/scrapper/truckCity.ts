@@ -134,13 +134,13 @@ export default async function scrapTruckCity() {
                 trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
               } catch (err) {
                 // Send email
-                // sendErrorEmail("Truck City");
                 console.log(err);
+                // sendErrorEmail("Truck City");
               }
             } catch (err) {
               // Send email
-              // sendErrorEmail("Truck City");
               console.log(err);
+              // sendErrorEmail("Truck City");
             }
           }
 
@@ -162,36 +162,36 @@ export default async function scrapTruckCity() {
               await browser.close();
             } catch (err) {
               // Close the browser and send email
+              console.log(err);
               await browser.close();
               // sendErrorEmail("Truck City");
-              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
+            console.log(err);
             await browser.close();
             // sendErrorEmail("Truck City");
-            console.log(err);
           }
         } catch (err) {
           // Close the browser and send email
+          console.log(err);
           await browser.close();
           // sendErrorEmail("Truck City");
-          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Truck City");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Truck City");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Truck City");
     console.log(err);
+    // sendErrorEmail("Truck City");
   }
 }

@@ -40,9 +40,9 @@ export default async function scrapPrestigeIveco() {
                   loadAllTrucks();
                 } catch (err) {
                   // Close the browser and send email
+                  console.log(err);
                   await browser.close();
                   // sendErrorEmail("Prestige Iveco");
-                  console.log(err);
                 }
               } else {
                 try {
@@ -161,13 +161,13 @@ export default async function scrapPrestigeIveco() {
                         ];
                       } catch (err) {
                         // Send email
-                        // sendErrorEmail("Prestige Iveco");
                         console.log(err);
+                        // sendErrorEmail("Prestige Iveco");
                       }
                     } catch (err) {
                       // Send email
-                      // sendErrorEmail("Prestige Iveco");
                       console.log(err);
+                      // sendErrorEmail("Prestige Iveco");
                     }
                   }
 
@@ -189,34 +189,34 @@ export default async function scrapPrestigeIveco() {
                       await browser.close();
                     } catch (err) {
                       // Close the browser and send email
+                      console.log(err);
                       await browser.close();
                       // sendErrorEmail("Prestige Iveco");
-                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
+                    console.log(err);
                     await browser.close();
                     // sendErrorEmail("Prestige Iveco");
-                    console.log(err);
                   }
                 } catch (err) {
                   // Close the browser and send email
+                  console.log(err);
                   await browser.close();
                   // sendErrorEmail("Prestige Iveco");
-                  console.log(err);
                 }
               }
             } catch (err) {
               // Close the browser and send email
+              console.log(err);
               await browser.close();
               // sendErrorEmail("Prestige Iveco");
-              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
+            console.log(err);
             await browser.close();
             // sendErrorEmail("Prestige Iveco");
-            console.log(err);
           }
         }
 
@@ -224,18 +224,18 @@ export default async function scrapPrestigeIveco() {
         loadAllTrucks();
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Prestige Iveco");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Prestige Iveco");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Prestige Iveco");
     console.log(err);
+    // sendErrorEmail("Prestige Iveco");
   }
 }

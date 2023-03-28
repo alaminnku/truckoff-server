@@ -47,8 +47,8 @@ export default async function scrapDaimlerTrucksPerth() {
                   } catch (err) {
                     // Close the browser and send email
                     await browser.close();
-                    // sendErrorEmail("Daimler Trucks Perth");
                     console.log(err);
+                    // sendErrorEmail("Daimler Trucks Perth");
                   }
                 } else {
                   try {
@@ -149,13 +149,13 @@ export default async function scrapDaimlerTrucksPerth() {
                           ];
                         } catch (err) {
                           // Send email
-                          // sendErrorEmail("Daimler Trucks Perth");
                           console.log(err);
+                          // sendErrorEmail("Daimler Trucks Perth");
                         }
                       } catch (err) {
                         // Send email
-                        // sendErrorEmail("Daimler Trucks Perth");
                         console.log(err);
+                        // sendErrorEmail("Daimler Trucks Perth");
                       }
                     }
 
@@ -177,40 +177,40 @@ export default async function scrapDaimlerTrucksPerth() {
                         await browser.close();
                       } catch (err) {
                         // Close the browser and send email
+                        console.log(err);
                         await browser.close();
                         // sendErrorEmail("Daimler Trucks Perth");
-                        console.log(err);
                       }
                     } catch (err) {
                       // Close the browser and send email
+                      console.log(err);
                       await browser.close();
                       // sendErrorEmail("Daimler Trucks Perth");
-                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
+                    console.log(err);
                     await browser.close();
                     // sendErrorEmail("Daimler Trucks Perth");
-                    console.log(err);
                   }
                 }
               } catch (err) {
                 // Close the browser and send email
+                console.log(err);
                 await browser.close();
                 // sendErrorEmail("Daimler Trucks Perth");
-                console.log(err);
               }
             } catch (err) {
               // Close the browser and send email
+              console.log(err);
               await browser.close();
               // sendErrorEmail("Daimler Trucks Perth");
-              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
+            console.log(err);
             await browser.close();
             // sendErrorEmail("Daimler Trucks Perth");
-            console.log(err);
           }
         }
 
@@ -218,18 +218,18 @@ export default async function scrapDaimlerTrucksPerth() {
         loadAllTrucks();
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Daimler Trucks Perth");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Daimler Trucks Perth");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Daimler Trucks Perth");
     console.log(err);
+    // sendErrorEmail("Daimler Trucks Perth");
   }
 }

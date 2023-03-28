@@ -50,13 +50,13 @@ export default async function scrapAdtransHino() {
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Adtrans Hino");
             console.log(err);
+            // sendErrorEmail("Adtrans Hino");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Adtrans Hino");
           console.log(err);
+          // sendErrorEmail("Adtrans Hino");
         }
       }
 
@@ -130,13 +130,13 @@ export default async function scrapAdtransHino() {
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
             // Send email
-            // sendErrorEmail("Adtrans Hino");
             console.log(err);
+            // sendErrorEmail("Adtrans Hino");
           }
         } catch (err) {
           // Send email
-          // sendErrorEmail("Adtrans Hino");
           console.log(err);
+          // sendErrorEmail("Adtrans Hino");
         }
       }
 
@@ -157,23 +157,23 @@ export default async function scrapAdtransHino() {
         } catch (err) {
           // Close the browser and send email
           await browser.close();
-          // sendErrorEmail("Adtrans Hino");
           console.log(err);
+          // sendErrorEmail("Adtrans Hino");
         }
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        // sendErrorEmail("Adtrans Hino");
         console.log(err);
+        // sendErrorEmail("Adtrans Hino");
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      // sendErrorEmail("Adtrans Hino");
       console.log(err);
+      // sendErrorEmail("Adtrans Hino");
     }
   } catch (err) {
-    // sendErrorEmail("Adtrans Hino");
     console.log(err);
+    // sendErrorEmail("Adtrans Hino");
   }
 }

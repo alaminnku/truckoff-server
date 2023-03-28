@@ -25,10 +25,10 @@ import scrapVelocityTruckCentres from "./scrapper/velocityTruckCentres";
 import scrapDaimlerTrucksLaverton from "./scrapper/daimlerTrucksLaverton";
 import scrapMelbourneTruckAndVans from "./scrapper/melbourneTruckAndVans";
 import scrapDaimlerTrucksMilperra from "./scrapper/daimlerTrucksMilperra";
-import scrapDaimlerTrucksDanenong from "./scrapper/daimlerTrucksDandenong";
 import scrapHumeHighwayTruckSales from "./scrapper/humeHighwayTruckSales";
 import scrapGilbertAndRoachSydney from "./scrapper/gilbertAndRoachSydney";
 import scrapDaimlerTrucksBrisbane from "./scrapper/daimlerTrucksBrisbane";
+import scrapDaimlerTrucksDanenong from "./scrapper/daimlerTrucksDandenong";
 import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachinery";
 
 // Configs

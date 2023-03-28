@@ -40,9 +40,9 @@ export default async function scrapWesternTruckSales() {
                   loadAllTrucks();
                 } catch (err) {
                   // Close the browser and send email
+                  console.log(err);
                   await browser.close();
                   // sendErrorEmail("Western Truck Sales");
-                  console.log(err);
                 }
               } else {
                 try {
@@ -138,13 +138,13 @@ export default async function scrapWesternTruckSales() {
                         ];
                       } catch (err) {
                         // Send email
-                        // sendErrorEmail("Western Truck Sales");
                         console.log(err);
+                        // sendErrorEmail("Western Truck Sales");
                       }
                     } catch (err) {
                       // Send email
-                      // sendErrorEmail("Western Truck Sales");
                       console.log(err);
+                      // sendErrorEmail("Western Truck Sales");
                     }
                   }
 
@@ -166,34 +166,34 @@ export default async function scrapWesternTruckSales() {
                       await browser.close();
                     } catch (err) {
                       // Close the browser and send email
+                      console.log(err);
                       await browser.close();
                       // sendErrorEmail("Western Truck Sales");
-                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
+                    console.log(err);
                     await browser.close();
                     // sendErrorEmail("Western Truck Sales");
-                    console.log(err);
                   }
                 } catch (err) {
                   // Close the browser and send email
+                  console.log(err);
                   await browser.close();
                   // sendErrorEmail("Western Truck Sales");
-                  console.log(err);
                 }
               }
             } catch (err) {
               // Close the browser and send email
+              console.log(err);
               await browser.close();
               // sendErrorEmail("Western Truck Sales");
-              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
+            console.log(err);
             await browser.close();
             // sendErrorEmail("Western Truck Sales");
-            console.log(err);
           }
         }
 
@@ -201,18 +201,18 @@ export default async function scrapWesternTruckSales() {
         loadAllTrucks();
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Western Truck Sales");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Western Truck Sales");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Western Truck Sales");
     console.log(err);
+    // sendErrorEmail("Western Truck Sales");
   }
 }

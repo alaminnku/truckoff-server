@@ -49,9 +49,9 @@ export default async function scrapDaimlerTrucksBrisbane() {
                     loadAllTrucks();
                   } catch (err) {
                     // Close the browser and send email
+                    console.log(err);
                     await browser.close();
                     // sendErrorEmail("Daimler Trucks Brisbane");
-                    console.log(err);
                   }
                 } else {
                   try {
@@ -151,13 +151,13 @@ export default async function scrapDaimlerTrucksBrisbane() {
                           ];
                         } catch (err) {
                           // Send email
-                          // sendErrorEmail("Daimler Trucks Brisbane");
                           console.log(err);
+                          // sendErrorEmail("Daimler Trucks Brisbane");
                         }
                       } catch (err) {
                         // Send email
-                        // sendErrorEmail("Daimler Trucks Brisbane");
                         console.log(err);
+                        // sendErrorEmail("Daimler Trucks Brisbane");
                       }
                     }
 
@@ -182,40 +182,40 @@ export default async function scrapDaimlerTrucksBrisbane() {
                         await browser.close();
                       } catch (err) {
                         // Close the browser and send email
+                        console.log(err);
                         await browser.close();
                         // sendErrorEmail("Daimler Trucks Brisbane");
-                        console.log(err);
                       }
                     } catch (err) {
                       // Close the browser and send email
+                      console.log(err);
                       await browser.close();
                       // sendErrorEmail("Daimler Trucks Brisbane");
-                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
+                    console.log(err);
                     await browser.close();
                     // sendErrorEmail("Daimler Trucks Brisbane");
-                    console.log(err);
                   }
                 }
               } catch (err) {
                 // Close the browser and send email
+                console.log(err);
                 await browser.close();
                 // sendErrorEmail("Daimler Trucks Brisbane");
-                console.log(err);
               }
             } catch (err) {
               // Close the browser and send email
+              console.log(err);
               await browser.close();
               // sendErrorEmail("Daimler Trucks Brisbane");
-              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
+            console.log(err);
             await browser.close();
             // sendErrorEmail("Daimler Trucks Brisbane");
-            console.log(err);
           }
         }
 
@@ -223,18 +223,18 @@ export default async function scrapDaimlerTrucksBrisbane() {
         loadAllTrucks();
       } catch (err) {
         // Close the browser and send email
+        console.log(err);
         await browser.close();
         // sendErrorEmail("Daimler Trucks Brisbane");
-        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
+      console.log(err);
       await browser.close();
       // sendErrorEmail("Daimler Trucks Brisbane");
-      console.log(err);
     }
   } catch (err) {
-    // sendErrorEmail("Daimler Trucks Brisbane");
     console.log(err);
+    // sendErrorEmail("Daimler Trucks Brisbane");
   }
 }
