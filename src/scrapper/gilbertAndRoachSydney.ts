@@ -121,33 +121,39 @@ export default async function scrapGilbertAndRoachSydney() {
               }
             }
 
-            // Replace the trucks in the db
-            try {
-              // Delete all previous trucks
-              await Truck.deleteMany({
-                website: "gilbertandroachsydney",
-              });
-
+            if (trucks.length > 0) {
+              // Replace the trucks in the db
               try {
-                // Create new trucks
-                await Truck.create(trucks);
+                // Delete all previous trucks
+                await Truck.deleteMany({
+                  website: "gilbertandroachsydney",
+                });
 
-                // Confirm message
-                console.log(trucks.length, "Gilbert and Roach Sydney done");
+                try {
+                  // Create new trucks
+                  await Truck.create(trucks);
 
-                // Close the browser
-                await browser.close();
+                  // Confirm message
+                  console.log(trucks.length, "Gilbert and Roach Sydney done");
+
+                  // Close the browser
+                  await browser.close();
+                } catch (err) {
+                  // Close the browser and send email
+                  console.log(err);
+                  await browser.close();
+                  // sendErrorEmail("Gilbert and Roach Sydney");
+                }
               } catch (err) {
                 // Close the browser and send email
                 console.log(err);
                 await browser.close();
                 // sendErrorEmail("Gilbert and Roach Sydney");
               }
-            } catch (err) {
-              // Close the browser and send email
-              console.log(err);
+            } else {
+              // Log error and close browser
+              console.log("Something went wrong");
               await browser.close();
-              // sendErrorEmail("Gilbert and Roach Sydney");
             }
           } catch (err) {
             // Close the browser and send email

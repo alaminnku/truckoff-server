@@ -145,33 +145,39 @@ export default async function scrapWestarTruckCentre() {
         }
       }
 
-      // Replace the trucks in the db
-      try {
-        // Delete all previous trucks
-        await Truck.deleteMany({
-          website: "westar",
-        });
-
+      if (trucks.length > 0) {
+        // Replace the trucks in the db
         try {
-          // Create new trucks
-          await Truck.create(trucks);
+          // Delete all previous trucks
+          await Truck.deleteMany({
+            website: "westar",
+          });
 
-          // Confirm message
-          console.log(trucks.length, "Westar Truck Centre done");
+          try {
+            // Create new trucks
+            await Truck.create(trucks);
 
-          // Close the browser
-          await browser.close();
+            // Confirm message
+            console.log(trucks.length, "Westar Truck Centre done");
+
+            // Close the browser
+            await browser.close();
+          } catch (err) {
+            // Close the browser and send email
+            console.log(err);
+            await browser.close();
+            // sendErrorEmail("Westar Truck Centre");
+          }
         } catch (err) {
           // Close the browser and send email
           console.log(err);
           await browser.close();
           // sendErrorEmail("Westar Truck Centre");
         }
-      } catch (err) {
-        // Close the browser and send email
-        console.log(err);
+      } else {
+        // Log error and close browser
+        console.log("Something went wrong");
         await browser.close();
-        // sendErrorEmail("Westar Truck Centre");
       }
     } catch (err) {
       // Close the browser and send email

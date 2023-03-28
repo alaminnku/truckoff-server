@@ -158,33 +158,39 @@ export default async function scrapMidCoastTrucks() {
                     }
                   }
 
-                  // Replace the trucks in the db
-                  try {
-                    // Delete all previous trucks
-                    await Truck.deleteMany({
-                      website: "midcoasttrucks",
-                    });
-
+                  if (trucks.length > 0) {
+                    // Replace the trucks in the db
                     try {
-                      // Create new trucks
-                      await Truck.create(trucks);
+                      // Delete all previous trucks
+                      await Truck.deleteMany({
+                        website: "midcoasttrucks",
+                      });
 
-                      // Confirm message
-                      console.log(trucks.length, "Mid Coast Trucks done");
+                      try {
+                        // Create new trucks
+                        await Truck.create(trucks);
 
-                      // Close the browser
-                      await browser.close();
+                        // Confirm message
+                        console.log(trucks.length, "Mid Coast Trucks done");
+
+                        // Close the browser
+                        await browser.close();
+                      } catch (err) {
+                        // Close the browser and send email
+                        console.log(err);
+                        await browser.close();
+                        // sendErrorEmail("Mid Coast Trucks");
+                      }
                     } catch (err) {
                       // Close the browser and send email
                       console.log(err);
                       await browser.close();
                       // sendErrorEmail("Mid Coast Trucks");
                     }
-                  } catch (err) {
-                    // Close the browser and send email
-                    console.log(err);
+                  } else {
+                    // Log error and close browser
+                    console.log("Something went wrong");
                     await browser.close();
-                    // sendErrorEmail("Mid Coast Trucks");
                   }
                 } catch (err) {
                   // Close the browser and send email

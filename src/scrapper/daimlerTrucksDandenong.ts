@@ -155,36 +155,42 @@ export default async function scrapDaimlerTrucksDanenong() {
                       }
                     }
 
-                    // Replace the trucks in the db
-                    try {
-                      // Delete all previous trucks
-                      await Truck.deleteMany({
-                        website: "daimlertrucksdandenong",
-                      });
-
+                    if (trucks.length > 0) {
+                      // Replace the trucks in the db
                       try {
-                        // Create new trucks
-                        await Truck.create(trucks);
+                        // Delete all previous trucks
+                        await Truck.deleteMany({
+                          website: "daimlertrucksdandenong",
+                        });
 
-                        // Confirm message
-                        console.log(
-                          trucks.length,
-                          "Daimler Trucks Dandenong done"
-                        );
+                        try {
+                          // Create new trucks
+                          await Truck.create(trucks);
 
-                        // Close the browser
-                        await browser.close();
+                          // Confirm message
+                          console.log(
+                            trucks.length,
+                            "Daimler Trucks Dandenong done"
+                          );
+
+                          // Close the browser
+                          await browser.close();
+                        } catch (err) {
+                          // Close the browser and send email
+                          console.log(err);
+                          await browser.close();
+                          // sendErrorEmail("Daimler Trucks Dandenong");
+                        }
                       } catch (err) {
                         // Close the browser and send email
                         console.log(err);
                         await browser.close();
                         // sendErrorEmail("Daimler Trucks Dandenong");
                       }
-                    } catch (err) {
-                      // Close the browser and send email
-                      console.log(err);
+                    } else {
+                      // Log error and close browser
+                      console.log("Something went wrong");
                       await browser.close();
-                      // sendErrorEmail("Daimler Trucks Dandenong");
                     }
                   } catch (err) {
                     // Close the browser and send email

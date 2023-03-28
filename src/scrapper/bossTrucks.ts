@@ -168,31 +168,37 @@ export default async function scrapBossTrucks() {
         }
       }
 
-      // Replace the trucks in the db
-      try {
-        // Delete all previous trucks
-        await Truck.deleteMany({ website: "bosstrucksales" });
-
+      if (trucks.length > 0) {
+        // Replace the trucks in the db
         try {
-          // Create new trucks
-          await Truck.create(trucks);
+          // Delete all previous trucks
+          await Truck.deleteMany({ website: "bosstrucksales" });
 
-          // Confirm message
-          console.log(trucks.length, "Boss Trucks done");
+          try {
+            // Create new trucks
+            await Truck.create(trucks);
 
-          // Close the browser
-          await browser.close();
+            // Confirm message
+            console.log(trucks.length, "Boss Trucks done");
+
+            // Close the browser
+            await browser.close();
+          } catch (err) {
+            // Close the browser and send email
+            console.log(err);
+            await browser.close();
+            // sendErrorEmail("Boss Trucks");
+          }
         } catch (err) {
           // Close the browser and send email
           console.log(err);
           await browser.close();
           // sendErrorEmail("Boss Trucks");
         }
-      } catch (err) {
-        // Close the browser and send email
-        console.log(err);
+      } else {
+        // Log error and close browser
+        console.log("Something went wrong");
         await browser.close();
-        // sendErrorEmail("Boss Trucks");
       }
     } catch (err) {
       // Close the browser and send email

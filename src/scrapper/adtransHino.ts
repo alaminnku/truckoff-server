@@ -168,6 +168,7 @@ export default async function scrapAdtransHino() {
           // sendErrorEmail("Adtrans Hino");
         }
       } else {
+        // Log error and close browser
         console.log("Something went wrong");
         await browser.close();
       }
