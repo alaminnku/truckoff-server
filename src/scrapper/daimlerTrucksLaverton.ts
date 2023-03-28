@@ -50,7 +50,8 @@ export default async function scrapDaimlerTrucksLaverton() {
                   } catch (err) {
                     // Close the browser and send email
                     await browser.close();
-                    sendErrorEmail("Daimler Trucks Laverton");
+                    // sendErrorEmail("Daimler Trucks Laverton");
+                    console.log(err);
                   }
                 } else {
                   try {
@@ -151,11 +152,13 @@ export default async function scrapDaimlerTrucksLaverton() {
                           ];
                         } catch (err) {
                           // Send email
-                          sendErrorEmail("Daimler Trucks Laverton");
+                          // sendErrorEmail("Daimler Trucks Laverton");
+                          console.log(err);
                         }
                       } catch (err) {
                         // Send email
-                        sendErrorEmail("Daimler Trucks Laverton");
+                        // sendErrorEmail("Daimler Trucks Laverton");
+                        console.log(err);
                       }
                     }
 
@@ -178,33 +181,39 @@ export default async function scrapDaimlerTrucksLaverton() {
                       } catch (err) {
                         // Close the browser and send email
                         await browser.close();
-                        sendErrorEmail("Daimler Trucks Laverton");
+                        // sendErrorEmail("Daimler Trucks Laverton");
+                        console.log(err);
                       }
                     } catch (err) {
                       // Close the browser and send email
                       await browser.close();
-                      sendErrorEmail("Daimler Trucks Laverton");
+                      // sendErrorEmail("Daimler Trucks Laverton");
+                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
                     await browser.close();
-                    sendErrorEmail("Daimler Trucks Laverton");
+                    // sendErrorEmail("Daimler Trucks Laverton");
+                    console.log(err);
                   }
                 }
               } catch (err) {
                 // Close the browser and send email
                 await browser.close();
-                sendErrorEmail("Daimler Trucks Laverton");
+                // sendErrorEmail("Daimler Trucks Laverton");
+                console.log(err);
               }
             } catch (err) {
               // Close the browser and send email
               await browser.close();
-              sendErrorEmail("Daimler Trucks Laverton");
+              // sendErrorEmail("Daimler Trucks Laverton");
+              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
             await browser.close();
-            sendErrorEmail("Daimler Trucks Laverton");
+            // sendErrorEmail("Daimler Trucks Laverton");
+            console.log(err);
           }
         }
 
@@ -213,14 +222,17 @@ export default async function scrapDaimlerTrucksLaverton() {
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Daimler Trucks Laverton");
+        // sendErrorEmail("Daimler Trucks Laverton");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Daimler Trucks Laverton");
+      // sendErrorEmail("Daimler Trucks Laverton");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Daimler Trucks Laverton");
+    // sendErrorEmail("Daimler Trucks Laverton");
+    console.log(err);
   }
 }

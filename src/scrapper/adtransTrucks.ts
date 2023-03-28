@@ -42,7 +42,8 @@ export default async function scrapAdtransTrucks() {
                 } catch (err) {
                   // Close the browser and send email
                   await browser.close();
-                  sendErrorEmail("Adtrans Trucks");
+                  // sendErrorEmail("Adtrans Trucks");
+                  console.log(err);
                 }
               } else {
                 try {
@@ -161,11 +162,13 @@ export default async function scrapAdtransTrucks() {
                         ];
                       } catch (err) {
                         // Send email
-                        sendErrorEmail("Adtrans Trucks");
+                        // sendErrorEmail("Adtrans Trucks");
+                        console.log(err);
                       }
                     } catch (err) {
                       // Send email
-                      sendErrorEmail("Adtrans Trucks");
+                      // sendErrorEmail("Adtrans Trucks");
+                      console.log(err);
                     }
                   }
 
@@ -186,28 +189,33 @@ export default async function scrapAdtransTrucks() {
                     } catch (err) {
                       // Close the browser and send email
                       await browser.close();
-                      sendErrorEmail("Adtrans Trucks");
+                      // sendErrorEmail("Adtrans Trucks");
+                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
                     await browser.close();
-                    sendErrorEmail("Adtrans Trucks");
+                    // sendErrorEmail("Adtrans Trucks");
+                    console.log(err);
                   }
                 } catch (err) {
                   // Close the browser and send email
                   await browser.close();
-                  sendErrorEmail("Adtrans Trucks");
+                  // sendErrorEmail("Adtrans Trucks");
+                  console.log(err);
                 }
               }
             } catch (err) {
               // Close the browser and send email
               await browser.close();
-              sendErrorEmail("Adtrans Trucks");
+              // sendErrorEmail("Adtrans Trucks");
+              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
             await browser.close();
-            sendErrorEmail("Adtrans Trucks");
+            // sendErrorEmail("Adtrans Trucks");
+            console.log(err);
           }
         }
 
@@ -216,14 +224,17 @@ export default async function scrapAdtransTrucks() {
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Adtrans Trucks");
+        // sendErrorEmail("Adtrans Trucks");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Adtrans Trucks");
+      // sendErrorEmail("Adtrans Trucks");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Adtrans Trucks");
+    // sendErrorEmail("Adtrans Trucks");
+    console.log(err);
   }
 }

@@ -53,15 +53,18 @@ export default async function scrapSuttonTrucks() {
             } catch (err) {
               // Close the browser and send email
               await browser.close();
-              sendErrorEmail("Sutton Trucks");
+              // sendErrorEmail("Sutton Trucks");
+              console.log(err);
             }
           } catch (err) {
             // Send email
-            sendErrorEmail("Sutton Trucks");
+            // sendErrorEmail("Sutton Trucks");
+            console.log(err);
           }
         } catch (err) {
           // Send email
-          sendErrorEmail("Sutton Trucks");
+          // sendErrorEmail("Sutton Trucks");
+          console.log(err);
         }
       }
 
@@ -131,11 +134,13 @@ export default async function scrapSuttonTrucks() {
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
             // Send email
-            sendErrorEmail("Sutton Trucks");
+            // sendErrorEmail("Sutton Trucks");
+            console.log(err);
           }
         } catch (err) {
           // Send email
-          sendErrorEmail("Sutton Trucks");
+          // sendErrorEmail("Sutton Trucks");
+          console.log(err);
         }
       }
 
@@ -158,19 +163,23 @@ export default async function scrapSuttonTrucks() {
         } catch (err) {
           // Close the browser and send email
           await browser.close();
-          sendErrorEmail("Sutton Trucks");
+          // sendErrorEmail("Sutton Trucks");
+          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Sutton Trucks");
+        // sendErrorEmail("Sutton Trucks");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Sutton Trucks");
+      // sendErrorEmail("Sutton Trucks");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Sutton Trucks");
+    // sendErrorEmail("Sutton Trucks");
+    console.log(err);
   }
 }

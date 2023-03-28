@@ -47,7 +47,8 @@ export default async function scrapDaimlerTrucksDanenong() {
                   } catch (err) {
                     // Close the browser and send email
                     await browser.close();
-                    sendErrorEmail("Daimler Trucks Dandenong");
+                    // sendErrorEmail("Daimler Trucks Dandenong");
+                    console.log(err);
                   }
                 } else {
                   try {
@@ -144,11 +145,13 @@ export default async function scrapDaimlerTrucksDanenong() {
                           ];
                         } catch (err) {
                           // Send email
-                          sendErrorEmail("Daimler Trucks Dandenong");
+                          // sendErrorEmail("Daimler Trucks Dandenong");
+                          console.log(err);
                         }
                       } catch (err) {
                         // Send email
-                        sendErrorEmail("Daimler Trucks Dandenong");
+                        // sendErrorEmail("Daimler Trucks Dandenong");
+                        console.log(err);
                       }
                     }
 
@@ -171,33 +174,39 @@ export default async function scrapDaimlerTrucksDanenong() {
                       } catch (err) {
                         // Close the browser and send email
                         await browser.close();
-                        sendErrorEmail("Daimler Trucks Dandenong");
+                        // sendErrorEmail("Daimler Trucks Dandenong");
+                        console.log(err);
                       }
                     } catch (err) {
                       // Close the browser and send email
                       await browser.close();
-                      sendErrorEmail("Daimler Trucks Dandenong");
+                      // sendErrorEmail("Daimler Trucks Dandenong");
+                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
                     await browser.close();
-                    sendErrorEmail("Daimler Trucks Dandenong");
+                    // sendErrorEmail("Daimler Trucks Dandenong");
+                    console.log(err);
                   }
                 }
               } catch (err) {
                 // Close the browser and send email
                 await browser.close();
-                sendErrorEmail("Daimler Trucks Dandenong");
+                // sendErrorEmail("Daimler Trucks Dandenong");
+                console.log(err);
               }
             } catch (err) {
               // Close the browser and send email
               await browser.close();
-              sendErrorEmail("Daimler Trucks Dandenong");
+              // sendErrorEmail("Daimler Trucks Dandenong");
+              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
             await browser.close();
-            sendErrorEmail("Daimler Trucks Dandenong");
+            // sendErrorEmail("Daimler Trucks Dandenong");
+            console.log(err);
           }
         }
 
@@ -206,14 +215,17 @@ export default async function scrapDaimlerTrucksDanenong() {
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Daimler Trucks Dandenong");
+        // sendErrorEmail("Daimler Trucks Dandenong");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Daimler Trucks Dandenong");
+      // sendErrorEmail("Daimler Trucks Dandenong");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Daimler Trucks Dandenong");
+    // sendErrorEmail("Daimler Trucks Dandenong");
+    console.log(err);
   }
 }

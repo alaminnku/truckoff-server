@@ -47,7 +47,8 @@ export default async function scrapDaimlerTrucksPerth() {
                   } catch (err) {
                     // Close the browser and send email
                     await browser.close();
-                    sendErrorEmail("Daimler Trucks Perth");
+                    // sendErrorEmail("Daimler Trucks Perth");
+                    console.log(err);
                   }
                 } else {
                   try {
@@ -148,11 +149,13 @@ export default async function scrapDaimlerTrucksPerth() {
                           ];
                         } catch (err) {
                           // Send email
-                          sendErrorEmail("Daimler Trucks Perth");
+                          // sendErrorEmail("Daimler Trucks Perth");
+                          console.log(err);
                         }
                       } catch (err) {
                         // Send email
-                        sendErrorEmail("Daimler Trucks Perth");
+                        // sendErrorEmail("Daimler Trucks Perth");
+                        console.log(err);
                       }
                     }
 
@@ -175,33 +178,39 @@ export default async function scrapDaimlerTrucksPerth() {
                       } catch (err) {
                         // Close the browser and send email
                         await browser.close();
-                        sendErrorEmail("Daimler Trucks Perth");
+                        // sendErrorEmail("Daimler Trucks Perth");
+                        console.log(err);
                       }
                     } catch (err) {
                       // Close the browser and send email
                       await browser.close();
-                      sendErrorEmail("Daimler Trucks Perth");
+                      // sendErrorEmail("Daimler Trucks Perth");
+                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
                     await browser.close();
-                    sendErrorEmail("Daimler Trucks Perth");
+                    // sendErrorEmail("Daimler Trucks Perth");
+                    console.log(err);
                   }
                 }
               } catch (err) {
                 // Close the browser and send email
                 await browser.close();
-                sendErrorEmail("Daimler Trucks Perth");
+                // sendErrorEmail("Daimler Trucks Perth");
+                console.log(err);
               }
             } catch (err) {
               // Close the browser and send email
               await browser.close();
-              sendErrorEmail("Daimler Trucks Perth");
+              // sendErrorEmail("Daimler Trucks Perth");
+              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
             await browser.close();
-            sendErrorEmail("Daimler Trucks Perth");
+            // sendErrorEmail("Daimler Trucks Perth");
+            console.log(err);
           }
         }
 
@@ -210,14 +219,17 @@ export default async function scrapDaimlerTrucksPerth() {
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Daimler Trucks Perth");
+        // sendErrorEmail("Daimler Trucks Perth");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Daimler Trucks Perth");
+      // sendErrorEmail("Daimler Trucks Perth");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Daimler Trucks Perth");
+    // sendErrorEmail("Daimler Trucks Perth");
+    console.log(err);
   }
 }

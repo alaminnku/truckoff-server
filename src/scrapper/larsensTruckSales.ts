@@ -43,11 +43,13 @@ export default async function scrapLarsensTruckSales() {
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
             // Send email
-            sendErrorEmail("Larsen's Truck Sales");
+            // sendErrorEmail("Larsen's Truck Sales");
+            console.log(err);
           }
         } catch (err) {
           // Send email
-          sendErrorEmail("Larsen's Truck Sales");
+          // sendErrorEmail("Larsen's Truck Sales");
+          console.log(err);
         }
       }
 
@@ -128,11 +130,13 @@ export default async function scrapLarsensTruckSales() {
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
             // Send email
-            sendErrorEmail("Larsen's Truck Sales");
+            // sendErrorEmail("Larsen's Truck Sales");
+            console.log(err);
           }
         } catch (err) {
           // Send email
-          sendErrorEmail("Larsen's Truck Sales");
+          // sendErrorEmail("Larsen's Truck Sales");
+          console.log(err);
         }
       }
 
@@ -155,19 +159,23 @@ export default async function scrapLarsensTruckSales() {
         } catch (err) {
           // Close the browser and send email
           await browser.close();
-          sendErrorEmail("Larsen's Truck Sales");
+          // sendErrorEmail("Larsen's Truck Sales");
+          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Larsen's Truck Sales");
+        // sendErrorEmail("Larsen's Truck Sales");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Larsen's Truck Sales");
+      // sendErrorEmail("Larsen's Truck Sales");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Larsen's Truck Sales");
+    // sendErrorEmail("Larsen's Truck Sales");
+    console.log(err);
   }
 }

@@ -42,7 +42,8 @@ export default async function scrapTruckWholesalers() {
                 } catch (err) {
                   // Close the browser and send email
                   await browser.close();
-                  sendErrorEmail("Truck Wholesalers Australia");
+                  // sendErrorEmail("Truck Wholesalers Australia");
+                  console.log(err);
                 }
               } else {
                 try {
@@ -163,11 +164,13 @@ export default async function scrapTruckWholesalers() {
                         ];
                       } catch (err) {
                         // Send email
-                        sendErrorEmail("Truck Wholesalers Australia");
+                        // sendErrorEmail("Truck Wholesalers Australia");
+                        console.log(err);
                       }
                     } catch (err) {
                       // Send email
-                      sendErrorEmail("Truck Wholesalers Australia");
+                      // sendErrorEmail("Truck Wholesalers Australia");
+                      console.log(err);
                     }
                   }
 
@@ -190,28 +193,33 @@ export default async function scrapTruckWholesalers() {
                     } catch (err) {
                       // Close the browser and send email
                       await browser.close();
-                      sendErrorEmail("Truck Wholesalers Australia");
+                      // sendErrorEmail("Truck Wholesalers Australia");
+                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
                     await browser.close();
-                    sendErrorEmail("Truck Wholesalers Australia");
+                    // sendErrorEmail("Truck Wholesalers Australia");
+                    console.log(err);
                   }
                 } catch (err) {
                   // Close the browser and send email
                   await browser.close();
-                  sendErrorEmail("Truck Wholesalers Australia");
+                  // sendErrorEmail("Truck Wholesalers Australia");
+                  console.log(err);
                 }
               }
             } catch (err) {
               // Close the browser and send email
               await browser.close();
-              sendErrorEmail("Truck Wholesalers Australia");
+              // sendErrorEmail("Truck Wholesalers Australia");
+              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
             await browser.close();
-            sendErrorEmail("Truck Wholesalers Australia");
+            // sendErrorEmail("Truck Wholesalers Australia");
+            console.log(err);
           }
         }
 
@@ -220,14 +228,17 @@ export default async function scrapTruckWholesalers() {
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Truck Wholesalers Australia");
+        // sendErrorEmail("Truck Wholesalers Australia");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Truck Wholesalers Australia");
+      // sendErrorEmail("Truck Wholesalers Australia");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Truck Wholesalers Australia");
+    // sendErrorEmail("Truck Wholesalers Australia");
+    console.log(err);
   }
 }

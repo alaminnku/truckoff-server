@@ -43,11 +43,13 @@ export default async function scrapBossTrucks() {
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
             // Send email
-            sendErrorEmail("Boss Trucks");
+            // sendErrorEmail("Boss Trucks");
+            console.log(err);
           }
         } catch (err) {
           // Send email
-          sendErrorEmail("Boss Trucks");
+          // sendErrorEmail("Boss Trucks");
+          console.log(err);
         }
       }
 
@@ -143,22 +145,26 @@ export default async function scrapBossTrucks() {
                   trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
                 } catch (err) {
                   // Send email
-                  sendErrorEmail("Boss Trucks");
+                  // sendErrorEmail("Boss Trucks");
+                  console.log(err);
                 }
               } catch (err) {
                 // Send email
-                sendErrorEmail("Boss Trucks");
+                // sendErrorEmail("Boss Trucks");
+                console.log(err);
               }
             }
           } catch (err) {
             // Close the browser and send email
             await browser.close();
-            sendErrorEmail("Boss Trucks");
+            // sendErrorEmail("Boss Trucks");
+            console.log(err);
           }
         } catch (err) {
           // Close the browser and send email
           await browser.close();
-          sendErrorEmail("Boss Trucks");
+          // sendErrorEmail("Boss Trucks");
+          console.log(err);
         }
       }
 
@@ -179,19 +185,23 @@ export default async function scrapBossTrucks() {
         } catch (err) {
           // Close the browser and send email
           await browser.close();
-          sendErrorEmail("Boss Trucks");
+          // sendErrorEmail("Boss Trucks");
+          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Boss Trucks");
+        // sendErrorEmail("Boss Trucks");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Boss Trucks");
+      // sendErrorEmail("Boss Trucks");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Boss Trucks");
+    // sendErrorEmail("Boss Trucks");
+    console.log(err);
   }
 }

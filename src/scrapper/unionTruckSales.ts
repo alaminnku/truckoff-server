@@ -42,7 +42,8 @@ export default async function scrapUnionTruckSales() {
                 } catch (err) {
                   // Close the browser and send email
                   await browser.close();
-                  sendErrorEmail("Union Truck Sales");
+                  // sendErrorEmail("Union Truck Sales");
+                  console.log(err);
                 }
               } else {
                 try {
@@ -161,11 +162,13 @@ export default async function scrapUnionTruckSales() {
                         ];
                       } catch (err) {
                         // Send email
-                        sendErrorEmail("Union Truck Sales");
+                        // sendErrorEmail("Union Truck Sales");
+                        console.log(err);
                       }
                     } catch (err) {
                       // Send email
-                      sendErrorEmail("Union Truck Sales");
+                      // sendErrorEmail("Union Truck Sales");
+                      console.log(err);
                     }
                   }
 
@@ -188,28 +191,33 @@ export default async function scrapUnionTruckSales() {
                     } catch (err) {
                       // Close the browser and send email
                       await browser.close();
-                      sendErrorEmail("Union Truck Sales");
+                      // sendErrorEmail("Union Truck Sales");
+                      console.log(err);
                     }
                   } catch (err) {
                     // Close the browser and send email
                     await browser.close();
-                    sendErrorEmail("Union Truck Sales");
+                    // sendErrorEmail("Union Truck Sales");
+                    console.log(err);
                   }
                 } catch (err) {
                   // Close the browser and send email
                   await browser.close();
-                  sendErrorEmail("Union Truck Sales");
+                  // sendErrorEmail("Union Truck Sales");
+                  console.log(err);
                 }
               }
             } catch (err) {
               // Close the browser and send email
               await browser.close();
-              sendErrorEmail("Union Truck Sales");
+              // sendErrorEmail("Union Truck Sales");
+              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
             await browser.close();
-            sendErrorEmail("Union Truck Sales");
+            // sendErrorEmail("Union Truck Sales");
+            console.log(err);
           }
         }
 
@@ -218,14 +226,17 @@ export default async function scrapUnionTruckSales() {
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Union Truck Sales");
+        // sendErrorEmail("Union Truck Sales");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Union Truck Sales");
+      // sendErrorEmail("Union Truck Sales");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Union Truck Sales");
+    // sendErrorEmail("Union Truck Sales");
+    console.log(err);
   }
 }

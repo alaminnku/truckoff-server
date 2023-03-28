@@ -43,11 +43,13 @@ export default async function scrapWestarTruckCentre() {
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
             // Send email
-            sendErrorEmail("Westar Truck Centre");
+            // sendErrorEmail("Westar Truck Centre");
+            console.log(err);
           }
         } catch (err) {
           // Send email
-          sendErrorEmail("Westar Truck Centre");
+          // sendErrorEmail("Westar Truck Centre");
+          console.log(err);
         }
       }
 
@@ -133,11 +135,13 @@ export default async function scrapWestarTruckCentre() {
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
             // Send email
-            sendErrorEmail("Westar Truck Centre");
+            // sendErrorEmail("Westar Truck Centre");
+            console.log(err);
           }
         } catch (err) {
           // Send email
-          sendErrorEmail("Westar Truck Centre");
+          // sendErrorEmail("Westar Truck Centre");
+          console.log(err);
         }
       }
 
@@ -160,19 +164,23 @@ export default async function scrapWestarTruckCentre() {
         } catch (err) {
           // Close the browser and send email
           await browser.close();
-          sendErrorEmail("Westar Truck Centre");
+          // sendErrorEmail("Westar Truck Centre");
+          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Westar Truck Centre");
+        // sendErrorEmail("Westar Truck Centre");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Westar Truck Centre");
+      // sendErrorEmail("Westar Truck Centre");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Westar Truck Centre");
+    // sendErrorEmail("Westar Truck Centre");
+    console.log(err);
   }
 }

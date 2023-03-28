@@ -43,11 +43,13 @@ export default async function scrapHumeHighwayTruckSales() {
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
             // Send email
-            sendErrorEmail("Hume Highway Truck Sales");
+            // sendErrorEmail("Hume Highway Truck Sales");
+            console.log(err);
           }
         } catch (err) {
           // Send email
-          sendErrorEmail("Hume Highway Truck Sales");
+          // sendErrorEmail("Hume Highway Truck Sales");
+          console.log(err);
         }
       }
 
@@ -151,11 +153,13 @@ export default async function scrapHumeHighwayTruckSales() {
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
             // Send email
-            sendErrorEmail("Hume Highway Truck Sales");
+            // sendErrorEmail("Hume Highway Truck Sales");
+            console.log(err);
           }
         } catch (err) {
           // Send email
-          sendErrorEmail("Hume Highway Truck Sales");
+          // sendErrorEmail("Hume Highway Truck Sales");
+          console.log(err);
         }
       }
 
@@ -178,19 +182,23 @@ export default async function scrapHumeHighwayTruckSales() {
         } catch (err) {
           // Close the browser and send email
           await browser.close();
-          sendErrorEmail("Hume Highway Truck Sales");
+          // sendErrorEmail("Hume Highway Truck Sales");
+          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Hume Highway Truck Sales");
+        // sendErrorEmail("Hume Highway Truck Sales");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Hume Highway Truck Sales");
+      // sendErrorEmail("Hume Highway Truck Sales");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Hume Highway Truck Sales");
+    // sendErrorEmail("Hume Highway Truck Sales");
+    console.log(err);
   }
 }

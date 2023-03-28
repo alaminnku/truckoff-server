@@ -111,11 +111,13 @@ export default async function scrapGilbertAndRoachSydney() {
                   trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
                 } catch (err) {
                   // Send email
-                  sendErrorEmail("Gilbert and Roach Sydney");
+                  // sendErrorEmail("Gilbert and Roach Sydney");
+                  console.log(err);
                 }
               } catch (err) {
                 // Send email
-                sendErrorEmail("Gilbert and Roach Sydney");
+                // sendErrorEmail("Gilbert and Roach Sydney");
+                console.log(err);
               }
             }
 
@@ -138,34 +140,41 @@ export default async function scrapGilbertAndRoachSydney() {
               } catch (err) {
                 // Close the browser and send email
                 await browser.close();
-                sendErrorEmail("Gilbert and Roach Sydney");
+                // sendErrorEmail("Gilbert and Roach Sydney");
+                console.log(err);
               }
             } catch (err) {
               // Close the browser and send email
               await browser.close();
-              sendErrorEmail("Gilbert and Roach Sydney");
+              // sendErrorEmail("Gilbert and Roach Sydney");
+              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
             await browser.close();
-            sendErrorEmail("Gilbert and Roach Sydney");
+            // sendErrorEmail("Gilbert and Roach Sydney");
+            console.log(err);
           }
         } catch (err) {
           // Close the browser and send email
           await browser.close();
-          sendErrorEmail("Gilbert and Roach Sydney");
+          // sendErrorEmail("Gilbert and Roach Sydney");
+          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("Gilbert and Roach Sydney");
+        // sendErrorEmail("Gilbert and Roach Sydney");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("Gilbert and Roach Sydney");
+      // sendErrorEmail("Gilbert and Roach Sydney");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("Gilbert and Roach Sydney");
+    // sendErrorEmail("Gilbert and Roach Sydney");
+    console.log(err);
   }
 }

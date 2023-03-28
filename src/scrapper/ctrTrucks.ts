@@ -135,11 +135,13 @@ export default async function scrapCtrTrucks() {
                 trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
               } catch (err) {
                 // Send email
-                sendErrorEmail("CRT Trucks");
+                // sendErrorEmail("CRT Trucks");
+                console.log(err);
               }
             } catch (err) {
               // Send email
-              sendErrorEmail("CRT Trucks");
+              // sendErrorEmail("CRT Trucks");
+              console.log(err);
             }
           }
 
@@ -160,29 +162,35 @@ export default async function scrapCtrTrucks() {
             } catch (err) {
               // Close the browser and send email
               await browser.close();
-              sendErrorEmail("CRT Trucks");
+              // sendErrorEmail("CRT Trucks");
+              console.log(err);
             }
           } catch (err) {
             // Close the browser and send email
             await browser.close();
-            sendErrorEmail("CRT Trucks");
+            // sendErrorEmail("CRT Trucks");
+            console.log(err);
           }
         } catch (err) {
           // Close the browser and send email
           await browser.close();
-          sendErrorEmail("CRT Trucks");
+          // sendErrorEmail("CRT Trucks");
+          console.log(err);
         }
       } catch (err) {
         // Close the browser and send email
         await browser.close();
-        sendErrorEmail("CRT Trucks");
+        // sendErrorEmail("CRT Trucks");
+        console.log(err);
       }
     } catch (err) {
       // Close the browser and send email
       await browser.close();
-      sendErrorEmail("CRT Trucks");
+      // sendErrorEmail("CRT Trucks");
+      console.log(err);
     }
   } catch (err) {
-    sendErrorEmail("CRT Trucks");
+    // sendErrorEmail("CRT Trucks");
+    console.log(err);
   }
 }
