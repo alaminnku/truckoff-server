@@ -16,7 +16,10 @@ router.get("/", async (req: Request, res: Response) => {
 
     // Filter trucks
     const trucks = response.filter(
-      (truck) => truck.images.length > 0 && truck.price !== "poa"
+      (truck) =>
+        truck.images.length > 0 &&
+        truck.price &&
+        typeof +truck.price === "number"
     );
 
     // Return the response
