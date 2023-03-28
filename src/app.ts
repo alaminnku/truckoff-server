@@ -143,7 +143,9 @@ async function runScrappers() {
   ]);
 }
 
-setInterval(() => runScrappers, 5000);
+runScrappers();
+
+// setInterval(() => runScrappers, 5000);
 
 // 1000 * 60 * 60 * 24 * 3
 
