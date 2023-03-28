@@ -3,7 +3,6 @@ import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
 
 export default async function scrapCtrTrucks() {
-  console.log("hello from ctr trucks");
   try {
     // Create browser
     const browser = await puppeteer.launch({

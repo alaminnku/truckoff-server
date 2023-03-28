@@ -3,7 +3,6 @@ import Truck from "../models/truck";
 import { sendErrorEmail } from "../utils";
 
 export default async function scrapIsuzu() {
-  console.log("hello from isuzu");
   try {
     // Create browser
     const browser = await puppeteer.launch({
