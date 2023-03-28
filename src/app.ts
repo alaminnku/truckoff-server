@@ -34,6 +34,7 @@ import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachi
 // Configs
 dotenv.config();
 connectDB();
+process.setMaxListeners(0);
 mail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
 // Create port
