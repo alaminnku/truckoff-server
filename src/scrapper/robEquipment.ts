@@ -155,7 +155,7 @@ export default async function scrapRobEquipment() {
           await Truck.create(trucks);
 
           // Confirm message
-          console.log("Rob Equipment done");
+          console.log(trucks.length, "Rob Equipment done");
 
           // Close the browser
           await browser.close();

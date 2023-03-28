@@ -157,7 +157,7 @@ export default async function scrapWestarTruckCentre() {
           await Truck.create(trucks);
 
           // Confirm message
-          console.log("Westar Truck Centre done");
+          console.log(trucks.length, "Westar Truck Centre done");
 
           // Close the browser
           await browser.close();

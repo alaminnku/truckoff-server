@@ -190,7 +190,7 @@ export default async function scrapVelocityTruckCentres() {
           await Truck.create(trucks);
 
           // Confirm message
-          console.log("Velocity Truck Centres done");
+          console.log(trucks.length, "Velocity Truck Centres done");
 
           // Close the browser
           await browser.close();

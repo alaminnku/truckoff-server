@@ -175,7 +175,7 @@ export default async function scrapHumeHighwayTruckSales() {
           await Truck.create(trucks);
 
           // Confirm message
-          console.log("Hume Highway Truck Sales done");
+          console.log(trucks.length, "Hume Highway Truck Sales done");
 
           // Close the browser
           await browser.close();

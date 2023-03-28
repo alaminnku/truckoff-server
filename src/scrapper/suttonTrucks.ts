@@ -156,7 +156,7 @@ export default async function scrapSuttonTrucks() {
           await Truck.create(trucks);
 
           // Confirm message
-          console.log("Sutton Trucks done");
+          console.log(trucks.length, "Sutton Trucks done");
 
           // Close the browser
           await browser.close();

@@ -186,7 +186,10 @@ export default async function scrapTruckWholesalers() {
                       await Truck.create(trucks);
 
                       // Confirm message
-                      console.log("Truck Wholesalers Australia done");
+                      console.log(
+                        trucks.length,
+                        "Truck Wholesalers Australia done"
+                      );
 
                       // Close the browser
                       await browser.close();

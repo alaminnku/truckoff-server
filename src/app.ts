@@ -52,45 +52,65 @@ app.use(
   })
 );
 
-// Run all scrappers function
-async function runScrappers() {
-  await Promise.all([
-    scrapIsuzu(),
-    scrapCtrTrucks(),
-    scrapTruckCity(),
-    scrapBossTrucks(),
-    scrapAdtransHino(),
-    scrapRobEquipment(),
-    scrapSuttonTrucks(),
-    scrapAdtransTrucks(),
-    scrapPrestigeIveco(),
-    scrapMidCoastTrucks(),
-    scrapUnionTruckSales(),
-    scrapTruckWholesalers(),
-    scrapFusoPortMelbourne(),
-    scrapWestarTruckCentre(),
-    scrapLarsensTruckSales(),
-    scrapWesternTruckSales(),
-    scrapDaimlerTrucksPerth(),
-    scrapVelocityTruckCentres(),
-    scrapDaimlerTrucksBrisbane(),
-    scrapGilbertAndRoachSydney(),
-    scrapHumeHighwayTruckSales(),
-    scrapDaimlerTrucksMilperra(),
-    scrapDaimlerTrucksDanenong(),
-    scrapMelbourneTruckAndVans(),
-    scrapDaimlerTrucksLaverton(),
-    scrapSammutAgriculturalMachinery(),
-  ]);
-}
+// Run scrappers when the server starts
+(async function runScrappers() {
+  await scrapIsuzu();
+  await scrapCtrTrucks();
+  await scrapTruckCity();
+  await scrapBossTrucks();
+  await scrapAdtransHino();
+  await scrapRobEquipment();
+  await scrapSuttonTrucks();
+  await scrapAdtransTrucks();
+  await scrapPrestigeIveco();
+  await scrapMidCoastTrucks();
+  await scrapUnionTruckSales();
+  await scrapTruckWholesalers();
+  await scrapFusoPortMelbourne();
+  await scrapWestarTruckCentre();
+  await scrapLarsensTruckSales();
+  await scrapWesternTruckSales();
+  await scrapDaimlerTrucksPerth();
+  await scrapVelocityTruckCentres();
+  await scrapDaimlerTrucksBrisbane();
+  await scrapGilbertAndRoachSydney();
+  await scrapHumeHighwayTruckSales();
+  await scrapDaimlerTrucksMilperra();
+  await scrapDaimlerTrucksDanenong();
+  await scrapMelbourneTruckAndVans();
+  await scrapDaimlerTrucksLaverton();
+  await scrapSammutAgriculturalMachinery();
+})();
 
-// Run scrappers when server starts
-runScrappers();
-
-// Run scrappers in every 3 days interval
-setInterval(() => runScrappers, 1000 * 60 * 60 * 24 * 3);
-
-// 1000 * 60 * 60 * 24 * 3
+// Run scrappers in every 3 days
+setInterval(async () => {
+  await scrapIsuzu();
+  await scrapCtrTrucks();
+  await scrapTruckCity();
+  await scrapBossTrucks();
+  await scrapAdtransHino();
+  await scrapRobEquipment();
+  await scrapSuttonTrucks();
+  await scrapAdtransTrucks();
+  await scrapPrestigeIveco();
+  await scrapMidCoastTrucks();
+  await scrapUnionTruckSales();
+  await scrapTruckWholesalers();
+  await scrapFusoPortMelbourne();
+  await scrapWestarTruckCentre();
+  await scrapLarsensTruckSales();
+  await scrapWesternTruckSales();
+  await scrapDaimlerTrucksPerth();
+  await scrapVelocityTruckCentres();
+  await scrapDaimlerTrucksBrisbane();
+  await scrapGilbertAndRoachSydney();
+  await scrapHumeHighwayTruckSales();
+  await scrapDaimlerTrucksMilperra();
+  await scrapDaimlerTrucksDanenong();
+  await scrapMelbourneTruckAndVans();
+  await scrapDaimlerTrucksLaverton();
+  await scrapSammutAgriculturalMachinery();
+}, 1000 * 60 * 60 * 24 * 3);
 
 // Routes
 app.use("/trucks", Truck);

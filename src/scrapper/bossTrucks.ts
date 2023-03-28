@@ -178,7 +178,7 @@ export default async function scrapBossTrucks() {
           await Truck.create(trucks);
 
           // Confirm message
-          console.log("Boss Trucks done");
+          console.log(trucks.length, "Boss Trucks done");
 
           // Close the browser
           await browser.close();

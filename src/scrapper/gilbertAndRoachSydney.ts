@@ -133,7 +133,7 @@ export default async function scrapGilbertAndRoachSydney() {
                 await Truck.create(trucks);
 
                 // Confirm message
-                console.log("Gilbert and Roach Sydney done");
+                console.log(trucks.length, "Gilbert and Roach Sydney done");
 
                 // Close the browser
                 await browser.close();

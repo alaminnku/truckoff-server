@@ -156,7 +156,7 @@ export default async function scrapTruckCity() {
               await Truck.create(trucks);
 
               // Confirm message
-              console.log("Truck City done");
+              console.log(trucks.length, "Truck City done");
 
               // Close the browser
               await browser.close();

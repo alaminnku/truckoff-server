@@ -174,7 +174,10 @@ export default async function scrapDaimlerTrucksLaverton() {
                         await Truck.create(trucks);
 
                         // Confirm message
-                        console.log("Daimler Trucks Laverton done");
+                        console.log(
+                          trucks.length,
+                          "Daimler Trucks Laverton done"
+                        );
 
                         // Close the browser
                         await browser.close();

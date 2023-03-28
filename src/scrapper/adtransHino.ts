@@ -150,7 +150,7 @@ export default async function scrapAdtransHino() {
           await Truck.create(trucks);
 
           // Confirm message
-          console.log("Adtrans Hino done");
+          console.log(trucks.length, "Adtrans Hino done");
 
           // Close the browser
           await browser.close();

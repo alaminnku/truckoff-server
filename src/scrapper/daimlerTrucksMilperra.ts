@@ -174,7 +174,10 @@ export default async function scrapDaimlerTrucksMilperra() {
                         await Truck.create(trucks);
 
                         // Confirm message
-                        console.log("Daimler Trucks Milperra done");
+                        console.log(
+                          trucks.length,
+                          "Daimler Trucks Milperra done"
+                        );
 
                         // Close the browser
                         await browser.close();

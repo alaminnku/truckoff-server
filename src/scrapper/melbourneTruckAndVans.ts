@@ -144,7 +144,7 @@ export default async function scrapMelbourneTruckAndVans() {
           await Truck.create(trucks);
 
           // Confirm message
-          console.log("Melbourne Truck and Vans done");
+          console.log(trucks.length, "Melbourne Truck and Vans done");
 
           // Close the browser
           await browser.close();

@@ -171,7 +171,7 @@ export default async function scrapDaimlerTrucksPerth() {
                         await Truck.create(trucks);
 
                         // Confirm message
-                        console.log("Daimler Trucks Perth done");
+                        console.log(trucks.length, "Daimler Trucks Perth done");
 
                         // Close the browser
                         await browser.close();

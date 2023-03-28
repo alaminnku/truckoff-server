@@ -152,7 +152,7 @@ export default async function scrapLarsensTruckSales() {
           await Truck.create(trucks);
 
           // Confirm message
-          console.log("Larsen's Truck Sales done");
+          console.log(trucks.length, "Larsen's Truck Sales done");
 
           // Close the browser
           await browser.close();

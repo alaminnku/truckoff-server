@@ -160,7 +160,7 @@ export default async function scrapIsuzu() {
           await Truck.create(trucks);
 
           // Confirm message
-          console.log("Isuzu done");
+          console.log(trucks.length, "Isuzu done");
 
           // Close the browser
           await browser.close();

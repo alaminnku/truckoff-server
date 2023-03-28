@@ -173,7 +173,10 @@ export default async function scrapDaimlerTrucksBrisbane() {
                         await Truck.create(trucks);
 
                         // Confirm message
-                        console.log("Daimler Trucks Brisbane done");
+                        console.log(
+                          trucks.length,
+                          "Daimler Trucks Brisbane done"
+                        );
 
                         // Close the browser
                         await browser.close();

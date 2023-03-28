@@ -171,7 +171,7 @@ export default async function scrapSammutAgriculturalMachinery() {
           await Truck.create(trucks);
 
           // Confirm message
-          console.log("Sammut Agricultural Machinery done");
+          console.log(trucks.length, "Sammut Agricultural Machinery done");
 
           // Close the browser
           await browser.close();
