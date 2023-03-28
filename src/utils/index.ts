@@ -3,7 +3,7 @@ import mail from "@sendgrid/mail";
 // Send error email
 export async function sendErrorEmail(scrapper: string) {
   const template = {
-    to: process.env.OWNER_EMIL as string,
+    to: process.env.OWNER_EMAIL as string,
     from: process.env.SENDER_EMAIL as string,
     subject: `${scrapper} Scrapper Failed`,
     html: `
