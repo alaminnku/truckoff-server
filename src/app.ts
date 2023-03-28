@@ -83,6 +83,7 @@ app.use(
 // })();
 
 setTimeout(async () => {
+  console.log("hello from time out");
   await scrapIsuzu();
   await scrapCtrTrucks();
   await scrapTruckCity();
@@ -109,7 +110,7 @@ setTimeout(async () => {
   await scrapMelbourneTruckAndVans();
   await scrapDaimlerTrucksLaverton();
   await scrapSammutAgriculturalMachinery();
-}, 1000 * 60);
+}, 1000 * 5);
 
 // Run scrappers in every 3 days
 setInterval(async () => {
