@@ -169,6 +169,9 @@ export default async function scrapDaimlerTrucksBrisbane() {
                         // Create new trucks
                         await Truck.create(trucks);
 
+                        // Confirm message
+                        console.log("Daimler Trucks Brisbane done");
+
                         // Close the browser
                         await browser.close();
                       } catch (err) {

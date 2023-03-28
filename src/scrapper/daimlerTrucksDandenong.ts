@@ -163,6 +163,9 @@ export default async function scrapDaimlerTrucksDanenong() {
                         // Create new trucks
                         await Truck.create(trucks);
 
+                        // Confirm message
+                        console.log("Daimler Trucks Dandenong done");
+
                         // Close the browser
                         await browser.close();
                       } catch (err) {

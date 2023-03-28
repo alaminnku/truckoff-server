@@ -178,6 +178,9 @@ export default async function scrapAdtransTrucks() {
                       // Create new trucks
                       await Truck.create(trucks);
 
+                      // Confirm message
+                      console.log("Adtrans Trucks done");
+
                       // Close the browser
                       await browser.close();
                     } catch (err) {

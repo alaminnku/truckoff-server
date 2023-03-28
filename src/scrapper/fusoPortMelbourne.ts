@@ -167,6 +167,9 @@ export default async function scrapFusoPortMelbourne() {
                         // Create new trucks
                         await Truck.create(trucks);
 
+                        // Confirm message
+                        console.log("Fuso Port Melbourne done");
+
                         // Close the browser
                         await browser.close();
                       } catch (err) {

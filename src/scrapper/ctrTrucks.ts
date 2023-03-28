@@ -152,6 +152,9 @@ export default async function scrapCtrTrucks() {
               // Create new trucks
               await Truck.create(trucks);
 
+              // Confirm message
+              console.log("CTR Trucks done");
+
               // Close the browser
               await browser.close();
             } catch (err) {

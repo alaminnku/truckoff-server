@@ -180,6 +180,9 @@ export default async function scrapUnionTruckSales() {
                       // Create new trucks
                       await Truck.create(trucks);
 
+                      // Confirm message
+                      console.log("Union Truck Sales done");
+
                       // Close the browser
                       await browser.close();
                     } catch (err) {

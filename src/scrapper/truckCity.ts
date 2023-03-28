@@ -153,6 +153,9 @@ export default async function scrapTruckCity() {
               // Create new trucks
               await Truck.create(trucks);
 
+              // Confirm message
+              console.log("Truck City done");
+
               // Close the browser
               await browser.close();
             } catch (err) {

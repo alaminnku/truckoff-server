@@ -139,6 +139,9 @@ export default async function scrapMelbourneTruckAndVans() {
           // Create new trucks
           await Truck.create(trucks);
 
+          // Confirm message
+          console.log("Melbourne Truck and Vans done");
+
           // Close the browser
           await browser.close();
         } catch (err) {

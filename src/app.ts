@@ -52,66 +52,7 @@ app.use(
   })
 );
 
-// // Scrap when the server starts
-// setTimeout(() => {
-//   scrapIsuzu();
-//   scrapCtrTrucks();
-//   scrapTruckCity();
-//   scrapBossTrucks();
-//   scrapAdtransHino();
-//   scrapRobEquipment();
-//   scrapSuttonTrucks();
-//   scrapAdtransTrucks();
-//   scrapPrestigeIveco();
-//   scrapMidCoastTrucks();
-//   scrapUnionTruckSales();
-//   scrapTruckWholesalers();
-//   scrapFusoPortMelbourne();
-//   scrapWestarTruckCentre();
-//   scrapLarsensTruckSales();
-//   scrapWesternTruckSales();
-//   scrapDaimlerTrucksPerth();
-//   scrapVelocityTruckCentres();
-//   scrapDaimlerTrucksBrisbane();
-//   scrapGilbertAndRoachSydney();
-//   scrapHumeHighwayTruckSales();
-//   scrapDaimlerTrucksMilperra();
-//   scrapDaimlerTrucksDanenong();
-//   scrapMelbourneTruckAndVans();
-//   scrapDaimlerTrucksLaverton();
-//   scrapSammutAgriculturalMachinery();
-// }, 5000);
-
-// // Scrap in every 3 days
-// setInterval(() => {
-//   scrapIsuzu();
-//   scrapCtrTrucks();
-//   scrapTruckCity();
-//   scrapBossTrucks();
-//   scrapAdtransHino();
-//   scrapRobEquipment();
-//   scrapSuttonTrucks();
-//   scrapAdtransTrucks();
-//   scrapPrestigeIveco();
-//   scrapMidCoastTrucks();
-//   scrapUnionTruckSales();
-//   scrapTruckWholesalers();
-//   scrapFusoPortMelbourne();
-//   scrapWestarTruckCentre();
-//   scrapLarsensTruckSales();
-//   scrapWesternTruckSales();
-//   scrapDaimlerTrucksPerth();
-//   scrapVelocityTruckCentres();
-//   scrapDaimlerTrucksBrisbane();
-//   scrapGilbertAndRoachSydney();
-//   scrapHumeHighwayTruckSales();
-//   scrapDaimlerTrucksMilperra();
-//   scrapDaimlerTrucksDanenong();
-//   scrapMelbourneTruckAndVans();
-//   scrapDaimlerTrucksLaverton();
-//   scrapSammutAgriculturalMachinery();
-// }, 5000);
-
+// Run all scrappers function
 async function runScrappers() {
   await Promise.all([
     scrapIsuzu(),
@@ -143,9 +84,11 @@ async function runScrappers() {
   ]);
 }
 
+// Run scrappers when server starts
 runScrappers();
 
-// setInterval(() => runScrappers, 5000);
+// Run scrappers in every 3 days interval
+setInterval(() => runScrappers, 1000 * 60 * 60 * 24 * 3);
 
 // 1000 * 60 * 60 * 24 * 3
 
