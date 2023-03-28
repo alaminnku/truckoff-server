@@ -149,13 +149,11 @@ export default async function scrapDaimlerTrucksBrisbane() {
                             { ...truck, origin: truckUrls[i] },
                           ];
                         } catch (err) {
-                          // Close the browser and send email
-                          await browser.close();
+                          // Send email
                           sendErrorEmail("Daimler Trucks Brisbane");
                         }
                       } catch (err) {
-                        // Close the browser and send email
-                        await browser.close();
+                        // Send email
                         sendErrorEmail("Daimler Trucks Brisbane");
                       }
                     }

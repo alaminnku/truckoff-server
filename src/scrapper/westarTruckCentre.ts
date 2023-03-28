@@ -42,13 +42,11 @@ export default async function scrapWestarTruckCentre() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Westar Truck Centre");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Westar Truck Centre");
         }
       }
@@ -134,13 +132,11 @@ export default async function scrapWestarTruckCentre() {
             // Add truck to trucks
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Westar Truck Centre");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Westar Truck Centre");
         }
       }

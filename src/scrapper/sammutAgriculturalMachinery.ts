@@ -45,13 +45,11 @@ export default async function scrapSammutAgriculturalMachinery() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Sammut Agricultural Machinery");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Sammut Agricultural Machinery");
         }
       }
@@ -148,13 +146,11 @@ export default async function scrapSammutAgriculturalMachinery() {
             // Add truck to trucks
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Sammut Agricultural Machinery");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Sammut Agricultural Machinery");
         }
       }

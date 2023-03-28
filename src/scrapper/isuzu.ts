@@ -41,8 +41,7 @@ export default async function scrapIsuzu() {
           // Add urls to truckUrls
           truckUrls = [...truckUrls, ...truckUrlsPerPage];
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Isuzu");
         }
       }
@@ -137,13 +136,11 @@ export default async function scrapIsuzu() {
             // Add truck to trucks
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Isuzu");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Isuzu");
         }
       }

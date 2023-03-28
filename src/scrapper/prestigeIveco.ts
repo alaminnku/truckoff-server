@@ -159,13 +159,11 @@ export default async function scrapPrestigeIveco() {
                           { ...truck, origin: truckUrls[i] },
                         ];
                       } catch (err) {
-                        // Close the browser and send email
-                        await browser.close();
+                        // Send email
                         sendErrorEmail("Prestige Iveco");
                       }
                     } catch (err) {
-                      // Close the browser and send email
-                      await browser.close();
+                      // Send email
                       sendErrorEmail("Prestige Iveco");
                     }
                   }

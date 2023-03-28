@@ -147,13 +147,11 @@ export default async function scrapDaimlerTrucksPerth() {
                             { ...truck, origin: truckUrls[i] },
                           ];
                         } catch (err) {
-                          // Close the browser and send email
-                          await browser.close();
+                          // Send email
                           sendErrorEmail("Daimler Trucks Perth");
                         }
                       } catch (err) {
-                        // Close the browser and send email
-                        await browser.close();
+                        // Send email
                         sendErrorEmail("Daimler Trucks Perth");
                       }
                     }

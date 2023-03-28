@@ -49,13 +49,11 @@ export default async function scrapAdtransHino() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Adtrans Hino");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Adtrans Hino");
         }
       }
@@ -129,13 +127,11 @@ export default async function scrapAdtransHino() {
             // Add truck to trucks
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Adtrans Hino");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Adtrans Hino");
         }
       }

@@ -162,13 +162,11 @@ export default async function scrapTruckWholesalers() {
                           { ...truck, origin: truckUrls[i] },
                         ];
                       } catch (err) {
-                        // Close the browser and send email
-                        await browser.close();
+                        // Send email
                         sendErrorEmail("Truck Wholesalers Australia");
                       }
                     } catch (err) {
-                      // Close the browser and send email
-                      await browser.close();
+                      // Send email
                       sendErrorEmail("Truck Wholesalers Australia");
                     }
                   }

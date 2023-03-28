@@ -143,13 +143,11 @@ export default async function scrapDaimlerTrucksDanenong() {
                             { ...truck, origin: truckUrls[i] },
                           ];
                         } catch (err) {
-                          // Close the browser and send email
-                          await browser.close();
+                          // Send email
                           sendErrorEmail("Daimler Trucks Dandenong");
                         }
                       } catch (err) {
-                        // Close the browser and send email
-                        await browser.close();
+                        // Send email
                         sendErrorEmail("Daimler Trucks Dandenong");
                       }
                     }

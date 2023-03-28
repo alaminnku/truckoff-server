@@ -147,13 +147,11 @@ export default async function scrapFusoPortMelbourne() {
                             { ...truck, origin: truckUrls[i] },
                           ];
                         } catch (err) {
-                          // Close the browser and send email
-                          await browser.close();
+                          // Send email
                           sendErrorEmail("Fuso Port Melbourne");
                         }
                       } catch (err) {
-                        // Close the browser and send email
-                        await browser.close();
+                        // Send email
                         sendErrorEmail("Fuso Port Melbourne");
                       }
                     }

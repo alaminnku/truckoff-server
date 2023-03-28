@@ -150,13 +150,11 @@ export default async function scrapDaimlerTrucksMilperra() {
                             { ...truck, origin: truckUrls[i] },
                           ];
                         } catch (err) {
-                          // Close the browser and send email
-                          await browser.close();
+                          // Send email
                           sendErrorEmail("Daimler Trucks Milperra");
                         }
                       } catch (err) {
-                        // Close the browser and send email
-                        await browser.close();
+                        // Send email
                         sendErrorEmail("Daimler Trucks Milperra");
                       }
                     }

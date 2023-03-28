@@ -42,13 +42,11 @@ export default async function scrapHumeHighwayTruckSales() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Hume Highway Truck Sales");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Hume Highway Truck Sales");
         }
       }
@@ -152,13 +150,11 @@ export default async function scrapHumeHighwayTruckSales() {
             // Add truck to trucks
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Hume Highway Truck Sales");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Hume Highway Truck Sales");
         }
       }

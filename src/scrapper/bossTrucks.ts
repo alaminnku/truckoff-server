@@ -42,13 +42,11 @@ export default async function scrapBossTrucks() {
             // Add urls to truckUrls
             truckUrls = [...truckUrls, ...truckUrlsPerPage];
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Boss Trucks");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Boss Trucks");
         }
       }
@@ -144,13 +142,11 @@ export default async function scrapBossTrucks() {
                   // Add truck to trucks
                   trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
                 } catch (err) {
-                  // Close the browser and send email
-                  await browser.close();
+                  // Send email
                   sendErrorEmail("Boss Trucks");
                 }
               } catch (err) {
-                // Close the browser and send email
-                await browser.close();
+                // Send email
                 sendErrorEmail("Boss Trucks");
               }
             }

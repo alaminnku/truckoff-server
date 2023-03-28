@@ -160,13 +160,11 @@ export default async function scrapAdtransTrucks() {
                           { ...truck, origin: truckUrls[i] },
                         ];
                       } catch (err) {
-                        // Close the browser and send email
-                        await browser.close();
+                        // Send email
                         sendErrorEmail("Adtrans Trucks");
                       }
                     } catch (err) {
-                      // Close the browser and send email
-                      await browser.close();
+                      // Send email
                       sendErrorEmail("Adtrans Trucks");
                     }
                   }

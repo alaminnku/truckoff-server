@@ -56,13 +56,11 @@ export default async function scrapSuttonTrucks() {
               sendErrorEmail("Sutton Trucks");
             }
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Sutton Trucks");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Sutton Trucks");
         }
       }
@@ -132,13 +130,11 @@ export default async function scrapSuttonTrucks() {
             // Add truck to trucks
             trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
           } catch (err) {
-            // Close the browser and send email
-            await browser.close();
+            // Send email
             sendErrorEmail("Sutton Trucks");
           }
         } catch (err) {
-          // Close the browser and send email
-          await browser.close();
+          // Send email
           sendErrorEmail("Sutton Trucks");
         }
       }

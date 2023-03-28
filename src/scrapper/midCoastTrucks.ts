@@ -148,13 +148,11 @@ export default async function scrapMidCoastTrucks() {
                           { ...truck, origin: truckUrls[i] },
                         ];
                       } catch (err) {
-                        // Close the browser and send email
-                        await browser.close();
+                        // Send email
                         sendErrorEmail("Mid Coast Trucks");
                       }
                     } catch (err) {
-                      // Close the browser and send email
-                      await browser.close();
+                      // Send email
                       sendErrorEmail("Mid Coast Trucks");
                     }
                   }

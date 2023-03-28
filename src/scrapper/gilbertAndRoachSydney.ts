@@ -110,13 +110,11 @@ export default async function scrapGilbertAndRoachSydney() {
                   // Add truck to trucks
                   trucks = [...trucks, { ...truck, origin: truckUrls[i] }];
                 } catch (err) {
-                  // Close the browser and send email
-                  await browser.close();
+                  // Send email
                   sendErrorEmail("Gilbert and Roach Sydney");
                 }
               } catch (err) {
-                // Close the browser and send email
-                await browser.close();
+                // Send email
                 sendErrorEmail("Gilbert and Roach Sydney");
               }
             }
