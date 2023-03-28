@@ -51,64 +51,64 @@ app.use(
   })
 );
 
-// // Scrap once
-// setTimeout(() => {
-//   scrapIsuzu();
-//   scrapCtrTrucks();
-//   scrapTruckCity();
-//   scrapBossTrucks();
-//   scrapAdtransHino();
-//   scrapRobEquipment();
-//   scrapSuttonTrucks();
-//   scrapAdtransTrucks();
-//   scrapPrestigeIveco();
-//   scrapMidCoastTrucks();
-//   scrapUnionTruckSales();
-//   scrapTruckWholesalers();
-//   scrapFusoPortMelbourne();
-//   scrapWestarTruckCentre();
-//   scrapLarsensTruckSales();
-//   scrapWesternTruckSales();
-//   scrapDaimlerTrucksPerth();
-// scrapDaimlerTrucksLaverton();
-//   scrapVelocityTruckCentres();
-//   scrapDaimlerTrucksBrisbane();
-//   scrapGilbertAndRoachSydney();
-//   scrapHumeHighwayTruckSales();
-//   scrapDaimlerTrucksMilperra();
-//   scrapDaimlerTrucksDanenong();
-//   scrapMelbourneTruckAndVans();
-//   scrapSammutAgriculturalMachinery();
-// }, 0);
+// Scrap when the server starts
+setTimeout(() => {
+  scrapIsuzu();
+  scrapCtrTrucks();
+  scrapTruckCity();
+  scrapBossTrucks();
+  scrapAdtransHino();
+  scrapRobEquipment();
+  scrapSuttonTrucks();
+  scrapAdtransTrucks();
+  scrapPrestigeIveco();
+  scrapMidCoastTrucks();
+  scrapUnionTruckSales();
+  scrapTruckWholesalers();
+  scrapFusoPortMelbourne();
+  scrapWestarTruckCentre();
+  scrapLarsensTruckSales();
+  scrapWesternTruckSales();
+  scrapDaimlerTrucksPerth();
+  scrapVelocityTruckCentres();
+  scrapDaimlerTrucksBrisbane();
+  scrapGilbertAndRoachSydney();
+  scrapHumeHighwayTruckSales();
+  scrapDaimlerTrucksMilperra();
+  scrapDaimlerTrucksLaverton();
+  scrapDaimlerTrucksDanenong();
+  scrapMelbourneTruckAndVans();
+  scrapSammutAgriculturalMachinery();
+}, 0);
 
-// Schedule scrappers
+// Scrap in every 3 days
 setInterval(() => {
-  // scrapIsuzu();
-  // scrapCtrTrucks();
-  // scrapTruckCity();
-  // scrapBossTrucks();
-  // scrapAdtransHino();
-  // scrapRobEquipment();
-  // scrapSuttonTrucks();
-  // scrapAdtransTrucks();
-  // scrapPrestigeIveco();
-  // scrapMidCoastTrucks();
-  // scrapUnionTruckSales();
-  // scrapTruckWholesalers();
-  // scrapFusoPortMelbourne();
-  // scrapWestarTruckCentre();
-  // scrapLarsensTruckSales();
-  // scrapWesternTruckSales();
-  // scrapDaimlerTrucksPerth();
-  // scrapDaimlerTrucksLaverton()
-  // scrapVelocityTruckCentres();
-  // scrapDaimlerTrucksBrisbane();
-  // scrapGilbertAndRoachSydney();
-  // scrapHumeHighwayTruckSales();
-  // scrapDaimlerTrucksMilperra();
-  // scrapDaimlerTrucksDanenong();
-  // scrapMelbourneTruckAndVans();
-  // scrapSammutAgriculturalMachinery();
+  scrapIsuzu();
+  scrapCtrTrucks();
+  scrapTruckCity();
+  scrapBossTrucks();
+  scrapAdtransHino();
+  scrapRobEquipment();
+  scrapSuttonTrucks();
+  scrapAdtransTrucks();
+  scrapPrestigeIveco();
+  scrapMidCoastTrucks();
+  scrapUnionTruckSales();
+  scrapTruckWholesalers();
+  scrapFusoPortMelbourne();
+  scrapWestarTruckCentre();
+  scrapLarsensTruckSales();
+  scrapWesternTruckSales();
+  scrapDaimlerTrucksPerth();
+  scrapVelocityTruckCentres();
+  scrapDaimlerTrucksBrisbane();
+  scrapGilbertAndRoachSydney();
+  scrapHumeHighwayTruckSales();
+  scrapDaimlerTrucksMilperra();
+  scrapDaimlerTrucksDanenong();
+  scrapMelbourneTruckAndVans();
+  scrapDaimlerTrucksLaverton();
+  scrapSammutAgriculturalMachinery();
 }, 1000 * 60 * 60 * 24 * 3);
 
 // Routes
