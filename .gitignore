@@ -14,6 +14,7 @@ guidelines.txt
 .DS_Store
 *.pem
 .cache
+vercel.json
 
 # debug
 npm-debug.log*
