@@ -24,7 +24,7 @@ export default async function scrapAdtransHino() {
       ];
 
       // Get all truck urls from 3 pages
-      for (let i = 0; i < targets.length - 1; i++) {
+      for (let i = 0; i < targets.length; i++) {
         try {
           // Go to the page
           await page.goto(targets[i], { timeout: 0 });
@@ -34,7 +34,7 @@ export default async function scrapAdtransHino() {
             const truckUrlsPerPage = await page.evaluate(() => {
               // Get all url nodes
               const urlNodes = document.querySelectorAll(
-                "#VehiclesInventoryList > div > div > div.two-col > div:nth-child(2) > ol > li > div > div.inventory-listing__actions > div.inventory-listing__actions-btns > a:nth-child(2)"
+                "#VehiclesInventoryList > div > div > div.two-col > div:nth-child(2) > ol > li > h2 > a"
               );
 
               // Return the full urls
@@ -140,31 +140,36 @@ export default async function scrapAdtransHino() {
         }
       }
 
-      // Replace the trucks in the db
-      try {
-        // Delete all previous trucks
-        await Truck.deleteMany({ website: "adtranshino" });
-
+      if (trucks.length > 0) {
+        // Replace the trucks in the db
         try {
-          // Create new trucks
-          await Truck.create(trucks);
+          // Delete all previous trucks
+          await Truck.deleteMany({ website: "adtranshino" });
 
-          // Confirm message
-          console.log(trucks.length, "Adtrans Hino done");
+          try {
+            // Create new trucks
+            await Truck.create(trucks);
 
-          // Close the browser
-          await browser.close();
+            // Confirm message
+            console.log(trucks.length, "Adtrans Hino done");
+
+            // Close the browser
+            await browser.close();
+          } catch (err) {
+            // Close the browser and send email
+            console.log(err);
+            await browser.close();
+            // sendErrorEmail("Adtrans Hino");
+          }
         } catch (err) {
           // Close the browser and send email
-          await browser.close();
           console.log(err);
+          await browser.close();
           // sendErrorEmail("Adtrans Hino");
         }
-      } catch (err) {
-        // Close the browser and send email
+      } else {
+        console.log("Something went wrong");
         await browser.close();
-        console.log(err);
-        // sendErrorEmail("Adtrans Hino");
       }
     } catch (err) {
       // Close the browser and send email
