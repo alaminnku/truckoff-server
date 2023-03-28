@@ -15,6 +15,6 @@ export async function sendErrorEmail(scrapper: string) {
     await mail.send(template);
   } catch (err) {
     //@ts-ignore
-    console.log(err.response.body);
+    console.log(err);
   }
 }
