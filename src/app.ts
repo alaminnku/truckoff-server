@@ -34,7 +34,6 @@ import scrapSammutAgriculturalMachinery from "./scrapper/sammutAgriculturalMachi
 // Configs
 dotenv.config();
 connectDB();
-// process.setMaxListeners(0);
 mail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
 // Create port
@@ -81,35 +80,6 @@ app.use(
   await scrapDaimlerTrucksLaverton();
   await scrapSammutAgriculturalMachinery();
 })();
-
-// setTimeout(async () => {
-//   await scrapIsuzu();
-//   await scrapCtrTrucks();
-//   await scrapTruckCity();
-//   await scrapBossTrucks();
-//   await scrapAdtransHino();
-//   await scrapRobEquipment();
-//   await scrapSuttonTrucks();
-//   await scrapAdtransTrucks();
-//   await scrapPrestigeIveco();
-//   await scrapMidCoastTrucks();
-//   await scrapUnionTruckSales();
-//   await scrapTruckWholesalers();
-//   await scrapFusoPortMelbourne();
-//   await scrapWestarTruckCentre();
-//   await scrapLarsensTruckSales();
-//   await scrapWesternTruckSales();
-//   await scrapDaimlerTrucksPerth();
-//   await scrapVelocityTruckCentres();
-//   await scrapDaimlerTrucksBrisbane();
-//   await scrapGilbertAndRoachSydney();
-//   await scrapHumeHighwayTruckSales();
-//   await scrapDaimlerTrucksMilperra();
-//   await scrapDaimlerTrucksDanenong();
-//   await scrapMelbourneTruckAndVans();
-//   await scrapDaimlerTrucksLaverton();
-//   await scrapSammutAgriculturalMachinery();
-// }, 1000 * 5);
 
 // Run scrappers in every 3 days
 setInterval(async () => {
