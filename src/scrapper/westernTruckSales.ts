@@ -7,6 +7,7 @@ export default async function scrapWesternTruckSales() {
   try {
     // Create browser
     const browser = await puppeteer.launch({
+      args: ["--no-sandbox"],
       defaultViewport: { width: 1024, height: 1600 },
     });
 

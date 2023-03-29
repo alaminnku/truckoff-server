@@ -6,6 +6,7 @@ export default async function scrapBossTrucks() {
   try {
     // Create browser
     const browser = await puppeteer.launch({
+      args: ["--no-sandbox"],
       defaultViewport: { width: 1024, height: 1600 },
     });
 
