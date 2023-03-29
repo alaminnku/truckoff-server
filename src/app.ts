@@ -1,6 +1,7 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import User from "./routes/user";
 import mail from "@sendgrid/mail";
 import Truck from "./routes/truck";
 import { connectDB } from "./config/db";
@@ -113,6 +114,7 @@ setInterval(async () => {
 
 // Routes
 app.use("/trucks", Truck);
+app.use("/users", User);
 
 // Run server
 app.listen(PORT, () => console.log("Server started"));
