@@ -20,8 +20,9 @@ router.get("/", async (req: Request, res: Response) => {
         truck.name &&
         truck.price &&
         truck.location &&
-        truck.images.length > 0 &&
-        typeof +truck.price === "number"
+        !isNaN(+truck.price) &&
+        truck.name.length > 5 &&
+        truck.images.length > 0
     );
 
     // Return the response
