@@ -11,8 +11,8 @@ router.get("/", async (req: Request, res: Response) => {
     const response = await Truck.find()
       .select("-__v -updatedAt -website")
       .lean()
-      .orFail();
-    // .limit(100);
+      .orFail()
+      .limit(100);
 
     // Filter trucks
     const trucks = response.filter(
